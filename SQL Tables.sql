@@ -16,7 +16,7 @@ CREATE TABLE `Users` (
 );
 
 CREATE TABLE `Requests` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `User_Id` VARCHAR(50),
   `Type` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
@@ -52,7 +52,7 @@ CREATE TABLE `Rooms` (
 );
 
 CREATE TABLE `Events` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Module` VARCHAR(50),
   `Room` VARCHAR(10),
   `Type` VARCHAR(50),
@@ -86,7 +86,7 @@ CREATE TABLE `Programmes` (
 );
 
 CREATE TABLE `Semesters` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Start_Date` DATE NOT NULL,
   `End_Date` DATE NOT NULL,
   `Name` VARCHAR(50),
@@ -94,7 +94,7 @@ CREATE TABLE `Semesters` (
 );
 
 CREATE TABLE `Module_Assignment` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Programme` VARCHAR(50),
   `Module` VARCHAR(50),
   `Semester` VARCHAR(50),
@@ -105,7 +105,7 @@ CREATE TABLE `Module_Assignment` (
 );
 
 CREATE TABLE `Lecturers_Assignment` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Lecturer` VARCHAR(50),
   `Module` VARCHAR(50),
   PRIMARY KEY (`Id`),
@@ -120,19 +120,19 @@ CREATE TABLE `Logins` (
 );
 
 CREATE TABLE `Student_Enrollment` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(50),
   `Programme` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
   `Date_Enrolled` DATE,
-  `Date_Finished` DATE CHECK,
+  `Date_Finished` DATE,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`),
   FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`)
 );
 
 CREATE TABLE `Roles` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Name` VARCHAR(50),
   `Access_Level` CHAR(1) NOT NULL,
   `Description` VARCHAR(200),
@@ -140,7 +140,7 @@ CREATE TABLE `Roles` (
 );
 
 CREATE TABLE `Role_Assignment` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Role` VARCHAR(50),
   `User` VARCHAR(50),
   PRIMARY KEY (`Id`),
@@ -149,7 +149,7 @@ CREATE TABLE `Role_Assignment` (
 );
 
 CREATE TABLE `Student_Timetable` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(50),
   `Module` VARCHAR(50),
   PRIMARY KEY (`Id`),
@@ -158,7 +158,7 @@ CREATE TABLE `Student_Timetable` (
 );
 
 CREATE TABLE `Holidays` (
-  `Id` VARCHAR(50) AUTO_INCREMENT,
+  `Id` INT AUTO_INCREMENT,
   `Date_From` DATE NOT NULL,
   `Date_To` DATE NOT NULL,
   `Description` VARCHAR(200),
