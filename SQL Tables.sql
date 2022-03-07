@@ -97,7 +97,7 @@ CREATE TABLE `Module_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Programme` VARCHAR(50),
   `Module` VARCHAR(50),
-  `Semester` VARCHAR(50),
+  `Semester` INT,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`),
   FOREIGN KEY (`Semester`) REFERENCES `Semesters`(`Id`),
@@ -141,7 +141,7 @@ CREATE TABLE `Roles` (
 
 CREATE TABLE `Role_Assignment` (
   `Id` INT AUTO_INCREMENT,
-  `Role` VARCHAR(50),
+  `Role` INT,
   `User` VARCHAR(50),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`),
