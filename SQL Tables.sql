@@ -1,6 +1,6 @@
 --SQL Tables
 --No constrains implemented yet!
---Version 1.5.3
+--ER Version 1.5.3
 CREATE TABLE `Users` (
   `Id` VARCHAR(50),
   `First_Name` VARCHAR(50) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE `Programmes` (
   `Department` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
   `Start_Date` DATE NOT NULL CHECK (Start_Date LIKE '--/--/----'),
-  `End_Date` DATE NOT NULL CHECK (End_Date LIKE '--/--/----'),
+  `End_Date` DATE NOT NULL CHECK (End_Date LIKE '--/--/----' AND End_Date > Start_Date),
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Department`) REFERENCES `Departments`(`Name`)
@@ -88,7 +88,7 @@ CREATE TABLE `Programmes` (
 CREATE TABLE `Semesters` (
   `Id` VARCHAR(50) AUTO_INCREMENT,
   `Start_Date` DATE NOT NULL CHECK (Start_Date LIKE '--/--/----'),
-  `End_Date` DATE NOT NULL CHECK (End_Date LIKE '--/--/----'),
+  `End_Date` DATE NOT NULL CHECK (End_Date LIKE '--/--/----'AND End_Date > Start_Date),
   `Name` VARCHAR(50),
   PRIMARY KEY (`Id`)
 );
@@ -125,7 +125,7 @@ CREATE TABLE `Student_Enrollment` (
   `Programme` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
   `Date_Enrolled` DATE CHECK (Date_Enrolled LIKE '--/--/----'),
-  `Date_Finished` DATE CHECK (Date_Finished LIKE '--/--/----'),
+  `Date_Finished` DATE CHECK (Date_Finished LIKE '--/--/----' AND Date_Enrolled < Date_Finished),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`),
   FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`)
@@ -160,7 +160,7 @@ CREATE TABLE `Student_Timetable` (
 CREATE TABLE `Holidays` (
   `Id` VARCHAR(50) AUTO_INCREMENT,
   `Date_From` DATE NOT NULL CHECK (Date_From LIKE '--/--/----'),
-  `Date_To` DATE NOT NULL CHECK (Date_To LIKE '--/--/----'),
+  `Date_To` DATE NOT NULL CHECK (Date_To LIKE '--/--/----' AND Date_From < Date_To),
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`)
 );
