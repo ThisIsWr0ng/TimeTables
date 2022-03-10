@@ -1,5 +1,5 @@
 CREATE TABLE `Users` (
-  `Id` VARCHAR(50),
+  `Id` VARCHAR(10),
   `First_Name` VARCHAR(50) NOT NULL,
   `Surname` VARCHAR(50) NOT NULL,
   `Title` VARCHAR(10),
@@ -14,7 +14,7 @@ CREATE TABLE `Users` (
 
 CREATE TABLE `Requests` (
   `Id` INT AUTO_INCREMENT,
-  `User_Id` VARCHAR(50),
+  `User_Id` VARCHAR(10),
   `Type` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`),
@@ -103,7 +103,7 @@ CREATE TABLE `Module_Assignment` (
 
 CREATE TABLE `Lecturers_Assignment` (
   `Id` INT AUTO_INCREMENT,
-  `Lecturer` VARCHAR(50),
+  `Lecturer` VARCHAR(10),
   `Module` VARCHAR(50),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
@@ -111,14 +111,14 @@ CREATE TABLE `Lecturers_Assignment` (
 );
 
 CREATE TABLE `Logins` (
-  `Username` VARCHAR(30),
+  `Username` VARCHAR(10),
   `Password` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`Username`)
 );
 
 CREATE TABLE `Student_Enrollment` (
   `Id` INT AUTO_INCREMENT,
-  `Student` VARCHAR(50),
+  `Student` VARCHAR(10),
   `Programme` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
   `Date_Enrolled` DATE,
@@ -147,7 +147,7 @@ CREATE TABLE `Role_Assignment` (
 
 CREATE TABLE `Student_Timetable` (
   `Id` INT AUTO_INCREMENT,
-  `Student` VARCHAR(50),
+  `Student` VARCHAR(10),
   `Module` VARCHAR(50),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Module_Assignment`(`Id`),
@@ -163,7 +163,7 @@ CREATE TABLE `Holidays` (
 );
 
 CREATE TABLE `Settings` (
-  `User` VARCHAR(50),
+  `User` VARCHAR(10),
   `Color_Scheme` CHAR(1) DEFAULT 1,
   `Notifications` CHAR(1) DEFAULT 1,
   `Default_View` CHAR(1) DEFAULT 1,
