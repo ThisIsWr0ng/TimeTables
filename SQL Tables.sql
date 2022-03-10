@@ -121,7 +121,7 @@ CREATE TABLE `Student_Enrollment` (
   `Student` VARCHAR(10),
   `Programme` VARCHAR(10),
   `Level` CHAR(1) NOT NULL,
-  `Date_Enrolled` DATE,
+  `Date_Enrolled` DATE NOT NULL,
   `Date_Finished` DATE,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`),
