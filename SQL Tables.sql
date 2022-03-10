@@ -23,7 +23,7 @@ CREATE TABLE `Requests` (
 );
 
 CREATE TABLE `Modules` (
-  `Id` VARCHAR(50),
+  `Id` VARCHAR(10),
   `Name` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`)
@@ -71,7 +71,7 @@ CREATE TABLE `Departments` (
 );
 
 CREATE TABLE `Programmes` (
-  `Id` VARCHAR(50),
+  `Id` VARCHAR(10),
   `Name` VARCHAR(50) NOT NULL,
   `Department` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `Semesters` (
 
 CREATE TABLE `Module_Assignment` (
   `Id` INT AUTO_INCREMENT,
-  `Programme` VARCHAR(50),
+  `Programme` VARCHAR(10),
   `Module` VARCHAR(50),
   `Semester` INT,
   PRIMARY KEY (`Id`),
@@ -119,7 +119,7 @@ CREATE TABLE `Logins` (
 CREATE TABLE `Student_Enrollment` (
   `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(10),
-  `Programme` VARCHAR(50),
+  `Programme` VARCHAR(10),
   `Level` CHAR(1) NOT NULL,
   `Date_Enrolled` DATE,
   `Date_Finished` DATE,
