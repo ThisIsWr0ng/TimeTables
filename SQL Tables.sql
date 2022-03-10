@@ -1,6 +1,3 @@
---SQL Tables
---No constrains implemented yet!
---ER Version 1.5.4
 CREATE TABLE `Users` (
   `Id` VARCHAR(50),
   `First_Name` VARCHAR(50) NOT NULL,
