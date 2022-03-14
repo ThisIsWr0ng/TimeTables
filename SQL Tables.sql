@@ -26,7 +26,19 @@ CREATE TABLE `Modules` (
   `Id` VARCHAR(10),
   `Name` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
+  'Moodle_Link' VARCHAR(200),
   PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE 'Deadlines' (
+  'Id' INT AUTO_INCREMENT,
+  'Module_Id' VARCHAR(10),
+  'Name' VARCHAR(50),
+  'Date' DATETIME,
+  'Weight' VARCHAR(5),
+  'Moodle_Link' VARCHAR(200),
+  PRIMARY KEY ('Id'),
+  FOREIGN KEY (`Module_Id`) REFERENCES `Modules`(`Id`)
 );
 
 CREATE TABLE `Buildings` (
