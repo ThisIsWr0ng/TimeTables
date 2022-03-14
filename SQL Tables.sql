@@ -30,7 +30,7 @@ CREATE TABLE `Modules` (
   PRIMARY KEY (`Id`)
 );
 
-CREATE TABLE 'Deadlines' (
+CREATE TABLE `Deadlines` (
   `Id` INT AUTO_INCREMENT,
   `Module_Id` VARCHAR(10),
   `Name` VARCHAR(50) NOT NULL,
