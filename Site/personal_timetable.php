@@ -5,8 +5,10 @@
   <title>Personal Timetable</title>
   <meta name="description" content="Personal Timetable">
   <link rel="stylesheet" href="Style/Basic.css">
+
+
 </head>
 <body>
-    
+   
 </body>
 </html>
