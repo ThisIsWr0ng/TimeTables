@@ -62,7 +62,7 @@ CREATE TABLE `Rooms` (
 
 CREATE TABLE `Events` (
   `Id` INT AUTO_INCREMENT,
-  `Module` VARCHAR(50),
+  `Module` VARCHAR(10),
   `Room` VARCHAR(10),
   `Type` VARCHAR(50),
   `Day_Of_Week` CHAR(1) NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `Semesters` (
 CREATE TABLE `Module_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Programme` VARCHAR(10),
-  `Module` VARCHAR(50),
+  `Module` VARCHAR(10),
   `Semester` INT,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`),
@@ -116,7 +116,7 @@ CREATE TABLE `Module_Assignment` (
 CREATE TABLE `Lecturers_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Lecturer` VARCHAR(10),
-  `Module` VARCHAR(50),
+  `Module` VARCHAR(10),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
   FOREIGN KEY (`Lecturer`) REFERENCES `Users`(`Id`)
@@ -151,7 +151,7 @@ CREATE TABLE `Roles` (
 CREATE TABLE `Role_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Role` INT,
-  `User` VARCHAR(50),
+  `User` VARCHAR(10),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`),
   FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
