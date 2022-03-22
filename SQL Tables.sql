@@ -22,7 +22,8 @@ CREATE TABLE `Users` (
   `First_Name` VARCHAR(50) NOT NULL,
   `Surname` VARCHAR(50) NOT NULL,
   `Title` VARCHAR(10),
-  `Email` VARCHAR(50) NOT NULL,
+  `Priv_Email` VARCHAR(50) NOT NULL,
+  `Uni_Email` VARCHAR(50) NOT NULL,
   `Telephone` VARCHAR(50) NOT NULL,
   `Next_Of_Kin` VARCHAR(50),
   `Street_Number` VARCHAR(5) NOT NULL,
@@ -94,7 +95,7 @@ CREATE TABLE `Departments` (
   PRIMARY KEY (`Name`)
 );
 CREATE TABLE `Programmes` (
-  `Id` VARCHAR(10),
+  `Id` INT AUTO_INCREMENT,
   `Name` VARCHAR(50) NOT NULL,
   `Department` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
@@ -113,7 +114,7 @@ CREATE TABLE `Semesters` (
 );
 CREATE TABLE `Module_Assignment` (
   `Id` INT AUTO_INCREMENT,
-  `Programme` VARCHAR(10),
+  `Programme` INT,
   `Module` VARCHAR(10),
   `Semester` INT,
   PRIMARY KEY (`Id`),
@@ -137,9 +138,8 @@ CREATE TABLE `Logins` (
 CREATE TABLE `Student_Enrollment` (
   `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(10),
-  `Programme` VARCHAR(10),
-  `Level` CHAR(1) NOT NULL,
-  `Date_Enrolled` DATE NOT NULL,
+  `Programme` INT,
+  `Date_Enrolled` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Date_Finished` DATE,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`),
@@ -170,6 +170,7 @@ CREATE TABLE `Student_Timetable` (
 );
 CREATE TABLE `Holidays` (
   `Id` INT AUTO_INCREMENT,
+  `Name` VARCHAR(50),
   `Date_From` DATE NOT NULL,
   `Date_To` DATE NOT NULL,
   `Description` VARCHAR(200),
