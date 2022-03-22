@@ -1,3 +1,22 @@
+DROP TABLE IF EXISTS `Module_Assignment`,
+`Lecturers_Assignment`,
+`Logins`,
+`Student_Enrollment`,
+`Roles`,
+`Role_Assignment`,
+`Student_Timetable`,
+`Holidays`,
+`Settings`,
+`Users`,
+`Requests`,
+`Modules`,
+`Deadlines`,
+`Buildings`,
+`Rooms`,
+`Events`,
+`Departments`,
+`Programmes`,
+`Semesters`;
 CREATE TABLE `Users` (
   `Id` VARCHAR(10),
   `First_Name` VARCHAR(50) NOT NULL,
@@ -11,7 +30,6 @@ CREATE TABLE `Users` (
   `Postcode` VARCHAR(8) NOT NULL,
   PRIMARY KEY (`Id`)
 );
-
 CREATE TABLE `Requests` (
   `Id` INT AUTO_INCREMENT,
   `User_Id` VARCHAR(10),
@@ -21,7 +39,6 @@ CREATE TABLE `Requests` (
   FOREIGN KEY (`User_Id`) REFERENCES `Users`(`Id`),
   INDEX (Type)
 );
-
 CREATE TABLE `Modules` (
   `Id` VARCHAR(10),
   `Name` VARCHAR(50) NOT NULL,
@@ -29,7 +46,6 @@ CREATE TABLE `Modules` (
   `Moodle_Link` VARCHAR(200),
   PRIMARY KEY (`Id`)
 );
-
 CREATE TABLE `Deadlines` (
   `Id` INT AUTO_INCREMENT,
   `Module_Id` VARCHAR(10),
@@ -40,7 +56,6 @@ CREATE TABLE `Deadlines` (
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module_Id`) REFERENCES `Modules`(`Id`)
 );
-
 CREATE TABLE `Buildings` (
   `Name` VARCHAR(50),
   `Street_Number` VARCHAR(5) NOT NULL,
@@ -48,7 +63,6 @@ CREATE TABLE `Buildings` (
   `Postcode` VARCHAR(8) NOT NULL,
   PRIMARY KEY (`Name`)
 );
-
 CREATE TABLE `Rooms` (
   `Number` VARCHAR(10),
   `Building` VARCHAR(50),
@@ -59,7 +73,6 @@ CREATE TABLE `Rooms` (
   PRIMARY KEY (`Number`),
   FOREIGN KEY (`Building`) REFERENCES `Buildings`(`Name`)
 );
-
 CREATE TABLE `Events` (
   `Id` INT AUTO_INCREMENT,
   `Module` VARCHAR(10),
@@ -74,14 +87,12 @@ CREATE TABLE `Events` (
   FOREIGN KEY (`Room`) REFERENCES `Rooms`(`Number`),
   INDEX (Module)
 );
-
 CREATE TABLE `Departments` (
   `Name` VARCHAR(50),
   `Managed_By` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
   PRIMARY KEY (`Name`)
 );
-
 CREATE TABLE `Programmes` (
   `Id` VARCHAR(10),
   `Name` VARCHAR(50) NOT NULL,
@@ -93,7 +104,6 @@ CREATE TABLE `Programmes` (
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Department`) REFERENCES `Departments`(`Name`)
 );
-
 CREATE TABLE `Semesters` (
   `Id` INT AUTO_INCREMENT,
   `Start_Date` DATE NOT NULL,
@@ -101,7 +111,6 @@ CREATE TABLE `Semesters` (
   `Name` VARCHAR(50),
   PRIMARY KEY (`Id`)
 );
-
 CREATE TABLE `Module_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Programme` VARCHAR(10),
@@ -112,7 +121,6 @@ CREATE TABLE `Module_Assignment` (
   FOREIGN KEY (`Semester`) REFERENCES `Semesters`(`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`)
 );
-
 CREATE TABLE `Lecturers_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Lecturer` VARCHAR(10),
@@ -121,13 +129,11 @@ CREATE TABLE `Lecturers_Assignment` (
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
   FOREIGN KEY (`Lecturer`) REFERENCES `Users`(`Id`)
 );
-
 CREATE TABLE `Logins` (
   `Username` VARCHAR(10),
   `Password` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`Username`)
 );
-
 CREATE TABLE `Student_Enrollment` (
   `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(10),
@@ -139,7 +145,6 @@ CREATE TABLE `Student_Enrollment` (
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`),
   FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`)
 );
-
 CREATE TABLE `Roles` (
   `Id` INT AUTO_INCREMENT,
   `Name` VARCHAR(50),
@@ -147,7 +152,6 @@ CREATE TABLE `Roles` (
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`)
 );
-
 CREATE TABLE `Role_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Role` INT,
@@ -156,7 +160,6 @@ CREATE TABLE `Role_Assignment` (
   FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`),
   FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
 );
-
 CREATE TABLE `Student_Timetable` (
   `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(10),
@@ -165,7 +168,6 @@ CREATE TABLE `Student_Timetable` (
   FOREIGN KEY (`Module`) REFERENCES `Module_Assignment`(`Id`),
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`)
 );
-
 CREATE TABLE `Holidays` (
   `Id` INT AUTO_INCREMENT,
   `Date_From` DATE NOT NULL,
@@ -173,7 +175,6 @@ CREATE TABLE `Holidays` (
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`)
 );
-
 CREATE TABLE `Settings` (
   `User` VARCHAR(10),
   `Color_Scheme` CHAR(1) DEFAULT 1,
@@ -181,4 +182,3 @@ CREATE TABLE `Settings` (
   `Default_View` CHAR(1) DEFAULT 1,
   PRIMARY KEY (`User`)
 );
-
