@@ -173,4 +173,15 @@ INSERT INTO rooms VALUES (
     "B"
 );
 
-
+INSERT INTO semesters VALUES (
+    NULL,
+    "2021-09-20",
+    "2022-01-28",
+    "Semester One"
+);
+INSERT INTO semesters VALUES (
+    NULL,
+    "2022-01-31",
+    "2022-07-01",
+    "Semester two"
+);
