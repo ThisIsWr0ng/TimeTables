@@ -164,9 +164,9 @@ CREATE TABLE `Role_Assignment` (
 CREATE TABLE `Student_Timetable` (
   `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(10),
-  `Module` INT,
+  `Module_Assignment` INT,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module`) REFERENCES `Module_Assignment`(`Id`),
+  FOREIGN KEY (`Module_Assignment`) REFERENCES `Module_Assignment`(`Id`),
   FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`)
 );
 CREATE TABLE `Holidays` (

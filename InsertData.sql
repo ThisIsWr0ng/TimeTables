@@ -121,7 +121,7 @@ INSERT INTO modules VALUES (
     "https://moodle.glyndwr.ac.uk/course/view.php?id=35179"
 );
 INSERT INTO modules VALUES (
-    "COM553 ",
+    "COM553",
     "Group Project",
     "",
     "https://moodle.glyndwr.ac.uk/course/view.php?id=39159"
@@ -184,4 +184,61 @@ INSERT INTO semesters VALUES (
     "2022-01-31",
     "2022-07-01",
     "Semester two"
+);
+
+INSERT INTO module_assignment VALUES (
+    NULL,
+    1,
+    "COM539",
+    1
+);
+INSERT INTO module_assignment VALUES (
+    NULL,
+    1,
+    "COM540",
+    2
+);
+INSERT INTO module_assignment VALUES (
+    NULL,
+    1,
+    "COM553",
+    2
+);
+INSERT INTO module_assignment VALUES (
+    NULL,
+    1,
+    "COM545",
+    2
+);
+
+INSERT INTO Student_Timetable VALUES (
+    NULL,
+    "S19005373",
+    1
+);
+INSERT INTO Student_Timetable VALUES (
+    NULL,
+    "S19005373",
+    2
+);
+INSERT INTO Student_Timetable VALUES (
+    NULL,
+    "S19005373",
+    3
+);
+INSERT INTO Student_Timetable VALUES (
+    NULL,
+    "S19005373",
+    4
+);
+
+INSERT INTO events VALUES (
+    NULL,
+    "COM539",
+    "B119",
+    "Practical",
+    "2",
+    "09:00:00",
+    "12:00:00",
+    NULL
 );
