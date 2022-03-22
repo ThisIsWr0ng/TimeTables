@@ -76,6 +76,7 @@ INSERT INTO holidays VALUES (
 
 INSERT INTO departments VALUES (
     "Computing",
+    "COM"
     "John Doe",
     ""
 );
@@ -106,4 +107,70 @@ INSERT INTO student_enrollment VALUES (
     NOW(),
     "",
 );
+
+INSERT INTO modules VALUES (
+    "COM539",
+    "Data Structures and Algorithms",
+    "Maths module",
+    "https://moodle.glyndwr.ac.uk/course/view.php?id=35178"
+);
+INSERT INTO modules VALUES (
+    "COM540",
+    "Databases and Web-based Information Systems",
+    "",
+    "https://moodle.glyndwr.ac.uk/course/view.php?id=35179"
+);
+INSERT INTO modules VALUES (
+    "COM553 ",
+    "Group Project",
+    "",
+    "https://moodle.glyndwr.ac.uk/course/view.php?id=39159"
+);
+INSERT INTO modules VALUES (
+    "COM545",
+    "Responsible Computing",
+    "",
+    "https://moodle.glyndwr.ac.uk/course/view.php?id=35184"
+);
+
+INSERT INTO buildings VALUES (
+    "Main Building",
+    "1",
+    "Mold Road",
+    "LL11 2AW"
+);
+
+INSERT INTO rooms VALUES (
+    "B119",
+    "Main Building",
+    25,
+    "PC Room"
+    "Projector, 20 pc's",
+    "B",
+);
+INSERT INTO rooms VALUES (
+    "B117",
+    "Main Building",
+    25,
+    "PC Room"
+    "Projector, 20 pc's",
+    "B",
+);
+INSERT INTO rooms VALUES (
+    "C124",
+    "Main Building",
+    60,
+    "Lecture Room"
+    "Projector",
+    "C",
+);
+INSERT INTO rooms VALUES (
+    "B118",
+    "Main Building",
+    60,
+    "Lecture Room"
+    "Projector",
+    "B",
+);
+
 

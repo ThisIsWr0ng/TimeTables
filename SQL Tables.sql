@@ -71,7 +71,7 @@ CREATE TABLE `Rooms` (
   `Type` VARCHAR(50),
   `Equipment` VARCHAR(200),
   `Section` VARCHAR(50),
-  PRIMARY KEY (`Number`),
+  PRIMARY KEY (`Number`,`Building`),
   FOREIGN KEY (`Building`) REFERENCES `Buildings`(`Name`)
 );
 CREATE TABLE `Events` (
@@ -90,6 +90,7 @@ CREATE TABLE `Events` (
 );
 CREATE TABLE `Departments` (
   `Name` VARCHAR(50),
+  `Code` VARCHAR(3),
   `Managed_By` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
   PRIMARY KEY (`Name`)
