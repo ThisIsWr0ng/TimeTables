@@ -69,14 +69,14 @@ INSERT INTO role_assignment VALUES (
 INSERT INTO holidays VALUES (
     NULL,
     "Easter Break",
-    2022-04-11,
-    2022-04-24,
+    "2022-04-11",
+    "2022-04-24",
     "Two weeks off for easter holidays in semester 2"
 );
 
 INSERT INTO departments VALUES (
     "Computing",
-    "COM"
+    "COM",
     "John Doe",
     ""
 );
@@ -86,8 +86,8 @@ INSERT INTO programmes Values (
     "BSc (Hons) Computer Science - Year 2 - Full Time",
     "Computing",
     5,
-    2021-09-20,
-    2022-07-01,
+    "2021-09-20",
+    "2022-07-01",
     "Computer Science"
 );
 INSERT INTO programmes Values (
@@ -95,8 +95,8 @@ INSERT INTO programmes Values (
     "BSc (Hons) Computing - Year 1 - Full Time",
     "Computing",
     4,
-    2021-09-20,
-    2022-07-01,
+    "2021-09-20",
+    "2022-07-01",
     "Computing Programme"
 );
 
@@ -105,7 +105,7 @@ INSERT INTO student_enrollment VALUES (
     "S19005373",
     1,
     NOW(),
-    "",
+    NULL
 );
 
 INSERT INTO modules VALUES (
@@ -144,33 +144,33 @@ INSERT INTO rooms VALUES (
     "B119",
     "Main Building",
     25,
-    "PC Room"
+    "PC Room",
     "Projector, 20 pc's",
-    "B",
+    "B"
 );
 INSERT INTO rooms VALUES (
     "B117",
     "Main Building",
     25,
-    "PC Room"
+    "PC Room",
     "Projector, 20 pc's",
-    "B",
+    "B"
 );
 INSERT INTO rooms VALUES (
     "C124",
     "Main Building",
     60,
-    "Lecture Room"
+    "Lecture Room",
     "Projector",
-    "C",
+    "C"
 );
 INSERT INTO rooms VALUES (
     "B118",
     "Main Building",
     60,
-    "Lecture Room"
+    "Lecture Room",
     "Projector",
-    "B",
+    "B"
 );
 
 
