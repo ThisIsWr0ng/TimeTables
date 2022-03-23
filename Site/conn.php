@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","","timetable");
+$conn = mysqli_connect("localhost","root","mysql","timetable");
  
 // Check connection
 if (mysqli_connect_errno())
