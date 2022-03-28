@@ -22,6 +22,7 @@ CREATE TABLE `Users` (
   `First_Name` VARCHAR(50) NOT NULL,
   `Surname` VARCHAR(50) NOT NULL,
   `Title` VARCHAR(10),
+  `Gender` VARCHAR(50),
   `Priv_Email` VARCHAR(50) NOT NULL,
   `Uni_Email` VARCHAR(50) NOT NULL,
   `Telephone` VARCHAR(50) NOT NULL,
