@@ -185,17 +185,14 @@ CREATE TABLE `Settings` (
   `Default_View` CHAR(1) DEFAULT 1,
   PRIMARY KEY (`User`)
 );
-/*
- Data for TimeTables
- User id has to be generated in php
- Remove my details before submitting!!!!
- */
+
 INSERT INTO users
 VALUES (
         "S19005373",
         "Dawid",
         "Olesko",
         "Mr",
+        "Male",
         "dawidolesko@gmail.com",
         "S19005373@mail.glyndwr.ac.uk",
         "+4407923426783",
