@@ -5,10 +5,78 @@
   <title>Personal Timetable</title>
   <meta name="description" content="Personal Timetable">
   <link rel="stylesheet" href="Style/Basic.css">
+  <link href="style/calendar.css" rel="stylesheet" type="text/css">
+    <?php  include 'php/conn.php'; ?>
+    <?php  include 'php/fetch_events.php'; ?>
 
 
 </head>
 <body>
+  <main class="content">
+    
+  <div id="cal-wrap">
+      <!-- (A) PERIOD SELECTOR -->
+      <div id="cal-date">
+        <select id="cal-mth"></select>
+        <select id="cal-yr"></select>
+      </div>
+
+      <!-- (B) CALENDAR -->
+      <div id="cal-container"></div>
+
+      <!-- (C) EVENT FORM -->
+      <div id="overlay"><form id="cal-event" action="php/eventRequest.php" method="post">
+        <div><h1 id="evt-head"></h1></div>
+        <input type="date" id="evt-date" name="date" readonly/>
+        <div id="evt-time"></div>
+        <div id="request-fileds">
+        
+            <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname" required><br/>
+
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname" required><br/>
+
+  <label for="artist">Performed by:</label>
+  <input type="text" id="artist" name="artist"><br/>
+
+  <label for="eName">Event name:</label>
+  <input type="text" id="eName" name="eName"required><br/>
+
+  <label for="tFrom">Time From:</label>
+  <input type="time" id="tFrom" name="timeFrom"
+       min="12:00" max="00:00" required>
+       <label for="tTo">Time To:</label>
+  <input type="time" id="tTo" name="timeTo"
+       min="12:00" max="00:00"><br/>
+
+       <label for="telNum">Telephone number:</label>
+  <input type="text" id="telNum" name="telNum"><br/>
+
+  <label for="email" >Email address:</label>
+  <input type="text" id="email" name="email" required><br/>
+  <label for="evt-details">Please provide more details:</label>
+</div>
+
+        <textarea id="evt-details" name="details"readonly></textarea>
+        <input id="evt-close" type="button" value="Close"/>
+        <input id="evt-request" type="button" value="Request Event"/>
+        <input id="evt-next" type="button" value="Next -->"/>
+</form>
+    </div></div>
+    
+   
+    <script>
+        function loadContent(a, b){
+            document.getElementById(a).innerHTML= b;
+        }
+            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents()) ?>' );
+            console.log("Data Received:", dbData);
+            window.addEventListener("load", drawCalendar(dbData));
+   
+
+        </script>
+  </main>
    
 </body>
 </html>
