@@ -14,7 +14,7 @@ email - user's email;
 password - user password;
 */
 
-CREATE TABLE `user` (
+/*CREATE TABLE `user` (
 `id` INT(11) NOT NULL AUTO_INCREMENT,
 `email` VARCHAR(255) NOT NULL,
 `password` VARCHAR(255) NOT NULL,
