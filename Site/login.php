@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$Message = "Login failed! Errors found";
   }
   else{
-  include('conn.php');
+  include('php/conn.php');
  
   $query=mysqli_query($conn,"select * from `user` where username='$fusername' && password='$fpassword'");
   $num_rows=mysqli_num_rows($query);

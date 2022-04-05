@@ -62,17 +62,7 @@ var cal = {
         cal.hYear.appendChild(opt);
       }
       cal.hYear.addEventListener("change", cal.list);
-      //Convert dbData data types
-      /*for(i = 0; i <dbData.length; i++){
-        
-          //dbData[i].date_booked = Date.parse(dbData[i].date_booked);
-          dbData[i].time_from = new Date("1970-01-01 " + dbData[i].time_from);
-          dbData[i].time_to = new Date("1970-01-01 " + dbData[i].time_to);
-        
-      }
-      console.log("Converted dbData:", dbData);*/
-      
-      
+  
       // (B5) START - DRAW CALENDAR
       cal.list();
     },
