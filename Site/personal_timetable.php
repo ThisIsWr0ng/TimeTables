@@ -31,7 +31,7 @@
         <div><h1 id="evt-head"></h1></div>
         <input type="date" id="evt-date" name="date" readonly/>
         <div id="evt-time"></div>
-       
+        <div id="evt-module-name"></div>
         <div id="request-fileds">
         
   <label for="eName">Event name:</label>
@@ -49,7 +49,8 @@
 
         <textarea id="evt-details" name="details"readonly></textarea>
         <input id="evt-close" type="button" value="Close"/>
-        <input id="evt-request" type="button" value="Request Event"/>
+        <input id="evt-request" type="button" value="Add Event"/>
+        <input id="evt-moodle-page" type="button" value="Moodle Page"/>
         <input id="evt-next" type="button" value="Next -->"/>
 </form>
     </div></div>
