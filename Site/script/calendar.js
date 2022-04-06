@@ -209,30 +209,34 @@ var cal = {
   
     // (D) SHOW EDIT EVENT DOCKET FOR SELECTED DAY
     show : (el, index, request) => {
-      console.log("show(", el, index, ")")
       // (D1) FETCH EXISTING DATA
       cal.sDay = el.getElementsByClassName("dd")[0].innerHTML;
+      var data = cal.data[cal.sDay][index];
       let hasEvents = cal.data[cal.sDay] != null ;
       if(request){
         hasEvents = false
       }
   
       // (D2) UPDATE EVENT FORM
-      cal.hfTxt.value = hasEvents ? cal.data[cal.sDay][index].description  : ""  ;//Description
-      cal.hfHead.innerHTML = hasEvents ? cal.data[cal.sDay][index].module : "Request Event" ;//Title
       cal.hfTime.classList.add("hideOverlay");
       cal.hrFields.classList.add("hideOverlay");
       cal.hNxt.classList.add("hideOverlay");
       cal.hOverlay.classList.remove("hideOverlay");
-      if(hasEvents){
+
+      if(hasEvents){//If there's an event during this day
         cal.hfDate.setAttribute('value', `${cal.sYear}-${("0" +(cal.sMth + 1)).slice(-2)}-${("0" + cal.sDay).slice(-2)}`);//date
-        cal.hfTime.innerHTML = `${cal.data[cal.sDay][index].time_from.substr(0,5)} - ${cal.data[cal.sDay][index].time_to.substr(0,5)}`;
+        cal.hfTime.innerHTML = `${data.time_from.substr(0,5)} - ${data.time_to.substr(0,5)}`;
         cal.hfTime.classList.remove("hideOverlay");
+        cal.hfTxt.value = data.description;
+        cal.hfHead.innerHTML = data.module;
+        document.getElementById("evt-moodle-page").setAttribute("onclick", data.module_link);
       if(cal.data[el.getElementsByClassName("dd")[0].innerHTML].length > 1){//If there's more than one event in a day
         cal.hNxt.classList.remove("hideOverlay");
       }
-    }else{
+    }else{ //if there's no event during this day
       cal.hfDate.setAttribute('value', `${cal.sYear}-${("0" +(cal.sMth + 1)).slice(-2)}-${("0" + cal.sDay).slice(-2)}`);//date
+      cal.hfTxt.value = "";
+      cal.hfHead.innerHTML = "Add Event";
     }
 
     },
