@@ -2,28 +2,27 @@
 /* CSS Document */
 
 body {
-    background-image: url("../img/Background.jpg");
-    background-size: 150vw;
-    background-attachment: fixed;
-    background-repeat: repeat;
-    background-position: center;
+  background-image: url("../img/Background.jpg");
+  background-size: 150vw;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-position: center;
 }
-#logo{
-    display: block;
-    background-color: rgba(117, 117, 114, 0.911);
-    border-radius: 12px;
-    width:120px;
-    padding: 0px 40px;
-    height: auto;
-    margin: auto;
-    left: 0;
-    right: 0;
-    margin-bottom: 20px;
+#logo {
+  display: block;
+  background-color: rgba(117, 117, 114, 0.911);
+  border-radius: 12px;
+  width: 120px;
+  padding: 0px 40px;
+  height: auto;
+  margin: auto;
+  left: 0;
+  right: 0;
+  margin-bottom: 20px;
 }
-.content{
-    background-color: rgba(226, 226, 219, 0.911);
- width: 90vw;
- max-width: 2000px;
- min-width: 500px;
-
+.content {
+  background-color: rgba(226, 226, 219, 0.911);
+  width: 90vw;
+  max-width: 2000px;
+  min-width: 500px;
 }

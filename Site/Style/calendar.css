@@ -1,161 +1,149 @@
-
-
 .hideOverlay {
-    display: none;
+  display: none;
 }
-
-
 
 #cal-wrap {
-    width: 100%;
+  width: 100%;
 }
 
-
 #cal-date {
-    margin: auto;
-    left: 0;
-    right: 0;
-    width: fit-content;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: fit-content;
 }
 
 #cal-mth,
 #cal-yr {
-    box-sizing: border-box;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    border: 0;
-    background: none;
-    color: rgb(150, 148, 142);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: 0;
+  background: none;
+  color: rgb(150, 148, 142);
 }
-
 
 #calendar {
-    
-    width: 100%;
-    height:60%;
-    border-collapse: collapse;
-    table-layout:fixed;
-    transition-duration: 0.5s;
-
+  width: 100%;
+  height: 60%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  transition-duration: 0.5s;
 }
-#calendar tr{
-    height: 6vh;
+#calendar tr {
+  height: 6vh;
 }
 #calendar tr.head td {
-    padding: 0px;
-    text-align: center;
-    height: 20px;
+  padding: 0px;
+  text-align: center;
+  height: 20px;
 }
 
 #calendar tr.day td {
-    border: 1px solid rgb(150, 148, 142);;
-    padding: 5px 5px;
-    vertical-align: top;
-    text-align: right;
-    height: 8em;
-    transition-duration: 0.5s;
+  border: 1px solid rgb(150, 148, 142);
+  padding: 5px 5px;
+  vertical-align: top;
+  text-align: right;
+  height: 8em;
+  transition-duration: 0.5s;
 }
-#calendar td{
-    overflow:hidden;
-    white-space:nowrap;
+#calendar td {
+  overflow: hidden;
+  white-space: nowrap;
 }
 #calendar tr.day td:hover {
-    cursor: pointer;
-    background: rgba(158, 158, 155, 0.911);
-    border-color: #fff;
+  cursor: pointer;
+  background: rgba(158, 158, 155, 0.911);
+  border-color: #fff;
 }
 
 #calendar tr td.blank {
-    background: rgba(153, 153, 151, 0.911);
+  background: rgba(153, 153, 151, 0.911);
 }
 
 #calendar tr td.today {
-    
-    border-color: #fff;
-    border-width: 2px;
-    
+  border-color: #fff;
+  border-width: 2px;
 }
 
 #calendar .dd {
-    font-size: 0.9em;
-    color: rgb(150, 148, 142);;
+  font-size: 0.9em;
+  color: rgb(150, 148, 142);
 }
 
 #calendar .evt {
-    margin-top: 3px;
-    padding: 1%;
-    font-size: 0.8em;
-    text-align: left;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    background-color: #333;
-    display:block;
-    overflow: hidden;
+  margin-top: 3px;
+  padding: 1%;
+  font-size: 0.8em;
+  text-align: left;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: #333;
+  display: block;
+  overflow: hidden;
 
-    line-height: 15%;
+  line-height: 15%;
 }
-
 
 #cal-event {
-    color: #333;
-    min-width: fit-content;
-    max-width: 600px;
-   margin: auto;
-   left: 0;
-   right: 0;
-   margin-top:40vh;
-    text-align: center;
-    padding: 15px 20px;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
+  color: #333;
+  min-width: fit-content;
+  max-width: 600px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  margin-top: 40vh;
+  text-align: center;
+  padding: 15px 20px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
 }
-
 
 #cal-event h1 {
-    color: #333;
-    padding: 0;
-    margin: 0;
+  color: #333;
+  padding: 0;
+  margin: 0;
 }
 
-#evt-date{
-    margin-left: 30px;
-    font-size: 1.2em;
-    color: #555;
-    border:none;
-    background: none;
+#evt-date {
+  margin-left: 30px;
+  font-size: 1.2em;
+  color: #555;
+  border: none;
+  background: none;
 }
 
 #cal-event textarea {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    min-height: 100px;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  min-height: 100px;
 }
 
-#cal-event input[type=button],
-#cal-event input[type=submit] {
-    padding: 10px;
-    margin: 5px;
-    font-size: 1.2em;
-    border: 0;
-    background: #414141;
-    color: rgb(150, 148, 142);;
+#cal-event input[type="button"],
+#cal-event input[type="submit"] {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1.2em;
+  border: 0;
+  background: #414141;
+  color: rgb(150, 148, 142);
 }
 #overlay {
-    position: fixed;
-    width: 100%; 
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); 
-    z-index: 2;
-    cursor: pointer; 
-  }
-  #request-fileds input{
-margin-bottom: 10px;
-  }
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#request-fileds input {
+  margin-bottom: 10px;
+}
