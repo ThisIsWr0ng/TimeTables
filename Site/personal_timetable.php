@@ -13,7 +13,7 @@
 
 </head>
 <body>
-  <header><img id="logo" src="img/TimeTables-logos/TimeTables-logos_white.png"></header>
+  <header><img id="logo" src="img/TimeTables-logos/TimeTables-logos_white_cropped.png" alt="TimeTables Logo"></header>
   <main class="content">
     
   <div id="cal-wrap">
@@ -31,6 +31,7 @@
         <div><h1 id="evt-head"></h1></div>
         <input type="date" id="evt-date" name="date" readonly/>
         <div id="evt-time"></div>
+       
         <div id="request-fileds">
         
   <label for="eName">Event name:</label>

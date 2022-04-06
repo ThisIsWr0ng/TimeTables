@@ -30,6 +30,7 @@
 
 
 #calendar {
+    
     width: 100%;
     height:60%;
     border-collapse: collapse;
@@ -38,7 +39,7 @@
 
 }
 #calendar tr{
-    height: 5em;
+    height: 6vh;
 }
 #calendar tr.head td {
     padding: 0px;
@@ -60,12 +61,12 @@
 }
 #calendar tr.day td:hover {
     cursor: pointer;
-    background: rgba(117, 117, 114, 0.911);
+    background: rgba(158, 158, 155, 0.911);
     border-color: #fff;
 }
 
 #calendar tr td.blank {
-    background: rgba(117, 117, 114, 0.911);
+    background: rgba(153, 153, 151, 0.911);
 }
 
 #calendar tr td.today {
@@ -86,7 +87,7 @@
     font-size: 0.8em;
     text-align: center;
     font-weight: bold;
-    color: rgb(150, 148, 142);;
+    color: rgb(255, 255, 255);
     background-color: #333;
     display:block;
     overflow: hidden;
