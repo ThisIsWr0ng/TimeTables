@@ -153,6 +153,18 @@ var cal = {
       let total = squares.length;
       cRow = document.createElement("tr");
       cRow.classList.add("day");
+      var evColors = ["#556B2F", "#E9967A", "#8FBC8F", "#2F4F4F", "#DAA520"];//Event tiles colors
+      var modules = [dbData[0].module];
+      for (let i = 0; i < dbData.length; i++) {//check how many modules are available
+        for (let j = 0; j < modules.length; j++) {
+          if(modules[j] == dbData[i].module){ 
+           break;
+        }else if( j == modules.length - 1){
+          modules.push(dbData[i].module);
+        }
+        }
+      }
+      console.log("mod:", modules);
       for (let i=0; i<total; i++) {
         let cCell = document.createElement("td");
         if (squares[i]=="b") { cCell.classList.add("blank"); }
@@ -160,10 +172,20 @@ var cal = {
           if (nowDay==squares[i]) { cCell.classList.add("today"); }
           cCell.innerHTML = `<div class="dd">${squares[i]}</div>`;
           if (cal.data[squares[i]]) {
-           
+          
               for (let index = 0; index < cal.data[squares[i]].length; index++) {
                 var data = cal.data[squares[i]][index];
-                cCell.innerHTML += `<div class='evt'><p>${data.time_from.substr(0,5)}-${data.time_to.substr(0,5)}: ${data.type}</p><p>${data.module}</p><p>${data.room}</p></div>`;
+                var color = null;
+                for (let j = 0; j < modules.length; j++) {//Assign one cor for each module
+                  if(data.module == modules[j]){
+                    color = evColors[j];
+                  }
+                }
+                cCell.innerHTML += `<div class='evt' style="background-color: ${color};">
+                <p>${data.time_from.substr(0,5)}-${data.time_to.substr(0,5)}: ${data.type}</p>
+                <p>${data.module}</p>
+                <p>${data.room} ${data.room_type}</p>
+                </div>`;
               }
             
           }

@@ -59,7 +59,7 @@
         function loadContent(a, b){
             document.getElementById(a).innerHTML= b;
         }
-            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents('S19005373')) ?>' );
+            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents('S19005373')) ?>' );//<-----------------Pass student number here
             console.log("Data Received:", dbData);
             window.addEventListener("load", drawCalendar(dbData));
    
