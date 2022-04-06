@@ -162,7 +162,8 @@ var cal = {
           if (cal.data[squares[i]]) {
            
               for (let index = 0; index < cal.data[squares[i]].length; index++) {
-                cCell.innerHTML += "<div class='evt'><p>" + cal.data[squares[i]][index].module + "</p><p>" +cal.data[squares[i]][index].time_from.substr(0,5) + "-" + cal.data[squares[i]][index].time_to.substr(0,5) +"</p></div>";
+                var data = cal.data[squares[i]][index];
+                cCell.innerHTML += `<div class='evt'><p>${data.time_from.substr(0,5)}-${data.time_to.substr(0,5)}: ${data.type}</p><p>${data.module}</p><p>${data.room}</p></div>`;
               }
             
           }
