@@ -59,7 +59,7 @@
         function loadContent(a, b){
             document.getElementById(a).innerHTML= b;
         }
-            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents()) ?>' );
+            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents('S19005373')) ?>' );
             console.log("Data Received:", dbData);
             window.addEventListener("load", drawCalendar(dbData));
    
