@@ -6,8 +6,9 @@
   <meta name="description" content="Personal Timetable">
   <link rel="stylesheet" href="Style/Basic.css">
   <link href="style/calendar.css" rel="stylesheet" type="text/css">
-    <?php  include 'php/conn.php'; ?>
-    <?php  include 'php/fetch_events.php'; ?>
+  <script src="script/calendar.js"></script>
+  <?php  include 'php/conn.php'; ?>
+  <?php  include 'php/fetch_events.php'; ?>
 
 
 </head>
@@ -76,6 +77,7 @@
    
 
         </script>
+
   </main>
    
 </body>

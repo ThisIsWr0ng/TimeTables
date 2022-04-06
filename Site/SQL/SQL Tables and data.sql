@@ -80,7 +80,7 @@ CREATE TABLE `Events` (
   `Module` VARCHAR(10),
   `Room` VARCHAR(10),
   `Type` VARCHAR(50),
-  `Day_Of_Week` CHAR(1) NOT NULL,
+  `Date` DATE NOT NULL,
   `Time_From` TIME NOT NULL,
   `Time_To` TIME NOT NULL,
   `Description` VARCHAR(200),
@@ -211,6 +211,14 @@ INSERT INTO settings VALUES (
 INSERT INTO logins VALUES (
     "S19005373",
     "1234"
+);
+INSERT INTO logins VALUES (
+    "admin",
+    "admin"
+);
+INSERT INTO logins VALUES (
+    "root",
+    "mysql"
 );
 
 INSERT INTO roles VALUES (
@@ -421,7 +429,17 @@ INSERT INTO events VALUES (
     "COM539",
     "B119",
     "Practical",
-    "2",
+    "2022-04-10",
+    "09:00:00",
+    "12:00:00",
+    NULL
+);
+INSERT INTO events VALUES (
+    NULL,
+    "COM540",
+    "B117",
+    "Practical",
+    "2022-04-12",
     "09:00:00",
     "12:00:00",
     NULL

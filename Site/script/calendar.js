@@ -37,6 +37,7 @@ var cal = {
       currentEventIndex = 0;
       cal.hNxt.onclick = cal.next;
       currentCell = null;
+      
       // (B2) DATE NOW
       let now = new Date(),
           nowMth = now.getMonth(),
@@ -88,8 +89,8 @@ var cal = {
       }
       
       for(var i = 0; i < dbData.length; i++){
-        if(parseInt(dbData[i].date_booked.substr(5, 6)) -1 == cal.sMth){
-        var day = parseInt(dbData[i].date_booked.substr(8, 9))
+        if(parseInt(dbData[i].date.substr(5, 6)) -1 == cal.sMth){
+        var day = parseInt(dbData[i].date.substr(8, 9))
         if(cal.data[day] != null){
           if(parseInt(cal.data[day][cal.data[day].length-1].time_from.substr(0,5)) > parseInt(dbData[i].time_from.substr(0,5))){//Earlier event is displayed on top
             cal.data[day].unshift(dbData[i]);
@@ -161,7 +162,7 @@ var cal = {
           if (cal.data[squares[i]]) {
            
               for (let index = 0; index < cal.data[squares[i]].length; index++) {
-                cCell.innerHTML += "<div class='evt'><p>" + cal.data[squares[i]][index].event_name + "</p><p>" +cal.data[squares[i]][index].time_from.substr(0,5) + "-" + cal.data[squares[i]][index].time_to.substr(0,5) +"</p></div>";
+                cCell.innerHTML += "<div class='evt'><p>" + cal.data[squares[i]][index].module + "</p><p>" +cal.data[squares[i]][index].time_from.substr(0,5) + "-" + cal.data[squares[i]][index].time_to.substr(0,5) +"</p></div>";
               }
             
           }
@@ -195,7 +196,7 @@ var cal = {
   
       // (D2) UPDATE EVENT FORM
       cal.hfTxt.value = hasEvents ? cal.data[cal.sDay][index].description  : ""  ;//Description
-      cal.hfHead.innerHTML = hasEvents ? cal.data[cal.sDay][index].event_name : "Request Event" ;//Title
+      cal.hfHead.innerHTML = hasEvents ? cal.data[cal.sDay][index].module : "Request Event" ;//Title
       cal.hfTime.classList.add("hideOverlay");
       cal.hrFields.classList.add("hideOverlay");
       cal.hNxt.classList.add("hideOverlay");

@@ -8,7 +8,7 @@ function fetchEvents() {
       $array = null;
       $i = 0;
       while($row = $result->fetch_assoc()) {//separate outputs with for loop?
-        $array[$i]= array('id' => $row["id"], 'module' => $row["module"], 'room' => $row["room"], 'type' => $row["type"], 'day_of_week' => $row["day_of_week"],'time_from' => $row["time_from"],'time_to' => $row["time_to"],'description' => $row["description"]);
+        $array[$i]= array('id' => $row["Id"], 'module' => $row["Module"], 'room' => $row["Room"], 'type' => $row["Type"], 'date' => $row["Date"],'time_from' => $row["Time_From"],'time_to' => $row["Time_To"],'description' => $row["Description"]);
         $i += 1;
       }
      return $array;
