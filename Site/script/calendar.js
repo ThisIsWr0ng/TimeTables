@@ -211,7 +211,7 @@ var cal = {
     show : (el, index, request) => {
       // (D1) FETCH EXISTING DATA
       cal.sDay = el.getElementsByClassName("dd")[0].innerHTML;
-      var data = cal.data[cal.sDay][index];
+      
       let hasEvents = cal.data[cal.sDay] != null ;
       if(request){
         hasEvents = false
@@ -222,14 +222,19 @@ var cal = {
       cal.hrFields.classList.add("hideOverlay");
       cal.hNxt.classList.add("hideOverlay");
       cal.hOverlay.classList.remove("hideOverlay");
+      document.getElementById("evt-moodle-page").classList.add("hideOverlay");
 
       if(hasEvents){//If there's an event during this day
+        var data = cal.data[cal.sDay][index];
         cal.hfDate.setAttribute('value', `${cal.sYear}-${("0" +(cal.sMth + 1)).slice(-2)}-${("0" + cal.sDay).slice(-2)}`);//date
         cal.hfTime.innerHTML = `${data.time_from.substr(0,5)} - ${data.time_to.substr(0,5)}`;
         cal.hfTime.classList.remove("hideOverlay");
         cal.hfTxt.value = data.description;
         cal.hfHead.innerHTML = data.module;
-        document.getElementById("evt-moodle-page").setAttribute("onclick", data.module_link);
+        if(data.moodle_link != null){
+        document.getElementById("evt-moodle-page").setAttribute("onclick", `location.href='${data.moodle_link}'`);
+        document.getElementById("evt-moodle-page").classList.remove("hideOverlay");
+        }
       if(cal.data[el.getElementsByClassName("dd")[0].innerHTML].length > 1){//If there's more than one event in a day
         cal.hNxt.classList.remove("hideOverlay");
       }
@@ -237,6 +242,7 @@ var cal = {
       cal.hfDate.setAttribute('value', `${cal.sYear}-${("0" +(cal.sMth + 1)).slice(-2)}-${("0" + cal.sDay).slice(-2)}`);//date
       cal.hfTxt.value = "";
       cal.hfHead.innerHTML = "Add Event";
+      
     }
 
     },
