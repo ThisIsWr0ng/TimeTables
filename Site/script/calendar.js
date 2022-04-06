@@ -223,6 +223,8 @@ var cal = {
       cal.hNxt.classList.add("hideOverlay");
       cal.hOverlay.classList.remove("hideOverlay");
       document.getElementById("evt-moodle-page").classList.add("hideOverlay");
+      document.getElementById("evt-room").classList.add("hideOverlay");
+      
 
       if(hasEvents){//If there's an event during this day
         var data = cal.data[cal.sDay][index];
@@ -230,7 +232,10 @@ var cal = {
         cal.hfTime.innerHTML = `${data.time_from.substr(0,5)} - ${data.time_to.substr(0,5)}`;
         cal.hfTime.classList.remove("hideOverlay");
         cal.hfTxt.value = data.description;
-        cal.hfHead.innerHTML = data.module;
+        cal.hfHead.innerHTML= `<h1>${data.module}:</h1><h2>${data.module_name}</h2>Semester ${data.semester}`;
+        head = document.createElement("h2").innerHTML=data.module_name;
+        document.getElementById("evt-room").classList.remove("hideOverlay");
+        document.getElementById("evt-room").innerHTML = `Room: ${data.room}, ${data.room_type}`;
         if(data.moodle_link != null){
         document.getElementById("evt-moodle-page").setAttribute("onclick", `location.href='${data.moodle_link}'`);
         document.getElementById("evt-moodle-page").classList.remove("hideOverlay");
@@ -241,7 +246,7 @@ var cal = {
     }else{ //if there's no event during this day
       cal.hfDate.setAttribute('value', `${cal.sYear}-${("0" +(cal.sMth + 1)).slice(-2)}-${("0" + cal.sDay).slice(-2)}`);//date
       cal.hfTxt.value = "";
-      cal.hfHead.innerHTML = "Add Event";
+      cal.hfHead.innerHTML = "<h1>Add Event</h1>";
       
     }
 
@@ -251,6 +256,7 @@ var cal = {
     close : () => {
       //cal.hForm.classList.add("hideOverlay");
       cal.hOverlay.classList.add("hideOverlay");
+      cal.hfDate.setAttribute('readonly', '');
     },
   
     // (F) Request EVENT

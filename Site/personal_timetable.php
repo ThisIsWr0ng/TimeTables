@@ -28,10 +28,10 @@
 
       <!-- (C) EVENT FORM -->
       <div id="overlay"><form id="cal-event" action="php/eventRequest.php" method="post">
-        <div><h1 id="evt-head"></h1></div>
-        <input type="date" id="evt-date" name="date" readonly/>
+        <div id="evt-head"></div>
+        <input type="date" id="evt-date" name="date"/>
         <div id="evt-time"></div>
-        <div id="evt-module-name"></div>
+        <div id="evt-room"></div>
         <div id="request-fileds">
         
   <label for="eName">Event name:</label>

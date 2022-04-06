@@ -28,7 +28,7 @@ function fetchEvents($student) {
         'module_name' => $row["module_name"],
         'module_description' => $row["module_description"],
         'moodle_link' => $row["moodle_link"],
-        'semeste' => $row["semester"],
+        'semester' => $row["semester"],
         'programme_name' => $row["programme_name"],
         'start_date' => $row["start_date"],
         'end_date' => $row["end_date"],
