@@ -13,6 +13,7 @@
 
 </head>
 <body>
+  <header><img id="logo" src="img/TimeTables-logos/TimeTables-logos_white.png"></header>
   <main class="content">
     
   <div id="cal-wrap">
@@ -32,15 +33,6 @@
         <div id="evt-time"></div>
         <div id="request-fileds">
         
-            <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname" required><br/>
-
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname" required><br/>
-
-  <label for="artist">Performed by:</label>
-  <input type="text" id="artist" name="artist"><br/>
-
   <label for="eName">Event name:</label>
   <input type="text" id="eName" name="eName"required><br/>
 
@@ -51,12 +43,7 @@
   <input type="time" id="tTo" name="timeTo"
        min="12:00" max="00:00"><br/>
 
-       <label for="telNum">Telephone number:</label>
-  <input type="text" id="telNum" name="telNum"><br/>
-
-  <label for="email" >Email address:</label>
-  <input type="text" id="email" name="email" required><br/>
-  <label for="evt-details">Please provide more details:</label>
+  <label for="evt-details">Event description:</label>
 </div>
 
         <textarea id="evt-details" name="details"readonly></textarea>

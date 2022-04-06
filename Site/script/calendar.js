@@ -7,7 +7,7 @@ var cal = {
     // (A) PROPERTIES
     // (A1) COMMON CALENDAR
     sMon : false, // Week start on Monday?
-    mName : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Month Names
+    mName : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], // Month Names
   
     // (A2) CALENDAR DATA
     data : [{}], // Events for the selected period

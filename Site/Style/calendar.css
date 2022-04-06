@@ -12,7 +12,10 @@
 
 
 #cal-date {
-    margin-right: 0%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: fit-content;
 }
 
 #cal-mth,
@@ -22,7 +25,7 @@
     font-size: 1.2em;
     border: 0;
     background: none;
-    color: rgba(254, 235, 160, 1.00);
+    color: rgb(150, 148, 142);
 }
 
 
@@ -44,7 +47,7 @@
 }
 
 #calendar tr.day td {
-    border: 1px solid rgba(254, 235, 160, 1.00);
+    border: 1px solid rgb(150, 148, 142);;
     padding: 5px 5px;
     vertical-align: top;
     text-align: right;
@@ -57,12 +60,12 @@
 }
 #calendar tr.day td:hover {
     cursor: pointer;
-    background: #333333;
+    background: rgba(117, 117, 114, 0.911);
     border-color: #fff;
 }
 
 #calendar tr td.blank {
-    background: #141414;
+    background: rgba(117, 117, 114, 0.911);
 }
 
 #calendar tr td.today {
@@ -74,7 +77,7 @@
 
 #calendar .dd {
     font-size: 0.9em;
-    color: rgba(254, 235, 160, 1.00);
+    color: rgb(150, 148, 142);;
 }
 
 #calendar .evt {
@@ -83,7 +86,7 @@
     font-size: 0.8em;
     text-align: center;
     font-weight: bold;
-    color: rgba(254, 235, 160, 1.00);
+    color: rgb(150, 148, 142);;
     background-color: #333;
     display:block;
     overflow: hidden;
@@ -138,7 +141,7 @@
     font-size: 1.2em;
     border: 0;
     background: #414141;
-    color: rgba(254, 235, 160, 1.00);
+    color: rgb(150, 148, 142);;
 }
 #overlay {
     position: fixed;
