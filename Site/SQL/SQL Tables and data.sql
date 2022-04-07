@@ -293,6 +293,162 @@ Values (
     "2022-07-01",
     ""
   );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Computer Game Development",
+    "BSc (Hons)",
+    "Computing",
+    3,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Computer Network & Security",
+    "BSc (Hons)",
+    "Computing",
+    2,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Construction Management",
+    "BSc (Hons)",
+    "Computing",
+    1,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Cyber Security",
+    "BSc (Hons)",
+    "Computing",
+    6,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Game Art",
+    "BSc (Hons)",
+    "Computing",
+    7,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Forensic Science",
+    "BSc (Hons)",
+    "Science",
+    8,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Biochemistry",
+    "BSc (Hons)",
+    "Science",
+    9,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Media Production",
+    "BSc (Hons)",
+    "Media",
+    9,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Television Production",
+    "BSc (Hons)",
+    "Media",
+    10,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Law and Business",
+    "BSc (Hons)",
+    "Business",
+    11,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Marketing and Business",
+    "BSc (Hons)",
+    "Business",
+    12,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Education",
+    "BSc (Hons)",
+    "Education",
+    13,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
+  INSERT INTO programmes
+Values (
+    NULL,
+    "Primary Education with QTS",
+    "BSc (Hons)",
+    "Education",
+    14,
+    "Full Time",
+    "2021-09-20",
+    "2022-07-01",
+    ""
+  );
 INSERT INTO student_enrollment
 VALUES (
     NULL,
