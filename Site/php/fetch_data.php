@@ -1,5 +1,5 @@
-//Code snippets from: https://www.w3schools.com/
-<?php
+
+<?php /* Code snippets from: https://www.w3schools.com/*/
 function fetchEvents($student)
 { //Fetch event data based on user ID
     include 'conn.php';
@@ -44,22 +44,5 @@ function fetchEvents($student)
     $conn->close();
 }
 
-function fetchProgrammes()
-{ //Fetch all programmes
-    include_once 'conn.php';
-    $sql = "SELECT * FROM programmes";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          $array[$i] = array(
-            "id: " . $row["id"],
-            " - Name: " . $row["firstname"] . " " . $row["lastname"]
-          );
-          $i += 1;
-        }
-    } else {
-        echo "0 results";
-    }
-    return $result;
-}
+
 ?>
