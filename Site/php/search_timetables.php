@@ -3,7 +3,7 @@
 include 'conn.php';
 $q= $_REQUEST["q"];
 $searchType = $_REQUEST["type"];
-
+if($searchType == "Programme"){
 $sql = "SELECT * FROM programmes";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -32,7 +32,7 @@ $hint = "";
 
 // lookup all hints from array if $q is different from ""
 echo "<table><tr><th>Degree</th><th>Name</th><th>Level</th><th>Type</th></tr>";
-if ($q == "alL" || $q == "") {
+if ($q == "all" || $q == "") {
     for ($i = 0; $i < count($array); $i++) {
         $find = strtolower($array[$i]['name']);
         if (strpos($find, $q) !== false) {
@@ -60,5 +60,6 @@ if ($q == "alL" || $q == "") {
     }
 }
 echo "</table>";
+}
 
-// Output "no suggestion" if no hint was found or output correct values
+?>

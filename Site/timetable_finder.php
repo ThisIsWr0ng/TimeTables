@@ -23,7 +23,7 @@
  
         <nav>
             <form>
-            <select id="search_type" name="search_type">
+            <select id="search_type" name="search_type" onchange="showHint('all')">
                 <option value="Programme" selected>Programme</option>
                 <option value="Module">Module</option>
                 <option value="Room">Room</option>
@@ -39,7 +39,7 @@
 
         </div>
         <script>
-showHint("all");//Display all results
+            
 //------------------------------------------------
 function showHint(str) {
   if (str.length == 0) {
@@ -50,7 +50,7 @@ function showHint(str) {
     xmlhttp.onload = function() {
       document.getElementById("results").innerHTML = this.responseText;
     }
-    var selOption = document.getElementById("search_type").value;
+    var selOption = document.getElementById("search_type").options[document.getElementById("search_type").selectedIndex].text;
   xmlhttp.open("GET", `php/search_timetables.php?q=${str}&type=${selOption}`);
   xmlhttp.send();
   }
@@ -59,6 +59,7 @@ function showHint(str) {
 function displayResults(array){
   console.log(array);
 }
+showHint('all');
   //---------------------------------------
         //var dbData = JSON.parse( '<?php //echo json_encode(fetchProgrammes()) ?>' );
         //console.log("Received dbData:", dbData);
