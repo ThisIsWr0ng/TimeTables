@@ -19,8 +19,7 @@
     </header>
     <main class="content">
         <script>
-
-        var dbData = JSON.parse( '<?php echo json_encode(fetchProgrammes())?>');
+        var dbData = JSON.parse( '<?php echo json_encode(fetchProgrammes()) ?>' );
         console.log("Received dbData:", dbData);
         </script>
     </main>

@@ -100,8 +100,10 @@ CREATE TABLE `Departments` (
 CREATE TABLE `Programmes` (
   `Id` INT AUTO_INCREMENT,
   `Name` VARCHAR(50) NOT NULL,
+  `Degree` VARCHAR(10) NOT NULL,
   `Department` VARCHAR(50),
   `Level` CHAR(1) NOT NULL,
+  `Type` VARCHAR(10) NOT NULL,
   `Start_Date` DATE NOT NULL,
   `End_Date` DATE NOT NULL,
   `Description` VARCHAR(200),
@@ -270,22 +272,26 @@ VALUES (
 INSERT INTO programmes
 Values (
     NULL,
-    "BSc (Hons) Computer Science - Year 2 - Full Time",
+    "Computer Science",
+    "BSc (Hons)",
     "Computing",
     5,
+    "Full Time",
     "2021-09-20",
     "2022-07-01",
-    "Computer Science"
+    ""
   );
 INSERT INTO programmes
 Values (
     NULL,
-    "BSc (Hons) Computing - Year 1 - Full Time",
+    "Computing",
+    "BSc (Hons)",
     "Computing",
     4,
+    "Full Time",
     "2021-09-20",
     "2022-07-01",
-    "Computing Programme"
+    ""
   );
 INSERT INTO student_enrollment
 VALUES (
