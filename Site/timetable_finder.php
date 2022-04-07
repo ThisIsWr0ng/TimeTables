@@ -33,14 +33,13 @@
                 <option value="Name">Name</option>
             </select>
             <input id="search_input" type="text" onkeyup="showHint(this.value)"/> 
-            <input id="search_button"type="button" value="Search"/>
             </form>
         </nav>
         <div id="results">
 
         </div>
         <script>
-
+showHint("all");//Display all results
 //------------------------------------------------
 function showHint(str) {
   if (str.length == 0) {
@@ -51,7 +50,8 @@ function showHint(str) {
     xmlhttp.onload = function() {
       document.getElementById("results").innerHTML = this.responseText;
     }
-  xmlhttp.open("GET", "php/search_timetables.php?q=" + str);
+    var selOption = document.getElementById("search_type").value;
+  xmlhttp.open("GET", `php/search_timetables.php?q=${str}&type=${selOption}`);
   xmlhttp.send();
   }
 
