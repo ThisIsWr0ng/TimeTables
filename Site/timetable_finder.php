@@ -8,15 +8,8 @@
   </head>
   <body>
     <header>
-      <img
-        id="logo"
-        src="img/TimeTables-logos/TimeTables-logos_white_cropped.png"
-        alt="TimeTables Logo"
-      />
-    </header>
-    <main class="content">
-      <nav>
-        <form>
+    <nav id="searchbar">
+        <form onsubmit="showHint(this.value)">
           <select
             id="search_type"
             name="search_type"
@@ -33,6 +26,15 @@
           <input id="search_input" type="text" onkeyup="showHint(this.value)" />
         </form>
       </nav>
+      <img
+        id="logo"
+        src="img/TimeTables-logos/TimeTables-logos_white_cropped.png"
+        alt="TimeTables Logo"
+      />
+    </header>
+    
+    <main class="content">
+    
       <div id="results"></div>
       <script>
         function showHint(data) {
@@ -50,8 +52,9 @@
         function displayResults(array) {
           console.log(array);
         }
-        showHint("");
-        function sortTable(n) {//ode from: https://www.w3schools.com/howto/howto_js_sort_table.asp
+        showHint(" ");
+
+        function sortTable(n) {//Code from: https://www.w3schools.com/howto/howto_js_sort_table.asp
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("resultstable");
   switching = true;

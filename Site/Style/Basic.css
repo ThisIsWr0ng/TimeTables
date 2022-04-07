@@ -26,3 +26,32 @@ body {
   max-width: 2000px;
   min-width: 500px;
 }
+#resultstable{
+  width: 100%;
+  border-color: rgba(61, 61, 61, 0.911);
+  border-width: 2px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+#resulttable th{
+text-align: left;
+font-size: large;
+}
+#resulttable tr{
+height: 4em;
+}
+#resulttable td{
+text-align: center;
+}
+
+#searchbar{
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+#searchbar select{
+  border: none;
+}

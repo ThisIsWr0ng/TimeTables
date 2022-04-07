@@ -15,13 +15,13 @@ switch ($searchType) {
         break;
     case "Module":
         $sql = "SELECT * FROM modules";
-        $columns = array("Id", "Name", "Description");
-        $searchIn = $columns[1];
+        $columns = array("Id","Id", "Name", "Description");
+        $searchIn = $columns[2];
         break;
     case "Room":
         $sql = "SELECT * FROM Rooms";
-        $columns = array("Number", "Building", "Type", "Section");
-        $searchIn = $columns[0];
+        $columns = array("Number", "Number", "Type", "Building", "Section");
+        $searchIn = $columns[1];
         break;
     case "Degree":
         $sql = "SELECT * FROM programmes";
@@ -69,6 +69,17 @@ if ($result->num_rows > 0) {
         'Degree' => $row["Degree"],
         'Level' => $row["Level"],
         'Type' => $row["Type"]);
+        }elseif($searchType == "Module" ){
+            $array[$i] = array(
+                'Id' => $row["Id"],
+                'Name' => $row["Name"],
+                'Description' => $row["Description"]);
+        }elseif($searchType == "Room"){
+            $array[$i] = array(
+                'Number' => $row["Number"],
+                'Building' => $row["Building"],
+                'Type' => $row["Type"],
+                'Section' => $row["Section"]);
         }
         $i += 1;
     }
@@ -81,12 +92,11 @@ for ($i = 1; $i < count($columns); $i++) {
     echo "<th onclick=\"sortTable({$i})\">{$columns[$i]}</th>";
 }
 echo "</tr>";
-//echo "<table><tr><th>Degree</th><th>Name</th><th>Level</th><th>Type</th></tr>";
 if ($q != "all" || $q !== "" || $q !== null) {
     for ($i = 0; $i < count($array); $i++) {
         $find = strtolower($array[$i][$searchIn]);
         if (strpos($find, $q) !== false) {
-            echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}'\">";
+            echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}&type={$searchType}'\">";
             for ($j = 1; $j < count($columns); $j++) {
                 echo "<td>{$array[$i][$columns[$j]]}</td>";
             }
@@ -94,10 +104,10 @@ if ($q != "all" || $q !== "" || $q !== null) {
         }
 
     }
-}elseif ($q === "allfields"){
+}elseif ($q == "allfields"){
     for ($i = 0; $i < count($array); $i++) {
        
-            echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}'\">";
+            echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}&type={$searchType}'\">";
             for ($j = 1; $j < count($columns); $j++) {
                 echo "<td>{$array[$i][$columns[$j]]}</td>";
             }
