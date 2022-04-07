@@ -340,7 +340,7 @@ Values (
     "BSc (Hons)",
     "Computing",
     6,
-    "Full Time",
+    "Part Time",
     "2021-09-20",
     "2022-07-01",
     ""
