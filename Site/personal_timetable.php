@@ -8,7 +8,7 @@
     <link href="style/calendar.css" rel="stylesheet" type="text/css" />
     <script src="script/calendar.js"></script>
     <?php  include 'php/conn.php'; ?>
-    <?php  include 'php/fetch_events.php'; ?>
+    <?php  include 'php/fetch_data.php'; ?>
   </head>
   <body>
     <header>
