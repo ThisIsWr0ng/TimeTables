@@ -269,6 +269,34 @@ VALUES (
     "John Doe",
     ""
   );
+  INSERT INTO departments
+VALUES (
+    "Science",
+    "SCI",
+    "Yin Bush",
+    ""
+  );
+  INSERT INTO departments
+VALUES (
+    "Media",
+    "MED",
+    "Merylin Coff",
+    ""
+  );
+  INSERT INTO departments
+VALUES (
+    "Business",
+    "BUS",
+    "Leszek Balcerowicz",
+    ""
+  );
+  INSERT INTO departments
+VALUES (
+    "Edukacja",
+    "EDU",
+    "Alex Neill",
+    ""
+  );
 INSERT INTO programmes
 Values (
     NULL,
