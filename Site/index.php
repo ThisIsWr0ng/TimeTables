@@ -28,7 +28,7 @@
         }
 
         if(empty($username_err) && empty($password_err)){
-            $sql = "SELECT ID, Username, Password FROM logins WHERE Username = ?";
+            $sql = "SELECT Id, Username, Password FROM logins WHERE Username = ?";
 
             if($stmt = mysqli_prepare($conn, $sql)){
                 mysqli_stmt_bind_param($stmt, "s", $param_username);
@@ -51,7 +51,7 @@
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
 
-                                header("location: admin_dashboard.php");
+                                header("location: timetable.php");
                             }
                             else {
                                 $login_err = "Invalid Username or Password.";
@@ -85,14 +85,17 @@
 <div class="center">
 
 <div id="panel">
-    <form>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <label for="username">User Name:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" tabindex="1">
+        <span class="invalid-feedback"><?php echo $username_err;?></span>
+
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="username" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" tabindex="2">
+                <span class="invalid-feedback"><?php echo $password_err; ?></span>
         <div id="lower">
             <input type="checkbox"><label class="check" for="checkbox">Remember me!</label>
-            <input type="submit" value="Login">
+            <input type="submit" value="Login" tabindex="3">
         </div>
     </form>
 </div>
