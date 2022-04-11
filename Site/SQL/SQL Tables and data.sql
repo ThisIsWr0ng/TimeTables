@@ -136,9 +136,11 @@ CREATE TABLE `Lecturers_Assignment` (
   FOREIGN KEY (`Lecturer`) REFERENCES `Users`(`Id`)
 );
 CREATE TABLE `Logins` (
+  `Id` INT AUTO_INCREMENT,
   `Username` VARCHAR(10),
   `Password` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`Username`)
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`Username`) REFERENCES `Users`(`Id`)
 );
 CREATE TABLE `Student_Enrollment` (
   `Id` INT AUTO_INCREMENT,
@@ -204,6 +206,39 @@ VALUES (
     "Sealand Street",
     "CH52HM"
   );
+  INSERT INTO users
+VALUES (
+    "root",
+    "Root",
+    "User",
+    "",
+    "",
+    "1991-11-21",
+    "dawidolesko@gmail.com",
+    "root@mail.glyndwr.ac.uk",
+    "+4407923426783",
+    "Wife, +4407934532286",
+    "55",
+    "Sealand Street",
+    "CH52HM"
+  );
+  INSERT INTO users
+VALUES (
+    "admin",
+    "admin",
+    "user",
+    "Mr",
+    "Male",
+    "1991-11-21",
+    "dawidolesko@gmail.com",
+    "S19005373@mail.glyndwr.ac.uk",
+    "+4407923426783",
+    "Wife, +4407934532286",
+    "55",
+    "Sealand Street",
+    "CH52HM"
+  );
+
 INSERT INTO settings
 VALUES (
     "S19005373",
@@ -212,11 +247,11 @@ VALUES (
     "1"
   );
 INSERT INTO logins
-VALUES ("S19005373", "1234");
+VALUES (null, "S19005373", "1234");
 INSERT INTO logins
-VALUES ("admin", "admin");
+VALUES (null, "admin", "admin");
 INSERT INTO logins
-VALUES ("root", "mysql");
+VALUES (null, "root", "mysql");
 INSERT INTO roles
 VALUES (
     NULL,
