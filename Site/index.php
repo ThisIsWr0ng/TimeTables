@@ -2,8 +2,14 @@
     session_start();
 
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: personal_timetable.php");
-        exit;
+        if ($_SESSION["lvl"] <=1){
+            header("location: admin_portal.php");
+            exit;
+        }
+        else {
+            header("location: personal_timetable.php");
+            exit;
+        }
     }
 
     require_once "php/conn.php";
@@ -45,13 +51,29 @@
         
                             if($password == $hashed_password) {
                                 
+                                $accesslvlsql = "SELECT `roles`.`Access_Level`
+                                FROM `users`
+                                LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id`
+                                LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`
+                                WHERE `users`.`Id` = '$id';";
+
+                                $accesslvlresult = $conn->query($accesslvlsql);
+
                                 session_start();
 
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
+                                $_SESSION["lvl"] = $accesslvlresult;
 
-                                header("location: personal_timetable.php");
+                                if($_SESSION["lvl"] <=1)
+                                {
+                                    header("location: admin_portal.php");
+                                }
+                                else{
+                                    header("location: personal_timetable.php");
+                                }
+                                
                             }
                             else {
                                 $login_err = "Invalid Username or Password.";
