@@ -289,6 +289,10 @@ VALUES (
   );
 INSERT INTO role_assignment
 VALUES (NULL, 5, "S19005373");
+INSERT INTO role_assignment
+VALUES (NULL, 1, "root");
+INSERT INTO role_assignment
+VALUES (NULL, 2, "admin");
 INSERT INTO holidays
 VALUES (
     NULL,
