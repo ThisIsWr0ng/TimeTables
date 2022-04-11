@@ -28,6 +28,7 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
+    <input type="button" value="Logout" onclick="location.href='php/logout.php'"/>
     <main class="content">
       <div id="cal-wrap">
         <!-- (A) PERIOD SELECTOR -->
