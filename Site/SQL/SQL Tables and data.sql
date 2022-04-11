@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS `Module_Assignment`,
 `Roles`,
 `Role_Assignment`,
 `Student_Timetable`,
+`User_Events`,
 `Holidays`,
 `Settings`,
 `Users`,
@@ -167,14 +168,6 @@ CREATE TABLE `Role_Assignment` (
   FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`),
   FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
 );
-CREATE TABLE `Student_Timetable` (
-  `Id` INT AUTO_INCREMENT,
-  `Student` VARCHAR(10),
-  `Module_Assignment` INT,
-  PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module_Assignment`) REFERENCES `Module_Assignment`(`Id`),
-  FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`)
-);
 CREATE TABLE `Holidays` (
   `Id` INT AUTO_INCREMENT,
   `Name` VARCHAR(50),
@@ -189,6 +182,17 @@ CREATE TABLE `Settings` (
   `Notifications` CHAR(1) DEFAULT 1,
   `Default_View` CHAR(1) DEFAULT 1,
   PRIMARY KEY (`User`)
+);
+CREATE TABLE `User_Events` (
+  `Id` INT AUTO_INCREMENT,
+  `User` VARCHAR(10),
+  `Name` VARCHAR(100),
+  `Date` DATE,
+  `Time_From` TIME NOT NULL,
+  `Time_To` TIME NOT NULL,
+  `Description` VARCHAR(300),
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
 );
 INSERT INTO users
 VALUES (
@@ -617,14 +621,7 @@ INSERT INTO module_assignment
 VALUES (NULL, 1, "COM553", 2);
 INSERT INTO module_assignment
 VALUES (NULL, 1, "COM545", 2);
-INSERT INTO Student_Timetable
-VALUES (NULL, "S19005373", 1);
-INSERT INTO Student_Timetable
-VALUES (NULL, "S19005373", 2);
-INSERT INTO Student_Timetable
-VALUES (NULL, "S19005373", 3);
-INSERT INTO Student_Timetable
-VALUES (NULL, "S19005373", 4);
+
 INSERT INTO events
 VALUES (
     NULL,
