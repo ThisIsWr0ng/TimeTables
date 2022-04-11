@@ -82,3 +82,10 @@ FROM `events`
 	LEFT JOIN `lecturers_assignment` ON `modules`.`Id` = `lecturers_assignment`.`module`
 	LEFT JOIN `Users` ON `users`.`Id` = `lecturers_assignment`.`lecturer`
 WHERE `programmes`.`Id` = "1";
+
+--Select users access level
+SELECT `roles`.`Access_Level` 
+FROM `users` 
+	LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id` 
+	LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`
+    WHERE  `users`.`Id` = ;

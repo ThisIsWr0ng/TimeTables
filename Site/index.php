@@ -64,7 +64,7 @@
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
-                                $_SESSION["lvl"] = $accesslvlresult;
+                                (int)$_SESSION["lvl"] = $accesslvlresult;
 
                                 if($_SESSION["lvl"] <=1)
                                 {
