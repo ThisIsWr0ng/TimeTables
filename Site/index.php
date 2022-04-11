@@ -2,7 +2,7 @@
     session_start();
 
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: timetable.php");
+        header("location: personal_timetable.php");
         exit;
     }
 
@@ -51,7 +51,7 @@
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
 
-                                header("location: timetable.php");
+                                header("location: personal_timetable.php");
                             }
                             else {
                                 $login_err = "Invalid Username or Password.";
