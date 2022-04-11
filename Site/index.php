@@ -1,82 +1,102 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        header("location: timetable.php");
+        exit;
+    }
+
+    require_once "php/conn.php";
+
+    $username = $password = "";
+    $username_err = $password_err = $login_err = "";
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        if(empty(trim($_POST["username"]))){
+            $username_err = "Please enter username.";
+        } 
+        else {
+            $username = trim($_POST["username"]);
+        }
+
+        if(empty(trim($_POST["password"]))){
+            $password_err = "Please enter your password.";
+        }
+        else {
+            $password = trim($_POST["password"]);
+        }
+
+        if(empty($username_err) && empty($password_err)){
+            $sql = "SELECT ID, Username, Password FROM logins WHERE Username = ?";
+
+            if($stmt = mysqli_prepare($conn, $sql)){
+                mysqli_stmt_bind_param($stmt, "s", $param_username);
+
+                $param_username = $username;
+
+                if(mysqli_stmt_execute($stmt)){
+
+                    mysqli_stmt_store_result($stmt);
+
+                    if(mysqli_stmt_num_rows($stmt) == 1){
+                        mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                        if(mysqli_stmt_fetch($stmt)){
+        
+                            if($password == $hashed_password) {
+                                
+                                session_start();
+
+                                $_SESSION["loggedin"] = true;
+                                $_SESSION["id"] = $id;
+                                $_SESSION["username"] = $username;
+
+                                header("location: admin_dashboard.php");
+                            }
+                            else {
+                                $login_err = "Invalid Username or Password.";
+                            }
+                        }
+                    } else {
+                        $login_err = "Invalid Username or Password.";
+                    }
+
+                } else{
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+
+                mysqli_stmt_close($stmt);
+            }
+        }
+
+        mysqli_close($conn);
+
+    }
+?>
+
 <html>
 <head>
-<title>Login</title>
-<style>
-.message {color: #FF0000;}
-</style>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link href="sheet.css" rel="stylesheet" type="text/css">
+<title>University Timetable</title>
+
 </head>
 <body>
- 
-<?php
-// define variables and set to empty values
-$Message = $ErrorUname = $ErrorPass = "";
- 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
- 
-    $username = check_input($_POST["username"]);
- 
-    if (!preg_match("/^[a-zA-Z0-9_]*$/",$username)) {
-      $ErrorUname = "Space and special characters not allowed but you can use underscore(_)."; 
-    }
-	else{
-		$fusername=$username;
-	}
- 
-	$fpassword = check_input($_POST["password"]);
- 
-  if ($ErrorUname!=""){
-	$Message = "Login failed! Errors found";
-  }
-  else{
-  include('php/conn.php');
- 
-  $query=mysqli_query($conn,"select * from `user` where username='$fusername' && password='$fpassword'");
-  $num_rows=mysqli_num_rows($query);
-  $row=mysqli_fetch_array($query);
- 
-  if ($num_rows>0){
-	  $Message = "Login Successful!";
-  }
-  else{
-	$Message = "Login Failed! User not found";
-  }
- 
-  }
-}
- 
-function check_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
- 
-<h2>Login Form</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Username: <input type="text" name="username" required>
-  <span class="message"> <?php echo $ErrorUname;?></span>
-  <br><br>
-  Password: <input type="password" name="password" required>
-  <span class="message"> <?php echo $ErrorPass;?></span>
-  <br><br>
-  <input type="submit" name="submit">
-  <br><br>
-</form>
- 
-<span class="message">
-<?php
-	if ($Message=="Login Successful!"){
-		echo $Message;
-		echo 'Welcome, '.$row['fullname'];
-	}
-	else{
-		echo $Message;
-	}
- 
-?>
-</span>
- 
+<div class="center">
+
+<div id="panel">
+    <form>
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <div id="lower">
+            <input type="checkbox"><label class="check" for="checkbox">Remember me!</label>
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
+
+</div>
 </body>
 </html>
