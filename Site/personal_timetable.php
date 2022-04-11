@@ -84,7 +84,7 @@ $username = $_SESSION["username"];
         function loadContent(a, b){
             document.getElementById(a).innerHTML= b;
         }
-            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents('S19005373')) ?>' );//<-----------------Pass student number here
+            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );//<-----------------Pass student number here
             console.log("Data Received:", dbData);
             window.addEventListener("load", drawCalendar(dbData));
       </script>
