@@ -66,7 +66,7 @@
   <optgroup label="Role">
 	<option value="Student">Student</option>
 	<option value="Admin">Admin</option>
-  </optgroup>#
+  </optgroup>
   </select><br> 
   
   <label for="UID">User ID:</label><br> 
