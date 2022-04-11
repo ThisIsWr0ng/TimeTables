@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS `Module_Assignment`,
 `Lecturers_Assignment`,
 `Logins`,
+`Student_Enrolment`,
 `Student_Enrollment`,
 `Roles`,
 `Role_Assignment`,
@@ -17,7 +18,8 @@ DROP TABLE IF EXISTS `Module_Assignment`,
 `Events`,
 `Departments`,
 `Programmes`,
-`Semesters`;
+`Semesters`,
+`Student_Group`;
 CREATE TABLE `Users` (
   `Id` VARCHAR(10),
   `First_Name` VARCHAR(50) NOT NULL,
@@ -39,6 +41,7 @@ CREATE TABLE `Requests` (
   `User_Id` VARCHAR(10),
   `Type` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
+  `Status` TINYINT DEFAULT 0,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`User_Id`) REFERENCES `Users`(`Id`),
   INDEX (Type)
@@ -143,7 +146,7 @@ CREATE TABLE `Logins` (
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Username`) REFERENCES `Users`(`Id`)
 );
-CREATE TABLE `Student_Enrollment` (
+CREATE TABLE `Student_Enrolment` (
   `Id` INT AUTO_INCREMENT,
   `Student` VARCHAR(10),
   `Programme` INT,
@@ -192,6 +195,15 @@ CREATE TABLE `User_Events` (
   `Time_To` TIME NOT NULL,
   `Description` VARCHAR(300),
   PRIMARY KEY (`Id`),
+  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
+);
+CREATE TABLE `Student_Group` (
+  `Id` INT AUTO_INCREMENT,
+  `Module` VARCHAR(10),
+  `User` VARCHAR(10),
+  `Group_Name` VARCHAR(100),
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
   FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
 );
 INSERT INTO users
@@ -520,7 +532,7 @@ Values (
     "2022-07-01",
     ""
   );
-INSERT INTO student_enrollment
+INSERT INTO student_enrolment
 VALUES (
     NULL,
     "S19005373",
