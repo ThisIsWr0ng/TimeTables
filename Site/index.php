@@ -57,15 +57,18 @@
                                 LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`
                                 WHERE `users`.`Id` = '$username';";
 
-                                (int)$accesslvlresult = $conn->query($accesslvlsql);
-                                echo $accesslvlresult;
+                                $accesslvlresult = $conn->query($accesslvlsql);
+                                $row=$accesslvlresult->fetch_assoc();
+                                $accesslvlresult =  (int) $row['Access_Level'];
+                               
+
                                 session_start();
 
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
                                 $_SESSION["lvl"] = $accesslvlresult;
-/*
+
                                 if($_SESSION["lvl"] >2)
                                 {
                                     header("location: personal_timetable.php");
@@ -74,7 +77,7 @@
                                     header("location: admin_portal.php");
                                     
                                 }
-                                */
+                                
                             }
                             else {
                                 $login_err = "Invalid Username or Password.";
