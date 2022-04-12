@@ -85,12 +85,30 @@ $username = $_SESSION["username"];
 
             <label>Role</label><br>
             <select>
+              <?php
+              require_once "php/conn.php";
 
+              $sql = "SELECT * FROM roles";
+              $result = $conn->query($sql);
+              while($row = mysqli_fetch_array($result)) {
+                $name = $row['Name'];
+                echo "<option value='$name'>$name</option>";
+              }
+              ?>
             </select>
 
             <label>Programme</label><br>
             <select>
+            <?php
+              require_once "php/conn.php";
 
+              $sql = "SELECT * FROM programmes";
+              $result = $conn->query($sql);
+              while($row = mysqli_fetch_array($result)) {
+                $name = $row['Name'];
+                echo "<option value='$name'>$name</option>";
+              }
+              ?>
             </select>
 
             <label>Level</label><br>
