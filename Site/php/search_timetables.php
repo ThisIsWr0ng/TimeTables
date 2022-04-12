@@ -37,7 +37,7 @@ switch ($searchType) {
         $columns = array("Id", "Degree", "Name", "Level", "Type");
         $searchIn = $columns[4];
         break;
-    case "Name":
+    case "Name"://Unfinished!!!
         $sql = "";
         $columns = array();
         break;

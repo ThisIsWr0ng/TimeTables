@@ -42,6 +42,8 @@ $username = $_SESSION["username"];
 
      </div>
      <div id="search-section">
+       
+     </div>
 </div>
     </main>
   </body>
