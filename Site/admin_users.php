@@ -42,7 +42,17 @@ $username = $_SESSION["username"];
 
      </div>
      <div id="search-section">
-       
+       <form class="admin-search">
+         <select name="search-type" id="search-type">
+           <option value="Users" selected></option>
+           <option value="Programmes"></option>
+           <option value="Modules"></option>
+         </select>
+         <select name="search-subset" id="search-subset">
+           <option value="Name" selected></option>
+         </select>
+         <input type="text" id="searchbar"onkeyup=""/>
+       </form>
      </div>
 </div>
     </main>
