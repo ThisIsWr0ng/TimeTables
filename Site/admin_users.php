@@ -39,7 +39,36 @@ $username = $_SESSION["username"];
       </nav>
       <div id="content-block">
       <div id="form-section">
+      <section>
+        <form>
+          <h1>Users</h1>
+          <section>
+            <h2>Personal Info</h2>
+          <label>Firstname</label><br>
+          <input type="text" name="firstname"><br><br>
 
+          <label>Surname</label><br>
+          <input type="text" name="surname"><br><br>
+
+          <label>Title</label><br>
+          <input type="text" name="title"><br><br>
+
+          <label>Gender</label><br>
+          <select>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select><br><br>
+
+          <label>Next of Kin</label><br>
+          <input type="text" name="nextofkin"><br><br>
+
+          <label>Private Email</label><br>
+          <input type="text" name="privateemail"><br><br>
+
+          </section>
+        </form>
+      </section>
      </div>
      <div id="search-section">
        <form class="admin-search">
