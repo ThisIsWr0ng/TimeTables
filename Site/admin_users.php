@@ -44,17 +44,41 @@ $username = $_SESSION["username"];
      <div id="search-section">
        <form class="admin-search">
          <select name="search-type" id="search-type">
-           <option value="Users" selected></option>
-           <option value="Programmes"></option>
-           <option value="Modules"></option>
+           <option value="Users" selected>Users</option>
+           <option value="Programmes">Programmes</option>
+           <option value="Modules">Modules</option>
          </select>
          <select name="search-subset" id="search-subset">
-           <option value="Name" selected></option>
+           <option value="Name" selected>Name</option>
          </select>
-         <input type="text" id="searchbar"onkeyup=""/>
+         <input type="text" id="search-searchbar"onkeyup="searchBar()" value="Search" onclick='removeText()' tabindex='1'/>
        </form>
+       <div id="search-list-opt-top">
+       <input type="button" name="list-remove" id="list-remove" value="-">
+       <input type="button" name="list-add" id="list-add" value="+"></div>
+       <div id="search-output"></div>
+       <div id="search-list-opt">
+         <input type="button"value="Import List">
+         <input type="button"value="Export list">
+       </div>
      </div>
 </div>
     </main>
+    <script>
+      function removeText(){
+        document.getElementById("search-searchbar").value= "";
+      }
+      function searchBar(){
+        var sType = document.getElementById("search-type");
+        var sTypeTxt = sType.options[sType.selectedIndex].text;
+
+        var sSub = document.getElementById("search-subset");
+        var sSubTxt = sSub.options[sSub.selectedIndex].text;
+        const sOutput = document.getElementById('search-output');
+        
+
+      }
+
+    </script>
   </body>
 </html>
