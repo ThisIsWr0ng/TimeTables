@@ -15,6 +15,7 @@ $username = $_SESSION["username"];
     <title>Admin Portal</title>
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
+    <link rel="stylesheet" href="Style/admin.css" />
   </head>
   <body>
     <header>
@@ -26,6 +27,16 @@ $username = $_SESSION["username"];
     </header>
     <input type="button" value="Logout" onclick="location.href='php/logout.php'"/>
     <main class="content">
+      <h1 id="admin-title">Admin Dashboard</h1>
+      <nav id="admin-nav">
+      <input type="button" value="Home" onclick="location.href='admin_portal.php'"/>
+        <input type="button" value="Users" onclick="location.href='admin_users.php'"/>
+        <input type="button" value="Programmes" onclick="location.href='admin_programmes.php'"/>
+        <input type="button" value="Modules" onclick="location.href='admin_modules.php'"/>
+        <input type="button" value="Events" onclick="location.href='admin_events.php'"/>
+        <input type="button" value="Requests" onclick="location.href='admin_requests.php'"/>
+        <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
+      </nav>
      
     </main>
   </body>
