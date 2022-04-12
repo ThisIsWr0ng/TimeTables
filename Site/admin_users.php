@@ -42,7 +42,7 @@ $username = $_SESSION["username"];
       <section>
         <form>
           <h1>Users</h1>
-          <section>
+          <section id="formSection">
             <h2>Personal Info</h2>
           <label>Firstname</label><br>
           <input type="text" name="firstname"><br><br>
