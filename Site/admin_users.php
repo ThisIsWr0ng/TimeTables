@@ -78,7 +78,7 @@ $username = $_SESSION["username"];
           <label>Postcode</label><br>
           <input type="text" name="postcode"><br><br>
           </section>
-          <section>
+          <section id="formSection">
             <h2>University Info</h2>
             <label>User ID</label><br>
             <input type="text" name="userid"><br><br>
