@@ -16,6 +16,8 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
+    <script src="script/searchBox.js"></script>
+    <?php include 'php/fetch_data.php'?>
   </head>
   <body>
     <header>
@@ -48,10 +50,7 @@ $username = $_SESSION["username"];
            <option value="Programmes">Programmes</option>
            <option value="Modules">Modules</option>
          </select>
-         <select name="search-subset" id="search-subset">
-           <option value="Name" selected>Name</option>
-         </select>
-         <input type="text" id="search-searchbar"onkeyup="searchBar()" value="Search" onclick='removeText()' tabindex='1'/>
+         <input type="text" id="search-searchbar"onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
        </form>
        <div id="search-list-opt-top">
        <input type="button" name="list-remove" id="list-remove" value="-">
@@ -65,19 +64,21 @@ $username = $_SESSION["username"];
 </div>
     </main>
     <script>
-      function removeText(){
-        document.getElementById("search-searchbar").value= "";
-      }
-      function searchBar(){
-        var sType = document.getElementById("search-type");
-        var sTypeTxt = sType.options[sType.selectedIndex].text;
-
-        var sSub = document.getElementById("search-subset");
-        var sSubTxt = sSub.options[sSub.selectedIndex].text;
-        const sOutput = document.getElementById('search-output');
-        
-
-      }
+   function removeText(){
+    document.getElementById("search-searchbar").value= "";
+  }
+  function searchBar(data){
+    var sType = document.getElementById("search-type");
+    var sTypeTxt = sType.options[sType.selectedIndex].text;
+    var sOutput = document.getElementById('search-output');
+    
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {sOutput.innerHTML = this.responseText; };
+            
+    
+    xmlhttp.open("GET",`php/searchBox.php?q=${data}&sType=${sTypeTxt}`);
+    xmlhttp.send();
+  }
 
     </script>
   </body>
