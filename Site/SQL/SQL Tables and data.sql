@@ -80,6 +80,15 @@ CREATE TABLE `Rooms` (
   PRIMARY KEY (`Number`, `Building`),
   FOREIGN KEY (`Building`) REFERENCES `Buildings`(`Name`)
 );
+CREATE TABLE `Student_Group` (
+  `Id` INT AUTO_INCREMENT,
+  `Module` VARCHAR(10),
+  `User` VARCHAR(10),
+  `Group_Name` VARCHAR(100),
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
+  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
+);
 CREATE TABLE `Events` (
   `Id` INT AUTO_INCREMENT,
   `Module` VARCHAR(10),
@@ -89,9 +98,11 @@ CREATE TABLE `Events` (
   `Time_From` TIME NOT NULL,
   `Time_To` TIME NOT NULL,
   `Description` VARCHAR(200),
+  `Group` INT,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
   FOREIGN KEY (`Room`) REFERENCES `Rooms`(`Number`),
+  FOREIGN KEY (`Group`) REFERENCES `Student_Group`(`Id`),
   INDEX (Module)
 );
 CREATE TABLE `Departments` (
@@ -197,15 +208,7 @@ CREATE TABLE `User_Events` (
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
 );
-CREATE TABLE `Student_Group` (
-  `Id` INT AUTO_INCREMENT,
-  `Module` VARCHAR(10),
-  `User` VARCHAR(10),
-  `Group_Name` VARCHAR(100),
-  PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
-  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
-);
+
 INSERT INTO users
 VALUES (
     "S19005373",
@@ -643,6 +646,7 @@ VALUES (
     "2022-04-10",
     "09:00:00",
     "12:00:00",
+    NULL,
     NULL
   );
 INSERT INTO events
@@ -654,18 +658,10 @@ VALUES (
     "2022-04-12",
     "09:00:00",
     "12:00:00",
+    NULL,
     NULL
   );
-INSERT INTO `events` (
-    `Id`,
-    `Module`,
-    `Room`,
-    `Type`,
-    `Date`,
-    `Time_From`,
-    `Time_To`,
-    `Description`
-  )
+INSERT INTO `events`
 VALUES (
     NULL,
     'COM545',
@@ -674,5 +670,6 @@ VALUES (
     '2022-04-12',
     '12:00:00',
     '16:00:00',
+    NULL,
     NULL
   );

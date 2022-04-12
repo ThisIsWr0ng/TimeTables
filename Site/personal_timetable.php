@@ -30,6 +30,7 @@ echo$username;
       />
     </header>
     <input type="button" value="Logout" onclick="location.href='php/logout.php'"/>
+    <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
     <main class="content">
       <div id="cal-wrap">
         <!-- (A) PERIOD SELECTOR -->
