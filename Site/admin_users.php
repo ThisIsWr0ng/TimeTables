@@ -65,6 +65,43 @@ $username = $_SESSION["username"];
 
           <label>Private Email</label><br>
           <input type="text" name="privateemail"><br><br>
+          </section>
+          <section id="formSection">
+            <h2>Address</h2>
+
+          <label>House Number</label><br>
+          <input type="text" name="housenumber"><br><br>
+
+          <label>Street</label><br>
+          <input type="text" name="street"><br><br>
+
+          <label>Postcode</label><br>
+          <input type="text" name="postcode"><br><br>
+          </section>
+          <section>
+            <h2>University Info</h2>
+            <label>User ID</label><br>
+            <input type="text" name="userid"><br><br>
+
+            <label>Role</label><br>
+            <select>
+
+            </select>
+
+            <label>Programme</label><br>
+            <select>
+
+            </select>
+
+            <label>Level</label><br>
+            <select>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+
+            <label>University Email</label><br>
+            <input type="text" name="uniemail">
 
           </section>
         </form>
