@@ -70,6 +70,7 @@
     min-height: 800px;
     width: 100%;
     max-height: fit-content;
+    margin-top: 30px;
 }
 #content-block input[type=button]{
     width: fit-content;
@@ -89,7 +90,8 @@
     flex-wrap: wrap;
     margin: auto;
     background-color: rgba(120, 176, 241, 1);
-    max-width: 50vw;
+    max-width: 600px;
+    width: 45vw;
     min-width: 300px;
     padding: 10px;
 }
@@ -121,8 +123,9 @@
     padding: 20px 5px;
     right: 0;
     background-color: rgb(255, 255, 255);
-    max-width: 40vw;
-    min-width: 200px;
+    max-width: 600px;
+    width: 40vw;
+    min-width: 300px;
 }
 
 #search-output {

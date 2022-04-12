@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: index.php");
     exit;
 }
@@ -70,7 +70,7 @@ $username = $_SESSION["username"];
           </section>
           <section>
           <fieldset>
-           
+
           <legend>Address</legend>
           <label>House Number</label><br>
           <input type="text" name="housenumber"><br><br>
@@ -86,34 +86,34 @@ $username = $_SESSION["username"];
             <fieldset>
               <legend>University Info</legend>
             <label>User ID</label><br>
-            <input type="text" name="userid"><br><br>
+            <input type="text" name="userid" disabled><br><br>
 
             <label>Role</label><br>
             <select>
               <?php
-              require_once "php/conn.php";
+require_once "php/conn.php";
 
-              $sql = "SELECT * FROM roles";
-              $result = $conn->query($sql);
-              while($row = mysqli_fetch_array($result)) {
-                $name = $row['Name'];
-                echo "<option value='$name'>$name</option>";
-              }
-              ?>
+$sql = "SELECT * FROM roles";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+    $name = $row['Name'];
+    echo "<option value='$name'>$name</option>";
+}
+?>
             </select>
 
             <label>Programme</label><br>
             <select>
             <?php
-              require_once "php/conn.php";
+require_once "php/conn.php";
 
-              $sql = "SELECT * FROM programmes";
-              $result = $conn->query($sql);
-              while($row = mysqli_fetch_array($result)) {
-                $name = $row['Name'];
-                echo "<option value='$name'>$name</option>";
-              }
-              ?>
+$sql = "SELECT * FROM programmes";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+    $name = $row['Name'];
+    echo "<option value='$name'>$name</option>";
+}
+?>
             </select>
 
             <label>Level</label><br>
@@ -171,7 +171,7 @@ $username = $_SESSION["username"];
         var sSub = document.getElementById("search-subset");
         var sSubTxt = sSub.options[sSub.selectedIndex].text;
         const sOutput = document.getElementById('search-output');
-        
+
 
       }
 
