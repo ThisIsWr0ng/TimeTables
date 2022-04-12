@@ -10,8 +10,8 @@ function fetchEvents($student)
       LEFT JOIN `programmes` ON `module_assignment`.`Programme` = `programmes`.`Id`
         LEFT JOIN `semesters` ON `module_assignment`.`Semester` = `semesters`.`Id`
         LEFT JOIN `rooms` ON `events`.`Room` = `rooms`.`Number`
-        LEFT JOIN `student_enrollment`ON `programmes`.`Id` = `student_enrollment`.`Programme`
-        WHERE `student_enrollment`.`Student` = '$student';";
+        LEFT JOIN `student_enrolment`ON `programmes`.`Id` = `student_enrolment`.`Programme`
+        WHERE `student_enrolment`.`Student` = '$student';";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $array = null;
@@ -62,7 +62,7 @@ FROM `events`
 	LEFT JOIN `programmes` ON `module_assignment`.`Programme` = `programmes`.`Id`
 	LEFT JOIN `semesters` ON `module_assignment`.`Semester` = `semesters`.`Id`
 	LEFT JOIN `rooms` ON `events`.`Room` = `rooms`.`Number`
-	LEFT JOIN `student_enrollment` ON `programmes`.`Id` = `student_enrollment`.`programme`
+	LEFT JOIN `student_enrolment` ON `programmes`.`Id` = `student_enrolment`.`programme`
 	LEFT JOIN `lecturers_assignment` ON `modules`.`Id` = `lecturers_assignment`.`module`
 	LEFT JOIN `Users` ON `users`.`Id` = `lecturers_assignment`.`lecturer`
 WHERE `programmes`.`Id` = '$id';";

@@ -7,6 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 $username = $_SESSION["username"];
+echo$username;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +85,7 @@ $username = $_SESSION["username"];
       <script>
         function loadContent(a, b){
             document.getElementById(a).innerHTML= b;
+        
         }
             var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );//<-----------------Pass student number here
             console.log("Data Received:", dbData);
