@@ -130,3 +130,17 @@ select {
     border: 1px dotted black;
     padding: 10px;
 }
+
+input[type=button],
+input[type=submit],
+input[type=reset] {
+    background-color: lightgrey;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 15px;
+}

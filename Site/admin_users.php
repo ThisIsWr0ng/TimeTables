@@ -122,6 +122,13 @@ $username = $_SESSION["username"];
             <input type="text" name="uniemail">
 
           </section>
+          <section>
+            <input type="button" value="Add">
+            <input type="button" value="Delete">
+            <input type="button" value="Update">
+            <input type="button" value="Reset Password">
+            <input type="button" value="Default Settings">
+          </section>
         </form>
       </section>
      </div>
