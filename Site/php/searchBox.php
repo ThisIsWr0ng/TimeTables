@@ -6,26 +6,44 @@ $searchType = $_REQUEST["type"];
 $sql = "";
 $columns = array();
 $searchIn = null;
-if ($searchType == "Programme") {}
+if ($searchType == "Programmes") {}
 switch ($searchType) {
     case "Programme":
-        $sql = "SELECT * FROM programmes";
+       $sql = "SELECT * FROM Programmes
+        WHERE 'Name' LIKE '%{$q}%'
+           OR 'Degree' LIKE '%{$q}%'
+           OR 'Department' LIKE '%{$q}%'
+           OR 'Level LIK'E '%{$q}%'
+           OR 'Type' LIKE '%{$q}%'"; 
         $columns = array("Id", "Degree", "Name", "Level", "Type");
-        $searchIn = $columns[2];
         break;
-    case "Module":
-        $sql = "SELECT * FROM modules";
+    case "Modules":
+        $sql = "SELECT * FROM Modules
+        WHERE 'Id' LIKE '%{$q}%'
+           OR 'Name' LIKE '%{$q}%'";
         $columns = array("Id","Id", "Name", "Description");
         $searchIn = $columns[2];
         break;
-    case "Room":
-        $sql = "SELECT * FROM Rooms";
+    case "Users":
+        $sql = "SELECT * FROM Users
+        WHERE 'Id' LIKE '%{$q}%'
+           OR 'First_Name' LIKE '%{$q}%'
+           OR 'Surname' LIKE '%{$q}%'
+           OR 'Gender' LIKE '%{$q}%'
+           OR 'Birth_Date' LIKE '%{$q}%'
+           OR 'Postcode' LIKE '%{$q}%'
+           OR Priv_Email LIKE '%{$q}%'";
         $columns = array("Number", "Number", "Type", "Building", "Section");
         $searchIn = $columns[1];
         break;
-    case "Degree":
-        $sql = "SELECT * FROM programmes";
-        $columns = array("Id", "Degree", "Name", "Level", "Type");
+    case "Events":
+        $sql = "SELECT * FROM Events
+        WHERE 'Name' LIKE '%{$q}%'
+           OR 'Degree' LIKE '%{$q}%'
+           OR 'Department' LIKE '%{$q}%'
+           OR 'Level LIK'E '%{$q}%'
+           OR 'Type' LIKE '%{$q}%'";
+        $columns = array("Id", "Degree", "Name", "Level", "Type");//<<<<<<------------Finished here re-assign columns
         $searchIn = $columns[1];
     case "Year":
         $sql = "SELECT * FROM programmes";
