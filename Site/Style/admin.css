@@ -1,60 +1,75 @@
 #box {
-    border-radius: 25px;
-    background: #A5A6F6;
-    padding: 20px; 
-    width: 380px;
-    height: 900px; 
-    float: left;
-    margin-right: 20px;
-  }
-  
-  #box2 {
-    border-radius: 25px;
-    background: black;
-    padding: 20px; 
-    width: 1000px;
-    height: 900px;
-    float: left;  
-  }
-  #admin-nav{
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      border-style: double;
-      border-width: 1px;
-      border-color: black;
-      margin: auto;
-      left: 0;
-      right: 0;
-      width: 80vw;
-      min-width: 400px;
-      max-width: 900px;
+  border-radius: 25px;
+  background: #a5a6f6;
+  padding: 20px;
+  width: 380px;
+  height: 900px;
+  float: left;
+  margin-right: 20px;
+}
 
-  }
-  #admin-nav input{ 
-      padding: 8px 14px;
-      background-color: rgba(120, 176, 241, 1);
-      font-weight: bold;
-  }
-  .admin-content {
-    background-color: rgba(226, 226, 219, 0.911);
-    width: 90vw;
-    max-width: 2000px;
-    min-width: 500px;
-    margin: auto;
-    left: 0;
-    right: 0;
-
-  }
-  #admin-title{
-      text-align: center;
-  }
-  #logout{
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      padding: 8px 14px;
-      background-color: rgba(120, 176, 241, 1);
-      font-weight: bold;
-  }
+#box2 {
+  border-radius: 25px;
+  background: black;
+  padding: 20px;
+  width: 1000px;
+  height: 900px;
+  float: left;
+}
+#admin-nav {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-style: double;
+  border-width: 1px;
+  border-color: black;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 80vw;
+  min-width: 400px;
+  max-width: 900px;
+}
+#admin-nav input {
+  padding: 8px 14px;
+  background-color: rgba(120, 176, 241, 1);
+  font-weight: bold;
+}
+.admin-content {
+  background-color: rgba(226, 226, 219, 0.911);
+  width: 90vw;
+  max-width: 2000px;
+  min-width: 500px;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+#admin-title {
+  text-align: center;
+}
+#logout {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  padding: 8px 14px;
+  background-color: rgba(120, 176, 241, 1);
+  font-weight: bold;
+}
+#content-block {
+  min-height: 800px;
+  width: 100%;
+  max-height: fit-content;
+}
+#form-section {
+  margin: auto;
+  left: 0;
+  background-color: rgba(120, 176, 241, 1);
+  min-width: 40vw;
+}
+#search-section {
+  margin: auto;
+  right: 0;
+  background-color: rgb(216, 218, 219);
+  min-width: 40vw;
+}
