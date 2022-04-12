@@ -25,8 +25,8 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" value="Logout" onclick="location.href='php/logout.php'"/>
-    <main class="content">
+    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
+    <main class="admin-content">
       <h1 id="admin-title">Admin Dashboard</h1>
       <nav id="admin-nav">
       <input type="button" value="Home" onclick="location.href='admin_portal.php'"/>

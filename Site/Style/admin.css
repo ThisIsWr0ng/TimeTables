@@ -16,3 +16,45 @@
     height: 900px;
     float: left;  
   }
+  #admin-nav{
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      border-style: double;
+      border-width: 1px;
+      border-color: black;
+      margin: auto;
+      left: 0;
+      right: 0;
+      width: 80vw;
+      min-width: 400px;
+      max-width: 900px;
+
+  }
+  #admin-nav input{ 
+      padding: 8px 14px;
+      background-color: rgba(120, 176, 241, 1);
+      font-weight: bold;
+  }
+  .admin-content {
+    background-color: rgba(226, 226, 219, 0.911);
+    width: 90vw;
+    max-width: 2000px;
+    min-width: 500px;
+    margin: auto;
+    left: 0;
+    right: 0;
+
+  }
+  #admin-title{
+      text-align: center;
+  }
+  #logout{
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      padding: 8px 14px;
+      background-color: rgba(120, 176, 241, 1);
+      font-weight: bold;
+  }
