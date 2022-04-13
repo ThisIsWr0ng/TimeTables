@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `Module_Assignment`,
 `Semesters`,
 `Student_Group`;
 CREATE TABLE `Users` (
-  `Id` VARCHAR(10),
+  `Id` VARCHAR(13),
   `First_Name` VARCHAR(50) NOT NULL,
   `Surname` VARCHAR(50) NOT NULL,
   `Title` VARCHAR(10),
@@ -224,6 +224,22 @@ VALUES (
     "55",
     "Sealand Street",
     "CH52HM"
+  );
+  INSERT INTO users
+VALUES (
+    "2384923019287",
+    "Mark",
+    "Lewis",
+    "Mr",
+    "Male",
+    "1986-10-01",
+    "lewis.mark69@gmail.com",
+    "m.lewis@mail.glyndwr.ac.uk",
+    "+4407923426783",
+    "Wife, +4407934832286",
+    "55",
+    "Chester Road",
+    "CH13RM"
   );
   INSERT INTO users
 VALUES (
