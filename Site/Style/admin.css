@@ -139,6 +139,16 @@
     right: 0;
     margin-top: 10px;
     margin-bottom: 25px;
+    overflow: scroll;
+}
+#search-output table{
+    min-width: fit-content;
+    width: 400px;
+    
+}
+#search-output #resultstable td{
+    width: min-content;
+    word-wrap: none;
 }
 
 #search-list-opt {

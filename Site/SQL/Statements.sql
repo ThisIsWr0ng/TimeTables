@@ -45,7 +45,7 @@ SELECT `events`.*,
 	`modules`.`name` AS module_name,
 	`modules`.`description` AS module_description,
 	`modules`.`moodle_link`,
-	`users`.`surname`+', '+`users`.`first_name` AS lecturer,
+	`users`.`surname` + ', ' + `users`.`first_name` AS lecturer,
 	`module_assignment`.`semester`,
 	`programmes`.`name` AS programme_name,
 	`semesters`.`start_date`,
@@ -60,14 +60,13 @@ FROM `events`
 	LEFT JOIN `lecturers_assignment` ON `modules`.`Id` = `lecturers_assignment`.`module`
 	LEFT JOIN `Users` ON `users`.`Id` = `lecturers_assignment`.`lecturer`
 WHERE `student_enrollment`.`Student` = "S19005373";
-
 --Select modules by programme
 SELECT `events`.*,
 	`rooms`.`type` AS room_type,
 	`modules`.`name` AS module_name,
 	`modules`.`description` AS module_description,
 	`modules`.`moodle_link`,
-	`users`.`surname`+', '+`users`.`first_name` AS lecturer,
+	`users`.`surname` + ', ' + `users`.`first_name` AS lecturer,
 	`module_assignment`.`semester`,
 	`programmes`.`name` AS programme_name,
 	`semesters`.`start_date`,
@@ -82,10 +81,27 @@ FROM `events`
 	LEFT JOIN `lecturers_assignment` ON `modules`.`Id` = `lecturers_assignment`.`module`
 	LEFT JOIN `Users` ON `users`.`Id` = `lecturers_assignment`.`lecturer`
 WHERE `programmes`.`Id` = "1";
-
 --Select users access level
-SELECT `roles`.`Access_Level` 
-FROM `users` 
-	LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id` 
+SELECT `roles`.`Access_Level`
+FROM `users`
+	LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id`
 	LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`
-    WHERE  `users`.`Id` = ;
+WHERE `users`.`Id` =;
+--Search Users
+SELECT *
+FROM `timetable`.`users`
+WHERE (
+		CONVERT(`Id` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`First_Name` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Surname` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Title` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Gender` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Birth_Date` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Priv_Email` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Uni_Email` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Telephone` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Next_Of_Kin` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Street_Number` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Street_Name` USING utf8) LIKE '%dawid%'
+		OR CONVERT(`Postcode` USING utf8) LIKE '%dawid%'
+	)

@@ -5,52 +5,42 @@ $searchType = $_REQUEST["type"];
 $sql = "";
 $columns = array();
 $searchIn = null;
-if ($searchType == "Programmes") {}
+//define what to search for and select columns to search/display
 switch ($searchType) {
     case "Programmes":
-        $sql = "SELECT * FROM Programmes
-        WHERE LOWER('Name') LIKE '%{$q}%'
-           OR LOWER('Degree') LIKE '%{$q}%'
-           OR LOWER('Department') LIKE '%{$q}%'
-           OR LOWER('Level') LIKE '%{$q}%'
-           OR LOWER('Type') LIKE '%{$q}%'";
         $columns = array("Id", "Degree", "Name", "Level", "Type");
         break;
     case "Modules":
-        $sql = "SELECT * FROM Modules
-        WHERE LOWER('Id') LIKE '%{$q}%'
-           OR LOWER('Name') LIKE '%{$q}%'";
-        $columns = array("Id","Id", "Name", "Description");
-
+        $columns = array("Id", "Name", "Description");
         break;
     case "Users":
-        $sql = "SELECT * FROM Users
-        WHERE LOWER('Id') LIKE '%{$q}%'
-           OR LOWER('First_Name') LIKE '%{$q}%'
-           OR LOWER('Surname') LIKE '%{$q}%'
-           OR LOWER('Gender') LIKE '%{$q}%'
-           OR LOWER('Birth_Date') LIKE '%{$q}%'
-           OR LOWER('Postcode') LIKE '%{$q}%'
-           OR LOWER('Priv_Email') LIKE '%{$q}%'";
-        $columns = array("Id", "Id", "First_Name", "Surname", "Title", "Gender","Birth_Date", "Priv_Email", "Uni_Email", "Telephone", "Next_Of_Kin", "Street_Number", "Street_Name", "Postcode");
-
+        $columns = array("Id", "First_Name", "Surname", "Title", "Gender","Birth_Date", "Priv_Email", "Uni_Email", "Telephone", "Next_Of_Kin", "Street_Number", "Street_Name", "Postcode");
         break;
     case "Events":
-        $sql = "SELECT * FROM Events
-        WHERE LOWER('Module') LIKE '%{$q}%'
-           OR LOWER('Room') LIKE '%{$q}%'
-           OR LOWER('Type') LIKE '%{$q}%'
-           OR LOWER('Date') LIKE '%{$q}%'";
         $columns = array("Id", "Module", "Room", "Type", "Date", "Time_From", "Time_To", "Description", "Group");
         break;
     default:
-        $sql = "";
+    $columns = array("Id");
 }
+//Create SQL code
+$sql = "SELECT * FROM {$searchType} WHERE ( ";
+for ($i=0; $i < count($columns); $i++) { 
+    if($i == count($columns) - 1){
+        $a = "CONVERT(`{$columns[$i]}` USING utf8) LIKE '%{$q}%'";
+        $sql .= $a;
+    }else{
+        $a = "CONVERT(`{$columns[$i]}` USING utf8) LIKE '%{$q}%' OR ";
+        $sql .= $a;
+    }
+    
+}
+$a = ")";
+$sql .= $a;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $array = null;
     $i = 0;
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) { //convert sql results into array
 
         /*for ($j = 0; $j < count($columns); $j++) { //<<<<<<<<<<<God knows why that doesn't work
         $temp = [];
@@ -106,11 +96,10 @@ if ($result->num_rows > 0) {
         $i += 1;
     }
 
-} else {
-    echo "No Results - Refine your search";
-}
+//Echo results
 echo "<table id=\"resultstable\"><tr>";
-for ($i = 1; $i < count($columns); $i++) {
+for ($i = 0; $i < count($columns); $i++) {
+ 
     echo "<th onclick=\"sortTable({$i})\">{$columns[$i]}</th>";
 }
 echo "</tr>";
@@ -118,7 +107,8 @@ echo "</tr>";
 for ($i = 0; $i < count($array); $i++) {
 
     echo "<tr class=\"clickable-row\" onclick=\"\">";
-    for ($j = 1; $j < count($columns); $j++) {
+    for ($j = 0; $j < count($columns); $j++) {
+       
         echo "<td>{$array[$i][$columns[$j]]}</td>";
     }
     echo "</tr>";
@@ -126,4 +116,7 @@ for ($i = 0; $i < count($array); $i++) {
 }
 
 echo "</table>";
+} else {
+    echo "No Results - Refine your search";
+}
 ?>
