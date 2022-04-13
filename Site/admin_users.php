@@ -88,7 +88,7 @@ $username = $_SESSION["username"];
             <fieldset>
               <legend>University Info</legend>
             <label>User ID</label><br>
-            <input type="text" name="userid" disabled><br><br>
+            <input type="text" id="form-user-id" name="form-user-id" value="" disabled><br><br>
 
             <label>Role</label><br>
             <select>
@@ -151,7 +151,7 @@ while ($row = mysqli_fetch_array($result)) {
        </form>
        <div id="search-list-opt-top">
        <input type="button" name="list-remove" id="list-remove" value="-">
-       <input type="button" name="list-add" id="list-add" value="+"></div>
+       <input type="button" name="list-add" id="list-add" value="+" onclick=""></div>
        <div id="search-output"></div>
        <div id="search-list-opt">
          <input type="button"value="Import List">
@@ -161,6 +161,7 @@ while ($row = mysqli_fetch_array($result)) {
 </div>
     </main>
     <script>
+      
    function removeText(){
     document.getElementById("search-searchbar").value= "";
   }
@@ -182,12 +183,15 @@ while ($row = mysqli_fetch_array($result)) {
   }
   function searchBar(data){
     var findResults = getData(data)
-    console.log('findResults :>> ', findResults);
     var sOutput = document.getElementById('search-output');
   }
-  function fetchForm(formId, formData){
+  function fetchForm(formId,formData){
     var formField = document.getElementById(formId);
     formField.value = formData;
+    feedForms(formData);//Fill other form fields with user info
+  }
+  function feedForms(id){
+    console.log('id :>> ', id);
   }
 
     </script>
