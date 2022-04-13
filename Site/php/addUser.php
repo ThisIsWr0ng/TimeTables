@@ -2,20 +2,7 @@
 
 require_once "conn.php";
 
-if ($role == "Undergraduate Student")
-{
-    $userold = mysqli_query($conn, "SELECT Id FROM users
-    WHERE users.Id LIKE 'S%'
-    ORDER BY Id DESC LIMIT 1;");
-}
-else
-{
-    $userold = mysqli_query($conn, "SELECT Id FROM users
-    WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
-    ORDER BY Id DESC LIMIT 1;");
-}
 
-$user = $userold + 1;
 $firstname = mysqli_real_escape_string($conn, $_REQUEST['firstname']);
 $surname = mysqli_real_escape_string($conn, $_REQUEST['surname']);
 $title = mysqli_real_escape_string($conn, $_REQUEST['title']);
@@ -33,6 +20,21 @@ $role = mysqli_real_escape_string($conn, $_REQUEST['role']);
 $progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
 $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
+
+if ($role == "Undergraduate Student")
+{
+    $userold = mysqli_query($conn, "SELECT Id FROM users
+    WHERE users.Id LIKE 'S%'
+    ORDER BY Id DESC LIMIT 1;");
+}
+else
+{
+    $userold = mysqli_query($conn, "SELECT Id FROM users
+    WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
+    ORDER BY Id DESC LIMIT 1;");
+}
+
+$user = $userold + 1;
 
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
