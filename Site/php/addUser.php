@@ -23,11 +23,14 @@ $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
 
 if ($role == "Undergraduate Student")
 {
-    $userold = mysqli_query($conn, "SELECT Id FROM users
+    $userold = mysqli_query($conn, "SELECT * FROM users
     WHERE users.Id LIKE 'S%'
     ORDER BY Id DESC LIMIT 1;");
+    $row = $userold->fetch_assoc();
+    $userold = $row['Id'];
     $userold = print_r($userold, true);
     $usernew = ltrim($userold, 'S');
+    
     
 }
 else
@@ -35,6 +38,8 @@ else
     $userold = mysqli_query($conn, "SELECT Id FROM users
     WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
     ORDER BY Id DESC LIMIT 1;");
+       $row = $userold->fetch_assoc();
+       $userold = $row['Id'];
     $userold = print_r($userold, true);
     $usernew = ltrim($userold, 'S');
 }
@@ -43,7 +48,7 @@ $Suser = $usernew + 1;
 
 $s = "S";
 $user = $s.=$Suser;
-
+echo $user;
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
 
