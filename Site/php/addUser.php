@@ -26,15 +26,21 @@ if ($role == "Undergraduate Student")
     $userold = mysqli_query($conn, "SELECT Id FROM users
     WHERE users.Id LIKE 'S%'
     ORDER BY Id DESC LIMIT 1;");
+    $usernew = ltrim($userold, 'S');
+    
 }
 else
 {
     $userold = mysqli_query($conn, "SELECT Id FROM users
     WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
     ORDER BY Id DESC LIMIT 1;");
+    $usernew = ltrim($userold, 'S');
 }
 
-$user = $userold + 1;
+$Suser = $usernew + 1;
+
+$s = "S";
+$user = $s.=$Suser;
 
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
