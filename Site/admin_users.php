@@ -42,8 +42,9 @@ $username = $_SESSION["username"];
       <section>
         <form>
           <h1>Users</h1>
-          <section id="formSection">
-            <h2>Personal Info</h2>
+          <section>
+            <fieldset>
+            <legend>Personal Info</legend>
           <label>Firstname</label><br>
           <input type="text" name="firstname"><br><br>
 
@@ -65,10 +66,12 @@ $username = $_SESSION["username"];
 
           <label>Private Email</label><br>
           <input type="text" name="privateemail"><br><br>
+</fieldset>
           </section>
-          <section id="formSection">
-            <h2>Address</h2>
-
+          <section>
+          <fieldset>
+           
+          <legend>Address</legend>
           <label>House Number</label><br>
           <input type="text" name="housenumber"><br><br>
 
@@ -77,9 +80,11 @@ $username = $_SESSION["username"];
 
           <label>Postcode</label><br>
           <input type="text" name="postcode"><br><br>
-          </section>
-          <section id="formSection">
-            <h2>University Info</h2>
+          </fieldset>
+</section>
+          <section>
+            <fieldset>
+              <legend>University Info</legend>
             <label>User ID</label><br>
             <input type="text" name="userid"><br><br>
 
@@ -120,7 +125,7 @@ $username = $_SESSION["username"];
 
             <label>University Email</label><br>
             <input type="text" name="uniemail">
-
+            </fieldset>
           </section>
           <section>
             <input type="button" value="Add">
