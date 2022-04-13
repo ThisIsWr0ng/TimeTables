@@ -59,7 +59,7 @@ $sqlprogrammeid = "SELECT * FROM programmes WHERE Name='$progamme'";
 $progammeid = mysqli_query($conn, $sqlprogrammeid);
 $row = $userid->fetch_assoc();
 $userid = $row['Id'];
-$row = $sqlprogrammeid->fetch_assoc();
+$row = $programmeid->fetch_assoc();
 $progammeid = $row['Id'];
 $sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$progammeid', NOW(), NULL)";
 
