@@ -16,6 +16,8 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
+    <script src="script/searchBox.js"></script>
+    <script src="script/sortTable.js"></script>
   </head>
   <body>
     <header>
@@ -143,11 +145,9 @@ while ($row = mysqli_fetch_array($result)) {
            <option value="Users" selected>Users</option>
            <option value="Programmes">Programmes</option>
            <option value="Modules">Modules</option>
+           <option value="Events">Events</option>
          </select>
-         <select name="search-subset" id="search-subset">
-           <option value="Name" selected>Name</option>
-         </select>
-         <input type="text" id="search-searchbar"onkeyup="searchBar()" value="Search" onclick='removeText()' tabindex='1'/>
+         <input type="text" id="search-searchbar"onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
        </form>
        <div id="search-list-opt-top">
        <input type="button" name="list-remove" id="list-remove" value="-">
@@ -161,19 +161,34 @@ while ($row = mysqli_fetch_array($result)) {
 </div>
     </main>
     <script>
-      function removeText(){
-        document.getElementById("search-searchbar").value= "";
-      }
-      function searchBar(){
-        var sType = document.getElementById("search-type");
-        var sTypeTxt = sType.options[sType.selectedIndex].text;
-
-        var sSub = document.getElementById("search-subset");
-        var sSubTxt = sSub.options[sSub.selectedIndex].text;
-        const sOutput = document.getElementById('search-output');
-
-
-      }
+   function removeText(){
+    document.getElementById("search-searchbar").value= "";
+  }
+  function getData(data){
+    if(data != ""){
+    var sType = document.getElementById("search-type");
+    var sTypeTxt = sType.options[sType.selectedIndex].text;
+    var sOutput = document.getElementById('search-output');
+    //console.log('sTypeTxt :>> ', sTypeTxt);
+    //console.log('data :>> ', data);
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {sOutput.innerHTML = this.responseText; };
+            
+    
+    xmlhttp.open("GET",`php/searchBox.php?q=${data}&type=${sTypeTxt}`);
+    xmlhttp.send();
+    return;
+    }
+  }
+  function searchBar(data){
+    var findResults = getData(data)
+    console.log('findResults :>> ', findResults);
+    var sOutput = document.getElementById('search-output');
+  }
+  function fetchForm(formId, formData){
+    var formField = document.getElementById(formId);
+    formField.value = formData;
+  }
 
     </script>
   </body>
