@@ -52,12 +52,15 @@ echo $user;
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
 
-$sqluserid = "SELECT Id FROM users WHERE First_Name='$firstname'";
+$sqluserid = "SELECT * FROM users WHERE First_Name='$firstname'";
 $userid = mysqli_query($conn, $sqluserid);
 
-$sqlprogrammeid = "SELECT Id FROM programmes WHERE Name='$progamme'";
+$sqlprogrammeid = "SELECT * FROM programmes WHERE Name='$progamme'";
 $progammeid = mysqli_query($conn, $sqlprogrammeid);
-
+$row = $userid->fetch_assoc();
+$userid = $row['Id'];
+$row = $sqlprogrammeid->fetch_assoc();
+$progammeid = $row['Id'];
 $sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$progammeid', NOW(), NULL)";
 
 header("location: ../admin_users.php");
