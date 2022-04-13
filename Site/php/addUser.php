@@ -14,15 +14,21 @@ $housenumber = mysqli_real_escape_string($conn, $_REQUEST['housenumber']);
 $street = mysqli_real_escape_string($conn, $_REQUEST['street']);
 $postcode = mysqli_real_escape_string($conn, $_REQUEST['postcode']);
 
-$userid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 $role = mysqli_real_escape_string($conn, $_REQUEST['role']);
+$progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
 $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
 
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES (NULL, '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
 
+$sqluserid = "SELECT Id FROM users WHERE First_Name='$firstname'";
+$userid = mysqli_query($conn, $sqluserid);
 
+$sqlprogrammeid = "SELECT Id FROM programmes WHERE Name='$progamme'";
+$progammeid = mysqli_query($conn, $sqlprogrammeid);
+
+$sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$progammeid', NOW(), NULL)";
 
 header("location: ../admin_users.php");
 ?>
