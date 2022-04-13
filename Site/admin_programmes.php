@@ -44,6 +44,8 @@ $username = $_SESSION["username"];
       <div id="content-block">
       <div id="form-section">
         <form>
+          <fieldset>
+            <legend>Details</legend>
         <label for="id">id:</label><br>
   <input type="text" id="id" name="id" value=""><br>
       <label for="name">Name:</label><br>
@@ -101,7 +103,7 @@ while ($row = mysqli_fetch_array($result)) {
 
   <label for="desc">Description</label><br>
   <textarea id="form-prog-descc" name="desc" rows="4" cols="50">
-  </textarea> <br>
+  </textarea> <br></fieldset>
 </form>
      </div>
      <div id="search-section">
