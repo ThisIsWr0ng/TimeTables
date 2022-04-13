@@ -26,6 +26,7 @@ if ($role == "Undergraduate Student")
     $userold = mysqli_query($conn, "SELECT Id FROM users
     WHERE users.Id LIKE 'S%'
     ORDER BY Id DESC LIMIT 1;");
+    $userold = print_r($userold, true);
     $usernew = ltrim($userold, 'S');
     
 }
@@ -34,6 +35,7 @@ else
     $userold = mysqli_query($conn, "SELECT Id FROM users
     WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
     ORDER BY Id DESC LIMIT 1;");
+    $userold = print_r($userold, true);
     $usernew = ltrim($userold, 'S');
 }
 
