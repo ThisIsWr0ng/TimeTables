@@ -129,6 +129,7 @@ CREATE TABLE `Semesters` (
   `Id` INT AUTO_INCREMENT,
   `Start_Date` DATE NOT NULL,
   `End_Date` DATE NOT NULL,
+  `Year` VARCHAR(8),
   `Name` VARCHAR(50),
   PRIMARY KEY (`Id`)
 );
@@ -635,14 +636,32 @@ VALUES (
     NULL,
     "2021-09-20",
     "2022-01-28",
-    "Semester One"
+    "21/22",
+    "Semester 1"
   );
 INSERT INTO semesters
 VALUES (
     NULL,
     "2022-01-31",
     "2022-07-01",
-    "Semester two"
+    "21/22",
+    "Semester 2"
+  );
+  INSERT INTO semesters
+VALUES (
+    NULL,
+    "2022-09-20",
+    "2023-01-28",
+    "22/23",
+    "Semester 1"
+  );
+INSERT INTO semesters
+VALUES (
+    NULL,
+    "2023-01-31",
+    "2023-07-01",
+    "22/23",
+    "Semester 2"
   );
 INSERT INTO module_assignment
 VALUES (NULL, 1, "COM539", 1);

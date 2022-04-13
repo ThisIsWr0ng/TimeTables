@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: index.php");
     exit;
 }
@@ -49,7 +49,7 @@ $username = $_SESSION["username"];
         <label for="id">id:</label><br>
   <input type="text" id="id" name="id" value=""><br>
       <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" value="" disabled="true"><br> 
+  <input type="text" id="name" name="name" value="" disabled="true"><br>
 
          <label for="degree">Degree:</label><br>
             <select id="form-prog-deg" name="degree">
@@ -70,7 +70,7 @@ $username = $_SESSION["username"];
               <option value="MRes">MRes</option>
               <option value="MSc">MSc</option>
               <option value="PGCE">PGCE</option>
-            </select> 
+            </select>
 
   <label for="department">Department:</label><br>
             <select id="form-prog-dept" name="department">
@@ -84,11 +84,11 @@ while ($row = mysqli_fetch_array($result)) {
     echo "<option value='$name'>$name</option>";
 }
 ?>
-            </select> 
+            </select>
 
             <label>Level</label><br>
             <select id="form-prog-level" name="level">
-            <option value="3">3</option>  
+            <option value="3">3</option>
             <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
@@ -105,9 +105,43 @@ while ($row = mysqli_fetch_array($result)) {
   <textarea id="form-prog-descc" name="desc" rows="4" cols="50">
   </textarea> <br></fieldset>
 </form>
-     </div>
+<form action="">
+  <fieldset>
+    <legend>Modules</legend>
+            <select id="form-prog-sem" name="semester">
+              <?php
+require_once "php/conn.php";
+
+$sql = "SELECT * FROM Semesters";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+    $name = $row['Name'];
+    $year = $row['Year'];
+    echo "<option value='$name'>$name, $year</option>";
+}
+?>
+<section id="form-prog-modules"></section>
+  </fieldset>
+</form>
+     </div></div>
      <div id="search-section">
-       
+     <form class="admin-search">
+         <select name="search-type" id="search-type">
+           <option value="Users" selected>Users</option>
+           <option value="Programmes">Programmes</option>
+           <option value="Modules">Modules</option>
+           <option value="Events">Events</option>
+         </select>
+         <input type="text" id="search-searchbar"onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
+       </form>
+       <div id="search-list-opt-top">
+       <input type="button" name="list-remove" id="list-remove" value="-">
+       <input type="button" name="list-add" id="list-add" value="+" onclick=""></div>
+       <div id="search-output"></div>
+       <div id="search-list-opt">
+         <input type="button"value="Import List">
+         <input type="button"value="Export list">
+       </div>
      </div>
 </div>
      </div>
