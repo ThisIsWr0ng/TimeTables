@@ -17,7 +17,7 @@ $username = $_SESSION["username"];
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
     <script src="script/searchBox.js"></script>
-    <?php include 'php/fetch_data.php'?>
+    <script src="script/sortTable.js"></script>
   </head>
   <body>
     <header>
@@ -68,17 +68,26 @@ $username = $_SESSION["username"];
    function removeText(){
     document.getElementById("search-searchbar").value= "";
   }
-  function searchBar(data){
+  function getData(data){
+    if(data != ""){
     var sType = document.getElementById("search-type");
     var sTypeTxt = sType.options[sType.selectedIndex].text;
     var sOutput = document.getElementById('search-output');
-    
+    //console.log('sTypeTxt :>> ', sTypeTxt);
+    //console.log('data :>> ', data);
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function () {sOutput.innerHTML = this.responseText; };
             
     
-    xmlhttp.open("GET",`php/searchBox.php?q=${data}&sType=${sTypeTxt}`);
+    xmlhttp.open("GET",`php/searchBox.php?q=${data}&type=${sTypeTxt}`);
     xmlhttp.send();
+    return;
+    }
+  }
+  function searchBar(data){
+    var findResults = getData(data)
+    console.log('findResults :>> ', findResults);
+    var sOutput = document.getElementById('search-output');
   }
 
     </script>

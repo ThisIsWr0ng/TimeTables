@@ -1,5 +1,4 @@
 <?php
-
 include 'conn.php';
 $q = strtolower($_REQUEST["q"]);
 $searchType = $_REQUEST["type"];
@@ -8,61 +7,44 @@ $columns = array();
 $searchIn = null;
 if ($searchType == "Programmes") {}
 switch ($searchType) {
-    case "Programme":
-       $sql = "SELECT * FROM Programmes
-        WHERE 'Name' LIKE '%{$q}%'
-           OR 'Degree' LIKE '%{$q}%'
-           OR 'Department' LIKE '%{$q}%'
-           OR 'Level LIK'E '%{$q}%'
-           OR 'Type' LIKE '%{$q}%'"; 
+    case "Programmes":
+        $sql = "SELECT * FROM Programmes
+        WHERE LOWER('Name') LIKE '%{$q}%'
+           OR LOWER('Degree') LIKE '%{$q}%'
+           OR LOWER('Department') LIKE '%{$q}%'
+           OR LOWER('Level') LIKE '%{$q}%'
+           OR LOWER('Type') LIKE '%{$q}%'";
         $columns = array("Id", "Degree", "Name", "Level", "Type");
         break;
     case "Modules":
         $sql = "SELECT * FROM Modules
-        WHERE 'Id' LIKE '%{$q}%'
-           OR 'Name' LIKE '%{$q}%'";
+        WHERE LOWER('Id') LIKE '%{$q}%'
+           OR LOWER('Name') LIKE '%{$q}%'";
         $columns = array("Id","Id", "Name", "Description");
-        $searchIn = $columns[2];
+
         break;
     case "Users":
         $sql = "SELECT * FROM Users
-        WHERE 'Id' LIKE '%{$q}%'
-           OR 'First_Name' LIKE '%{$q}%'
-           OR 'Surname' LIKE '%{$q}%'
-           OR 'Gender' LIKE '%{$q}%'
-           OR 'Birth_Date' LIKE '%{$q}%'
-           OR 'Postcode' LIKE '%{$q}%'
-           OR Priv_Email LIKE '%{$q}%'";
-        $columns = array("Number", "Number", "Type", "Building", "Section");
-        $searchIn = $columns[1];
+        WHERE LOWER('Id') LIKE '%{$q}%'
+           OR LOWER('First_Name') LIKE '%{$q}%'
+           OR LOWER('Surname') LIKE '%{$q}%'
+           OR LOWER('Gender') LIKE '%{$q}%'
+           OR LOWER('Birth_Date') LIKE '%{$q}%'
+           OR LOWER('Postcode') LIKE '%{$q}%'
+           OR LOWER('Priv_Email') LIKE '%{$q}%'";
+        $columns = array("Id", "Id", "First_Name", "Surname", "Title", "Gender","Birth_Date", "Priv_Email", "Uni_Email", "Telephone", "Next_Of_Kin", "Street_Number", "Street_Name", "Postcode");
+
         break;
     case "Events":
         $sql = "SELECT * FROM Events
-        WHERE 'Name' LIKE '%{$q}%'
-           OR 'Degree' LIKE '%{$q}%'
-           OR 'Department' LIKE '%{$q}%'
-           OR 'Level LIK'E '%{$q}%'
-           OR 'Type' LIKE '%{$q}%'";
-        $columns = array("Id", "Degree", "Name", "Level", "Type");//<<<<<<------------Finished here re-assign columns
-        $searchIn = $columns[1];
-    case "Year":
-        $sql = "SELECT * FROM programmes";
-        $columns = array("Id", "Degree", "Name", "Level", "Type");
-        $searchIn = $columns[3];
+        WHERE LOWER('Module') LIKE '%{$q}%'
+           OR LOWER('Room') LIKE '%{$q}%'
+           OR LOWER('Type') LIKE '%{$q}%'
+           OR LOWER('Date') LIKE '%{$q}%'";
+        $columns = array("Id", "Module", "Room", "Type", "Date", "Time_From", "Time_To", "Description", "Group");
         break;
-    case "Type":
-        $sql = "SELECT * FROM programmes";
-        $columns = array("Id", "Degree", "Name", "Level", "Type");
-        $searchIn = $columns[4];
-        break;
-    case "Name"://Unfinished!!!
-        $sql = "";
-        $columns = array();
-        break;
-
     default:
         $sql = "";
-        $columns = array();
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -70,69 +52,78 @@ if ($result->num_rows > 0) {
     $i = 0;
     while ($row = $result->fetch_assoc()) {
 
-        /*for ($j = 0; $j < count($columns); $j++) {
-            $temp = [];
-            if ($j == 0) {
-                $temp = array($columns[$j] => $row[$columns[$j]]);
-            } else {
-                $temp2 = array($columns[$j] => $row[$columns[$j]]);
-                array_push($temp, $temp2);
-            }
+        /*for ($j = 0; $j < count($columns); $j++) { //<<<<<<<<<<<God knows why that doesn't work
+        $temp = [];
+        if ($j == 0) {
+        $temp = array($columns[$j] => $row[$columns[$j]]);
+        } else {
+        $temp2 = array($columns[$j] => $row[$columns[$j]]);
+        array_push($temp, $temp2);
+        }
         }
         $array[$i] = $temp;*/
-        if($searchType == "Programme" || $searchType == "Degree" || $searchType == "Year" || $searchType == "Type"){
-        $array[$i] = array(
-        'Id' => $row["Id"],
-        'Name' => $row["Name"],
-        'Degree' => $row["Degree"],
-        'Level' => $row["Level"],
-        'Type' => $row["Type"]);
-        }elseif($searchType == "Module" ){
+        if ($searchType == "Programmes") {
+            $array[$i] = array(
+                'Id' => $row["Id"],
+                'Name' => $row["Name"],
+                'Degree' => $row["Degree"],
+                'Level' => $row["Level"],
+                'Type' => $row["Type"]);
+        } elseif ($searchType == "Modules") {
             $array[$i] = array(
                 'Id' => $row["Id"],
                 'Name' => $row["Name"],
                 'Description' => $row["Description"]);
-        }elseif($searchType == "Room"){
+        } elseif ($searchType == "Users") {
             $array[$i] = array(
-                'Number' => $row["Number"],
-                'Building' => $row["Building"],
-                'Type' => $row["Type"],
-                'Section' => $row["Section"]);
+                "Id" => $row["Id"],
+                "First_Name" => $row["First_Name"],
+                "Surname" => $row["Surname"],
+                "Title" => $row["Title"],
+                "Gender" => $row["Gender"],
+                "Birth_Date" => $row["Birth_Date"],
+                "Priv_Email" => $row["Priv_Email"],
+                "Uni_Email" => $row["Uni_Email"],
+                "Telephone" => $row["Telephone"],
+                "Next_Of_Kin" => $row["Next_Of_Kin"],
+                "Street_Number" => $row["Street_Number"],
+                "Street_Name" => $row["Street_Name"],
+                "Postcode" => $row["Postcode"],
+            );
+        } elseif ($searchType == "Events") {
+            $array[$i] = array(
+                "Id" => $row["Id"],
+                "Module" => $row["Module"],
+                "Room" => $row["Room"],
+                "Type" => $row["Type"],
+                "Date" => $row["Date"],
+                "Time_From" => $row["Time_From"],
+                "Time_To" => $row["Time_To"],
+                "Description" => $row["Description"],
+                "Group" => $row["Group"],
+            );
         }
         $i += 1;
     }
 
 } else {
-    echo "0 results";
+    echo "No Results - Refine your search";
 }
 echo "<table id=\"resultstable\"><tr>";
 for ($i = 1; $i < count($columns); $i++) {
     echo "<th onclick=\"sortTable({$i})\">{$columns[$i]}</th>";
 }
 echo "</tr>";
-if ($q != "all" || $q !== "" || $q !== null) {
-    for ($i = 0; $i < count($array); $i++) {
-        $find = strtolower($array[$i][$searchIn]);
-        if (strpos($find, $q) !== false) {
-            echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}&type={$searchType}'\">";
-            for ($j = 1; $j < count($columns); $j++) {
-                echo "<td>{$array[$i][$columns[$j]]}</td>";
-            }
-            echo "</tr>";
-        }
 
-    }
-}elseif ($q == "allfields"){
-    for ($i = 0; $i < count($array); $i++) {
-       
-            echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}&type={$searchType}'\">";
-            for ($j = 1; $j < count($columns); $j++) {
-                echo "<td>{$array[$i][$columns[$j]]}</td>";
-            }
-            echo "</tr>";
-        
+for ($i = 0; $i < count($array); $i++) {
 
+    echo "<tr class=\"clickable-row\" onclick=\"\">";
+    for ($j = 1; $j < count($columns); $j++) {
+        echo "<td>{$array[$i][$columns[$j]]}</td>";
     }
+    echo "</tr>";
+
 }
+
 echo "</table>";
 ?>
