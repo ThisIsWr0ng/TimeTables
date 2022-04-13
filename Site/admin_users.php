@@ -59,17 +59,23 @@ $username = $_SESSION["username"];
           <input type="text" id="form-user-title"name="title"><br><br>
 
           <label>Gender</label><br>
-          <select id="form-user-gender">
+          <select id="form-user-gender" name="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select><br><br>
+
+          <label>Date of Birth</label><br>
+          <input type="date" name="dob"><br><br>
 
           <label>Next of Kin</label><br>
           <input type="text" id="form-user-nok"name="nextofkin"><br><br>
 
           <label>Private Email</label><br>
           <input type="text" id="form-user-prive"name="privateemail"><br><br>
+
+          <label>Telephone</label><br>
+          <input type="tel" name="tel"><br><br>
 </fieldset>
           </section>
           <section>
@@ -90,10 +96,10 @@ $username = $_SESSION["username"];
             <fieldset>
               <legend>University Info</legend>
             <label>User ID</label><br>
-            <input type="text" id="form-user-id" name="form-user-id" value="" disabled><br><br>
+            <input type="text" id="form-user-id" name="userid" value="" disabled><br><br>
 
             <label>Role</label><br>
-            <select id="form-user-role">
+            <select id="form-user-role" name="role">
               <?php
 require_once "php/conn.php";
 
@@ -107,7 +113,7 @@ while ($row = mysqli_fetch_array($result)) {
             </select>
 
             <label>Programme</label><br>
-            <select id="form-user-programme">
+            <select id="form-user-programme" name="programme">
             <?php
 require_once "php/conn.php";
 
@@ -121,7 +127,7 @@ while ($row = mysqli_fetch_array($result)) {
             </select>
 
             <label>Level</label><br>
-            <select id="form-user-level">
+            <select id="form-user-level" name="level">
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
