@@ -168,12 +168,15 @@ function findUser(id){
     if(id != ""){
     console.log('id :>> ', id);
     const users = JSON.parse('<?php echo json_encode(fetchUsers())?>');
-    var user;
+    var user = null;
     for (let i = 0; i < users.length; i++) {
       if(users[i].Id == id){user = users[i];}
+      else{users[i] = null;}
     }
     if(typeof user !== "undefined"){
       feedUserForm(user);
+      users = null;
+      user = null;
     }else{
     console.log('User Not Found! :>> ');
     console.log('users :>> ', users);

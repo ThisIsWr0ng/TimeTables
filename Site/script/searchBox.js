@@ -1,16 +1,12 @@
-function removeText(){
+function removeText(){//Remove text from field when clicked
     document.getElementById("search-searchbar").value= "";
   }
-  function searchBar(data){
-    var findResults = getData(data)
-    var sOutput = document.getElementById('search-output');
-  }
-  function fetchForm(formId,formData){
+  function fetchForm(type, formId,formData){
     var formField = document.getElementById(formId);
     formField.value = formData;
     findUser(formData);//Fill other form fields with user info
   }
-  function getData(data){
+  function searchBar(data){//Get search Type and ask for output
     if(data != ""){
     var sType = document.getElementById("search-type");
     var sTypeTxt = sType.options[sType.selectedIndex].text;
@@ -19,8 +15,6 @@ function removeText(){
     //console.log('data :>> ', data);
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function () {sOutput.innerHTML = this.responseText; };
-            
-    
     xmlhttp.open("GET",`php/searchBox.php?q=${data}&type=${sTypeTxt}`);
     xmlhttp.send();
     return;
