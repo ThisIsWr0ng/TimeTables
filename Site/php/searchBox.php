@@ -4,29 +4,44 @@ $q = strtolower($_REQUEST["q"]);
 $searchType = $_REQUEST["type"];
 $sql = "";
 $columns = array();
-$searchIn = null;
+$onClick = null;
 //define what to search for and select columns to search/display
 switch ($searchType) {
     case "Programmes":
         $columns = array("Id", "Degree", "Name", "Level", "Type");
+        $onClick = "form-programme-id";
         break;
     case "Modules":
         $columns = array("Id", "Name", "Description");
+        $onClick = "form-module-id";
         break;
     case "Users":
-        $columns = array("Id", "First_Name", "Surname", "Title", "Gender","Birth_Date", "Priv_Email", "Uni_Email", "Telephone", "Next_Of_Kin", "Street_Number", "Street_Name", "Postcode");
+        $columns = array("Id", "First_Name", "Surname", "Title", "Role", "Gender","Birth_Date", "Priv_Email", "Uni_Email", "Telephone", "Next_Of_Kin", "Street_Number", "Street_Name", "Postcode");
+        $onClick = "form-user-id";
         break;
     case "Events":
         $columns = array("Id", "Module", "Room", "Type", "Date", "Time_From", "Time_To", "Description", "Group");
+        $onClick = "form-event-id";
         break;
     default:
     $columns = array("Id");
 }
 //Create SQL code
-$sql = "SELECT * FROM {$searchType} WHERE ( ";
+$sql = "SELECT * FROM {$searchType}";
+
+if($searchType == "Users"){
+    $sql = "SELECT `Users`.*, `Roles`.Name AS \"Role\" FROM {$searchType} LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id` 
+	LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`  WHERE (  ";
+    }else{
+        $sql = "SELECT * FROM {$searchType}  WHERE ( ";
+    }
+
 for ($i=0; $i < count($columns); $i++) { 
     if($i == count($columns) - 1){
         $a = "CONVERT(`{$columns[$i]}` USING utf8) LIKE '%{$q}%'";
+        $sql .= $a;
+    }elseif($searchType == "Users" && $i == 0){
+        $a = "CONVERT(`Users`.`Id` USING utf8) LIKE '%{$q}%' OR ";
         $sql .= $a;
     }else{
         $a = "CONVERT(`{$columns[$i]}` USING utf8) LIKE '%{$q}%' OR ";
@@ -36,6 +51,7 @@ for ($i=0; $i < count($columns); $i++) {
 }
 $a = ")";
 $sql .= $a;
+//echo $sql;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $array = null;
@@ -79,6 +95,7 @@ if ($result->num_rows > 0) {
                 "Street_Number" => $row["Street_Number"],
                 "Street_Name" => $row["Street_Name"],
                 "Postcode" => $row["Postcode"],
+                "Role" => $row["Role"],
             );
         } elseif ($searchType == "Events") {
             $array[$i] = array(
@@ -106,7 +123,7 @@ echo "</tr>";
 
 for ($i = 0; $i < count($array); $i++) {
 
-    echo "<tr class=\"clickable-row\" onclick=\"\">";
+    echo "<tr class=\"clickable-row\" onclick=\"fetchForm({$onClick}, {$columns[0]}})\">";
     for ($j = 0; $j < count($columns); $j++) {
        
         echo "<td>{$array[$i][$columns[$j]]}</td>";

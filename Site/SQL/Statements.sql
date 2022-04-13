@@ -104,4 +104,25 @@ WHERE (
 		OR CONVERT(`Street_Number` USING utf8) LIKE '%dawid%'
 		OR CONVERT(`Street_Name` USING utf8) LIKE '%dawid%'
 		OR CONVERT(`Postcode` USING utf8) LIKE '%dawid%'
+	) --Search users with roles
+SELECT `Users`.*,
+	`Roles`.Name AS "Role"
+FROM Users
+	LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id`
+	LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`
+WHERE (
+		CONVERT(`Users`.`Id` USING utf8) LIKE '%admin%'
+		OR CONVERT(`First_Name` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Surname` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Title` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Role` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Gender` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Birth_Date` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Priv_Email` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Uni_Email` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Telephone` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Next_Of_Kin` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Street_Number` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Street_Name` USING utf8) LIKE '%admin%'
+		OR CONVERT(`Postcode` USING utf8) LIKE '%admin%'
 	)

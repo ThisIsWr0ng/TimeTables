@@ -89,6 +89,10 @@ $username = $_SESSION["username"];
     console.log('findResults :>> ', findResults);
     var sOutput = document.getElementById('search-output');
   }
+  function fetchForm(formId, formData){
+    var formField = document.getElementById(formId);
+    formField.value = formData;
+  }
 
     </script>
   </body>

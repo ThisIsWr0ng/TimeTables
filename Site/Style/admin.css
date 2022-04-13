@@ -140,15 +140,29 @@
     margin-top: 10px;
     margin-bottom: 25px;
     overflow: scroll;
+    text-align: left;
 }
-#search-output table{
+#search-output #resultstable{
+    table-layout: auto;
     min-width: fit-content;
     width: 400px;
     
 }
 #search-output #resultstable td{
     width: min-content;
-    word-wrap: none;
+    white-space: nowrap;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    border-bottom: 2px solid white;
+    
+}
+#search-output #resultstable tr{
+    background-color: lightgrey;
+    transition-duration: 0.5s;
+}
+#search-output #resultstable tr:hover{
+    background-color: grey;
+    margin-bottom: 4px;
 }
 
 #search-list-opt {
