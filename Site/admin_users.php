@@ -138,7 +138,7 @@ while ($row = mysqli_fetch_array($result)) {
             </fieldset>
           </section>
           <section>
-            <input type="button" value="Add">
+            <button type="submit" value="Submit">Add</button>
             <input type="button" value="Delete">
             <input type="button" value="Update">
             <input type="button" value="Reset Password">
