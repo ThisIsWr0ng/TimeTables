@@ -70,6 +70,8 @@
     min-height: 800px;
     width: 100%;
     max-height: fit-content;
+    margin-top: 30px;
+
 }
 #content-block input[type=button]{
     width: fit-content;
@@ -89,13 +91,15 @@
     flex-wrap: wrap;
     margin: auto;
     background-color: rgba(120, 176, 241, 1);
-    max-width: 50vw;
+    max-width: 600px;
+    width: 45vw;
     min-width: 300px;
     padding: 10px;
 }
 #form-section section{
     display: flex;
     width: fit-content;
+
 }
 #form-section select, #form-section input{
     background-color: rgb(255, 255, 255);
@@ -114,6 +118,7 @@
 }
 
 
+
 /*----------------Search Box----------------------*/
 #search-section {
     position: relative;
@@ -121,8 +126,10 @@
     padding: 20px 5px;
     right: 0;
     background-color: rgb(255, 255, 255);
-    max-width: 40vw;
-    min-width: 200px;
+    max-width: 600px;
+    width: 40vw;
+    min-width: 300px;
+
 }
 
 #search-output {
@@ -136,7 +143,32 @@
     right: 0;
     margin-top: 10px;
     margin-bottom: 25px;
+    overflow: scroll;
+    text-align: left;
 }
+#search-output #resultstable{
+    table-layout: auto;
+    min-width: fit-content;
+    width: 400px;
+    
+}
+#search-output #resultstable td{
+    width: min-content;
+    white-space: nowrap;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    border-bottom: 2px solid white;
+    
+}
+#search-output #resultstable tr{
+    background-color: lightgrey;
+    transition-duration: 0.5s;
+}
+#search-output #resultstable tr:hover{
+    background-color: grey;
+    margin-bottom: 4px;
+}
+
 
 #search-list-opt {
     position: absolute;
