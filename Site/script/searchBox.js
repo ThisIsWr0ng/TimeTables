@@ -54,6 +54,8 @@ function feedUserForm(user){
     uPost.value = user.Postcode;
     uId.value = user.Id;
     uUniE.value = user.Uni_Email;
+    uDob.value = user.Birth_Date;
+    uTel.value = user.Telephone;
   //assign values to dropdowns  
   uGender.value = user.Gender;
     
