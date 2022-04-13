@@ -71,6 +71,7 @@
     width: 100%;
     max-height: fit-content;
     margin-top: 30px;
+
 }
 #content-block input[type=button]{
     width: fit-content;
@@ -98,6 +99,7 @@
 #form-section section{
     display: flex;
     width: fit-content;
+
 }
 #form-section select, #form-section input{
     background-color: rgb(255, 255, 255);
@@ -116,6 +118,7 @@
 }
 
 
+
 /*----------------Search Box----------------------*/
 #search-section {
     position: relative;
@@ -126,6 +129,7 @@
     max-width: 600px;
     width: 40vw;
     min-width: 300px;
+
 }
 
 #search-output {
@@ -164,6 +168,7 @@
     background-color: grey;
     margin-bottom: 4px;
 }
+
 
 #search-list-opt {
     position: absolute;

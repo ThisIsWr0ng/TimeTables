@@ -41,7 +41,103 @@ $username = $_SESSION["username"];
       </nav>
       <div id="content-block">
       <div id="form-section">
+      <section>
+        <form>
+          <h1>Users</h1>
+          <section>
+            <fieldset>
+            <legend>Personal Info</legend>
+          <label>Firstname</label><br>
+          <input type="text" name="firstname"><br><br>
 
+          <label>Surname</label><br>
+          <input type="text" name="surname"><br><br>
+
+          <label>Title</label><br>
+          <input type="text" name="title"><br><br>
+
+          <label>Gender</label><br>
+          <select>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select><br><br>
+
+          <label>Next of Kin</label><br>
+          <input type="text" name="nextofkin"><br><br>
+
+          <label>Private Email</label><br>
+          <input type="text" name="privateemail"><br><br>
+</fieldset>
+          </section>
+          <section>
+          <fieldset>
+           
+          <legend>Address</legend>
+          <label>House Number</label><br>
+          <input type="text" name="housenumber"><br><br>
+
+          <label>Street</label><br>
+          <input type="text" name="street"><br><br>
+
+          <label>Postcode</label><br>
+          <input type="text" name="postcode"><br><br>
+          </fieldset>
+</section>
+          <section>
+            <fieldset>
+              <legend>University Info</legend>
+            <label>User ID</label><br>
+            <input type="text" name="userid"><br><br>
+
+            <label>Role</label><br>
+            <select>
+              <?php
+              require_once "php/conn.php";
+
+              $sql = "SELECT * FROM roles";
+              $result = $conn->query($sql);
+              while($row = mysqli_fetch_array($result)) {
+                $name = $row['Name'];
+                echo "<option value='$name'>$name</option>";
+              }
+              ?>
+            </select>
+
+            <label>Programme</label><br>
+            <select>
+            <?php
+              require_once "php/conn.php";
+
+              $sql = "SELECT * FROM programmes";
+              $result = $conn->query($sql);
+              while($row = mysqli_fetch_array($result)) {
+                $name = $row['Name'];
+                echo "<option value='$name'>$name</option>";
+              }
+              ?>
+            </select>
+
+            <label>Level</label><br>
+            <select>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+
+            <label>University Email</label><br>
+            <input type="text" name="uniemail">
+            </fieldset>
+          </section>
+          <section>
+            <input type="button" value="Add">
+            <input type="button" value="Delete">
+            <input type="button" value="Update">
+            <input type="button" value="Reset Password">
+            <input type="button" value="Default Settings">
+          </section>
+        </form>
+      </section>
      </div>
      <div id="search-section">
        <form class="admin-search">
