@@ -66,7 +66,7 @@ $username = $_SESSION["username"];
           </select><br><br>
 
           <label>Date of Birth</label><br>
-          <input type="date" name="dob"><br><br>
+          <input id="form-user-dob" type="date" name="dob"><br><br>
 
           <label>Next of Kin</label><br>
           <input type="text" id="form-user-nok"name="nextofkin"><br><br>
@@ -75,7 +75,7 @@ $username = $_SESSION["username"];
           <input type="text" id="form-user-prive"name="privateemail"><br><br>
 
           <label>Telephone</label><br>
-          <input type="tel" name="tel"><br><br>
+          <input id="form-user-tel" type="tel" name="tel"><br><br>
 </fieldset>
           </section>
           <section>

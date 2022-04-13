@@ -4,7 +4,12 @@ function removeText(){//Remove text from field when clicked
   function fetchForm(type, formId,formData){
     var formField = document.getElementById(formId);
     formField.value = formData;
-    findUser(formData);//Fill other form fields with user info
+    if (type == "Users") {
+        findUser(formData);//Fill other form fields with user info
+    } else if ((type == "Programmes")){
+        
+    }
+    
   }
   function searchBar(data){//Get search Type and ask for output
     if(data != ""){
@@ -36,6 +41,8 @@ function feedUserForm(user){
     const uProg = document.getElementById('form-user-programme');
     const uLvl = document.getElementById('form-user-level');
     const uUniE = document.getElementById('form-user-unie');
+    const uDob = document.getElementById('form-user-dob');
+    const uTel = document.getElementById('form-user-tel');
     //assign values to form Fields
     uFname.value = user.First_Name;
     uSurname.value = user.Surname;
