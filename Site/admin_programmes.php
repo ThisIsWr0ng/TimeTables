@@ -84,11 +84,23 @@ while ($row = mysqli_fetch_array($result)) {
 ?>
             </select> 
 
-  <label for="lvl">Level:</label><br>
-  <input type="text" id="lvl" name="lvl" value=""><br>  
-    
+            <label>Level</label><br>
+            <select id="form-prog-level" name="level">
+            <option value="3">3</option>  
+            <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <label>Start Date</label><br>
+          <input id="form-prog-sdate" type="date" name="dob"><br><br>
+
+          <label>End Date</label><br>
+          <input id="form-prog-edate" type="date" name="dob"><br><br>
+
   <label for="desc">Description</label><br>
-  <textarea id="desc" name="desc" rows="4" cols="50">
+  <textarea id="form-prog-descc" name="desc" rows="4" cols="50">
   </textarea> <br>
 </form>
      </div>
