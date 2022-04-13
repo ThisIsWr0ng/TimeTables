@@ -18,6 +18,7 @@ $username = $_SESSION["username"];
     <link rel="stylesheet" href="Style/admin.css" />
     <script src="script/searchBox.js"></script>
     <script src="script/sortTable.js"></script>
+    <?php include 'php/fetch_data.php'?>
   </head>
   <body>
     <header>
@@ -48,26 +49,26 @@ $username = $_SESSION["username"];
             <fieldset>
             <legend>Personal Info</legend>
           <label>Firstname</label><br>
-          <input type="text" name="firstname"><br><br>
+          <input type="text" id="form-user-firstname" name="firstname"><br><br>
 
           <label>Surname</label><br>
-          <input type="text" name="surname"><br><br>
+          <input type="text" id="form-user-surname"name="surname"><br><br>
 
           <label>Title</label><br>
-          <input type="text" name="title"><br><br>
+          <input type="text" id="form-user-title"name="title"><br><br>
 
           <label>Gender</label><br>
-          <select>
+          <select id="form-user-">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select><br><br>
 
           <label>Next of Kin</label><br>
-          <input type="text" name="nextofkin"><br><br>
+          <input type="text" id="form-user-nok"name="nextofkin"><br><br>
 
           <label>Private Email</label><br>
-          <input type="text" name="privateemail"><br><br>
+          <input type="text" id="form-user-priv"name="privateemail"><br><br>
 </fieldset>
           </section>
           <section>
@@ -75,13 +76,13 @@ $username = $_SESSION["username"];
 
           <legend>Address</legend>
           <label>House Number</label><br>
-          <input type="text" name="housenumber"><br><br>
+          <input type="text"id="form-user-hnum" name="housenumber"><br><br>
 
           <label>Street</label><br>
-          <input type="text" name="street"><br><br>
+          <input type="text" id="form-user-str"name="street"><br><br>
 
           <label>Postcode</label><br>
-          <input type="text" name="postcode"><br><br>
+          <input type="text" id="form-user-post"name="postcode"><br><br>
           </fieldset>
 </section>
           <section>
@@ -91,7 +92,7 @@ $username = $_SESSION["username"];
             <input type="text" id="form-user-id" name="form-user-id" value="" disabled><br><br>
 
             <label>Role</label><br>
-            <select>
+            <select id="form-user-role">
               <?php
 require_once "php/conn.php";
 
@@ -105,7 +106,7 @@ while ($row = mysqli_fetch_array($result)) {
             </select>
 
             <label>Programme</label><br>
-            <select>
+            <select id="form-user-programme">
             <?php
 require_once "php/conn.php";
 
@@ -119,14 +120,14 @@ while ($row = mysqli_fetch_array($result)) {
             </select>
 
             <label>Level</label><br>
-            <select>
+            <select id="form-user-level">
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
 
             <label>University Email</label><br>
-            <input type="text" name="uniemail">
+            <input type="text" id="form-user-unie" name="uniemail">
             </fieldset>
           </section>
           <section>
@@ -188,11 +189,29 @@ while ($row = mysqli_fetch_array($result)) {
   function fetchForm(formId,formData){
     var formField = document.getElementById(formId);
     formField.value = formData;
-    feedForms(formData);//Fill other form fields with user info
+    findUser(formData);//Fill other form fields with user info
   }
-  function feedForms(id){
+  function findUser(id){
+    if(id != ""){
     console.log('id :>> ', id);
-  }
+    const users = JSON.parse('<?php echo json_encode(fetchUsers())?>');
+    var user;
+    for (let i = 0; i < users.length; i++) {
+      if(users[i].Id == id){user = users[i];}
+    }
+    
+    if(typeof user !== "undefined"){
+      feedUserform(user);
+    }else{
+    console.log('User Not Found! :>> ');
+    console.log('users :>> ', users);
+    console.log('user :>> ', user);
+    }
+  }}
+function feedUserForm(user){
+  
+
+}
 
     </script>
   </body>

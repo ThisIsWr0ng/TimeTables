@@ -123,7 +123,7 @@ echo "</tr>";
 
 for ($i = 0; $i < count($array); $i++) {
 
-    echo "<tr class=\"clickable-row\" onclick=\"fetchForm('{$onClick}', '{$array[$i]['Id']}');\">";
+    echo "<tr class=\"clickable-row\" onclick=\"fetchForm('{$onClick}', '{$array[$i]['Id']}')\">";
     for ($j = 0; $j < count($columns); $j++) {
        
         echo "<td>{$array[$i][$columns[$j]]}</td>";
@@ -136,4 +136,5 @@ echo "</table>";
 } else {
     echo "No Results - Refine your search";
 }
+$conn->close();
 ?>

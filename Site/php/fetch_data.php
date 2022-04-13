@@ -97,4 +97,42 @@ WHERE `programmes`.`Id` = '$id';";
    }
    $conn->close();
 }
+function fetchUsers(){
+    include 'conn.php';
+    $sql ="SELECT `Users`.*,
+	`Roles`.`Name` AS `Role`,
+    `Programmes`.`Name` AS `Programme`,
+    `Programmes`.`Level` AS `Level`
+FROM Users
+	LEFT JOIN `role_assignment` ON `role_assignment`.`User` = `users`.`Id`
+	LEFT JOIN `roles` ON `role_assignment`.`Role` = `roles`.`Id`
+    LEFT JOIN `student_enrolment` ON `Users`.`Id` = `student_enrolment`.`Student`
+    LEFT JOIN `programmes` ON `student_enrolment`.`Programme` = `Programmes`.`Id`";
+    $result = $conn->query($sql);
+    $i =0;
+    $users =null;
+    while ($row = mysqli_fetch_array($result)) {
+        $users[$i] = array(
+            "Id" => $row["Id"],
+            "First_Name" => $row["First_Name"],
+            "Surname" => $row["Surname"],
+            "Title" => $row["Title"],
+            "Gender" => $row["Gender"],
+            "Birth_Date" => $row["Birth_Date"],
+            "Priv_Email" => $row["Priv_Email"],
+            "Uni_Email" => $row["Uni_Email"],
+            "Telephone" => $row["Telephone"],
+            "Next_Of_Kin" => $row["Next_Of_Kin"],
+            "Street_Number" => $row["Street_Number"],
+            "Street_Name" => $row["Street_Name"],
+            "Postcode" => $row["Postcode"],
+            "Role" => $row["Role"],
+            "Programme" => $row["Programme"],
+            "Level" => $row["Level"],);
+            $i += 1;
+    }
+ 
+    return $users;
+    $conn->close();
+}
 ?>

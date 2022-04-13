@@ -117,4 +117,5 @@ if ($q != "all" || $q !== "" || $q !== null) {
     }
 }
 echo "</table>";
+$conn->close();
 ?>

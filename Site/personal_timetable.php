@@ -88,7 +88,7 @@ echo$username;
             document.getElementById(a).innerHTML= b;
         
         }
-            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );//<-----------------Pass student number here
+            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );
             console.log("Data Received:", dbData);
             window.addEventListener("load", drawCalendar(dbData));
       </script>
