@@ -16,6 +16,10 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
+    <script src="script/searchBox.js"></script>
+    <script src="script/sortTable.js"></script>
+    <script src="script/searchBox.js"></script>
+    <?php include 'php/fetch_data.php'?>
   </head>
   <body>
     <header>
@@ -39,7 +43,54 @@ $username = $_SESSION["username"];
       </nav>
       <div id="content-block">
       <div id="form-section">
+        <form>
+        <label for="id">id:</label><br>
+  <input type="text" id="id" name="id" value=""><br>
+      <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" value="" disabled="true"><br> 
 
+         <label for="degree">Degree:</label><br>
+            <select id="form-prog-deg" name="degree">
+              <option value="BA (Hons)">BA (Hons)</option>
+              <option value="BA">BA</option>
+              <option value="BEng (Hons)">BEng (Hons)</option>
+              <option value="BSc (Hons)">BSc (Hons)</option>
+              <option value="BSc (Ord)">BSc (Ord)</option>
+              <option value="BSc">BSc</option>
+              <option value="CertEd">CertEd</option>
+              <option value="DipHE">DipHE</option>
+              <option value="FdA">FdA</option>
+              <option value="FdEng">FdEng</option>
+              <option value="FdSc">FdSc</option>
+              <option value="MA">MA</option>
+              <option value="MBA">MBA</option>
+              <option value="MDes">MDes</option>
+              <option value="MRes">MRes</option>
+              <option value="MSc">MSc</option>
+              <option value="PGCE">PGCE</option>
+            </select> 
+
+  <label for="department">Department:</label><br>
+            <select id="form-prog-dept" name="department">
+              <?php
+require_once "php/conn.php";
+
+$sql = "SELECT * FROM Departments";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+    $name = $row['Name'];
+    echo "<option value='$name'>$name</option>";
+}
+?>
+            </select> 
+
+  <label for="lvl">Level:</label><br>
+  <input type="text" id="lvl" name="lvl" value=""><br>  
+    
+  <label for="desc">Description</label><br>
+  <textarea id="desc" name="desc" rows="4" cols="50">
+  </textarea> <br>
+</form>
      </div>
      <div id="search-section">
        
