@@ -1,6 +1,11 @@
 <?php
 
 require_once "conn.php";
+
+$userold = mysqli_query($conn, "SELECT Id FROM users
+WHERE users.Id LIKE 'S%'
+ORDER BY Id DESC LIMIT 1;");
+$user = $userold + 1;
 $firstname = mysqli_real_escape_string($conn, $_REQUEST['firstname']);
 $surname = mysqli_real_escape_string($conn, $_REQUEST['surname']);
 $title = mysqli_real_escape_string($conn, $_REQUEST['title']);
@@ -19,7 +24,7 @@ $progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
 $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
 
-$sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES (NULL, '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
+$sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
 
 $sqluserid = "SELECT Id FROM users WHERE First_Name='$firstname'";
