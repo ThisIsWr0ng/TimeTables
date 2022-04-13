@@ -2,9 +2,19 @@
 
 require_once "conn.php";
 
-$userold = mysqli_query($conn, "SELECT Id FROM users
-WHERE users.Id LIKE 'S%'
-ORDER BY Id DESC LIMIT 1;");
+if ($role == "Undergraduate Student")
+{
+    $userold = mysqli_query($conn, "SELECT Id FROM users
+    WHERE users.Id LIKE 'S%'
+    ORDER BY Id DESC LIMIT 1;");
+}
+else
+{
+    $userold = mysqli_query($conn, "SELECT Id FROM users
+    WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
+    ORDER BY Id DESC LIMIT 1;");
+}
+
 $user = $userold + 1;
 $firstname = mysqli_real_escape_string($conn, $_REQUEST['firstname']);
 $surname = mysqli_real_escape_string($conn, $_REQUEST['surname']);
