@@ -35,7 +35,7 @@ if ($role == "Undergraduate Student")
 }
 else
 {
-    $userold = mysqli_query($conn, "SELECT Id FROM users
+    $userold = mysqli_query($conn, "SELECT * FROM users
     WHERE users.Id NOT LIKE 'S%' AND LENGTH(users.Id) = 13
     ORDER BY Id DESC LIMIT 1;");
        $row = $userold->fetch_assoc();
