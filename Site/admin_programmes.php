@@ -117,8 +117,9 @@ $username = $_SESSION[ "username" ];
                                 $year = $row[ 'Year' ];
                                 echo "<option value='$name'>$name, $year</option>";
                             }
-                            ?></select>
-                            <section id="form-prog-modules"></section>
+                            ?>
+                        </select>
+                        <section id="form-prog-modules"></section>
                     </fieldset>
                 </form>
             </div>
