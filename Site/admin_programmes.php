@@ -215,21 +215,7 @@ function getModulesForProg(id){
         output.innerHTML="Select programme first, or add it to database"
     }
 }
-function refreshModules(sem){
-    const pSem = document.getElementById('form-prog-sem');
-    const output = document.getElementById('form-prog-mod-output');
-    year = sem.substring(11, 17).trim();
-    sem = sem.substring(0, 10).trim();
-    outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
-    for (let i = 0; i < modules.length; i++) {
-       if(modules[i].Semester == sem && modules[i].Year == year){
-           outputText += `<tr onclick="removeModulesRow('${modules[i].Id}', '${sem}','${year}')"><td>${modules[i].Id}</td><td>${modules[i].Name}</td></tr>`;
-       }
-        
-    }
-    outputText += "</table>"
-    output.innerHTML =  outputText;
-}
+
 function removeModulesRow(id, sem, year){
 for (let i = 0; i < modules.length; i++) {//remove from array
     if(modules[i].Id == id && modules[i].Semester == sem && modules[i].Year == year){
@@ -249,31 +235,26 @@ modules.length = modules.length-1;//cut last part
 refreshModules(`${sem} ${year}`);
 }
 function addToModulesList(id){
-    var dbData = JSON.parse('<?php echo json_encode(fetchModules()) ?>');//fetch table of modules
-    var modul = null;
-    for (let i = 0; i < dbData.length; i++) {
-        if(dbData[i].Id == id){
-            modul = dbData[i];
-            break;
-        }
+  var dbData = JSON.parse('<?php echo json_encode(fetchModules()) ?>');//fetch table of modules
+  var modul = null;
+  for (let i = 0; i < dbData.length; i++) {
+      if(dbData[i].Id == id){
+          modul = dbData[i];
+          break;
+      }
 
-    }
-    const pSem = document.getElementById('form-prog-sem').value;
-    year = pSem.substring(11, 17).trim();
-    sem = pSem.substring(0, 10).trim();
-    prog = document.getElementById('form-prog-id').value;
-    modul.Semester = sem;
-    modul.Year = year;
-    modul.Programme = prog;
-    modules.push(modul);
-    refreshModules(pSem);
+  }
+  const pSem = document.getElementById('form-prog-sem').value;
+  year = pSem.substring(11, 17).trim();
+  sem = pSem.substring(0, 10).trim();
+  prog = document.getElementById('form-prog-id').value;
+  modul.Semester = sem;
+  modul.Year = year;
+  modul.Programme = prog;
+  modules.push(modul);
+  refreshModules(pSem);
 }
-function SaveProgramModules(){
-    const xmlhttp = new XMLHttpRequest();
-            xmlhttp.onload = function () {document.getElementById("form-prog-mod-output").innerHTML = this.responseText; };
-            xmlhttp.open("GET",`php/updateProgramModules.php?q=${JSON.stringify(modules)}`);
-            xmlhttp.send();
-}
+
 
         </script>
     </main>

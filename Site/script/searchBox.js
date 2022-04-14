@@ -95,3 +95,26 @@ function feedUserForm(user){
      //Feed modules for selected Programme
      getModulesForProg(prog.Id);
   }
+  function refreshModules(sem){
+    const pSem = document.getElementById('form-prog-sem');
+    const output = document.getElementById('form-prog-mod-output');
+    year = sem.substring(11, 17).trim();
+    sem = sem.substring(0, 10).trim();
+    outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
+    for (let i = 0; i < modules.length; i++) {
+       if(modules[i].Semester == sem && modules[i].Year == year){
+           outputText += `<tr onclick="removeModulesRow('${modules[i].Id}', '${sem}','${year}')"><td>${modules[i].Id}</td><td>${modules[i].Name}</td></tr>`;
+       }
+        
+    }
+    outputText += "</table>"
+    output.innerHTML =  outputText;
+}
+
+function SaveProgramModules(){
+  const xmlhttp = new XMLHttpRequest();
+          xmlhttp.onload = function () {document.getElementById("form-prog-mod-output").innerHTML = this.responseText; };
+          xmlhttp.open("GET",`php/updateProgramModules.php?q=${JSON.stringify(modules)}`);
+          xmlhttp.send();
+         
+}
