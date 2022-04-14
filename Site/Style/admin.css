@@ -161,13 +161,14 @@
     min-height: 40vh;
 }
 
-#search-output #resultstable{
+.resultstable{
     table-layout: auto;
     min-width: fit-content;
     width: 400px;
+
     
 }
-#search-output #resultstable td{
+.resultstable td{
     width: min-content;
     white-space: nowrap;
     padding-right: 5px;
@@ -175,11 +176,12 @@
     border-bottom: 2px solid white;
     
 }
-#search-output #resultstable tr{
+.resultstable tr{
     background-color: lightgrey;
     transition-duration: 0.5s;
+    height: fit-content;
 }
-#search-output #resultstable tr:hover{
+.resultstable tr:hover{
     background-color: grey;
     margin-bottom: 4px;
 }

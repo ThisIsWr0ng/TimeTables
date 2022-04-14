@@ -174,6 +174,7 @@ while ($row = mysqli_fetch_array($result)) {
         <script>
             let sem1 = null;
             let sem2 = null;
+            let Modules = null;
         function findProgramme(id){
             if (id!= "") {
                 var programmes = JSON.parse('<?php echo json_encode(fetchProgrammes()) ?>');
@@ -194,7 +195,7 @@ function getModulesForProg(id){
     const pSem = document.getElementById('form-prog-sem');
     const output = document.getElementById('form-prog-mod-output');
     var id = pId.value;
-    let modules = [];
+    modules = [];
     if (id != "") {
         var dbData = JSON.parse('<?php echo json_encode(fetchModulesToProgrammes()) ?>');//fetch table of modules
         for (let i = 0; i < dbData.length; i++) {
@@ -209,20 +210,25 @@ function getModulesForProg(id){
             }else{sem2.push(modules[i]);}
         }
       
-
+        refreshModules(pSem.value);
     }else{
         output.innerHTML="Select programme first, or add it to database"
     }
 }
 function refreshModules(sem){
-    year = sem.substring(11, 17);
-    sem = sem.substring(0, 10);
-    console.log('modules :>> ', modules);
+    const pSem = document.getElementById('form-prog-sem');
+    const output = document.getElementById('form-prog-mod-output');
+    year = sem.substring(11, 17).trim();
+    sem = sem.substring(0, 10).trim();
+    outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
     for (let i = 0; i < modules.length; i++) {
-        const element = modules[i];
+       if(modules[i].Semester == sem && modules[i].Year == year){
+           outputText += `<tr><td>${modules[i].Id}</td><td>${modules[i].Name}</td></tr>`;
+       }
         
     }
-
+    outputText += "</table>"
+    output.innerHTML =  outputText;
 }
 
 

@@ -114,7 +114,7 @@ if ($result->num_rows > 0) {
     }
 
 //Echo results
-echo "<table id=\"resultstable\"><tr>";
+echo "<table class=\"resultstable\"><tr>";
 for ($i = 0; $i < count($columns); $i++) {
  
     echo "<th onclick=\"sortTable({$i})\">{$columns[$i]}</th>";
