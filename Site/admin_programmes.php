@@ -223,12 +223,50 @@ function refreshModules(sem){
     outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
     for (let i = 0; i < modules.length; i++) {
        if(modules[i].Semester == sem && modules[i].Year == year){
-           outputText += `<tr><td>${modules[i].Id}</td><td>${modules[i].Name}</td></tr>`;
+           outputText += `<tr onclick="removeModulesRow('${modules[i].Id}', '${sem}','${year}')"><td>${modules[i].Id}</td><td>${modules[i].Name}</td></tr>`;
        }
         
     }
     outputText += "</table>"
     output.innerHTML =  outputText;
+}
+function removeModulesRow(id, sem, year){
+for (let i = 0; i < modules.length; i++) {//remove from array
+    if(modules[i].Id == id && modules[i].Semester == sem && modules[i].Year == year){
+      modules[i] = null;
+      break;
+    }
+}
+for (let i = 0; i < modules.length; i++) {//re-arrange array
+    if(i == modules.length-1){
+    break;
+    }
+    if(modules[i] == null){
+        modules[i] = modules[i+1]
+    }
+}
+modules.length = modules.length-1;//cut last part
+console.log('trimmedModules :>> ', modules);
+refreshModules(`${sem} ${year}`);
+}
+function addToModulesList(id){
+    var dbData = JSON.parse('<?php echo json_encode(fetchModules()) ?>');//fetch table of modules
+    var modul = null;
+    for (let i = 0; i < dbData.length; i++) {
+        if(dbData[i].Id == id){
+            modul = dbData[i];
+            break;
+        }
+
+    }
+    const pSem = document.getElementById('form-prog-sem').value;
+    year = pSem.substring(11, 17).trim();
+    sem = pSem.substring(0, 10).trim();
+    modul.Semester = sem;
+    modul.Year = year;
+    modules.push(modul);
+    console.log('modules :>> ', modules);
+    refreshModules(pSem);
 }
 
 

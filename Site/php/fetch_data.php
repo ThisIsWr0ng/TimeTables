@@ -183,5 +183,24 @@ function fetchModulesToProgrammes(){
     $conn->close();
 
 }
+function fetchModules(){
+    include 'conn.php';
+    $sql ="SELECT *
+    FROM `modules`";
+   $result = $conn->query($sql);
+   $i =0;
+   $modules =null;
+   while ($row = mysqli_fetch_array($result)) {
+       $modules[$i] = array(
+           'Id' => $row["Id"],
+           'Name' => $row["Name"],
+           'Description' => $row["Description"],
+           'Moodle_Link' => $row["Moodle_Link"]);
+           $i += 1;
+   }
+   return $modules;
+    $conn->close();
+
+}
 
 ?>

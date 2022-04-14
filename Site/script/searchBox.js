@@ -3,11 +3,17 @@ function removeText(){//Remove text from field when clicked
   }
   function fetchForm(type, formId,formData){
     var formField = document.getElementById(formId);
-    formField.value = formData;
-    if (type == "Users") {
+    
+    
+    if (window.location.href.search("admin_users.php") != -1) {
+      formField.value = formData;
         findUser(formData);//Fill other form fields with user info
-    } else if ((type == "Programmes")){
+    } else if (window.location.href.search("admin_programmes.php") != -1){
+        
+      if(type == "Programmes"){
+        formField.value = formData;
         findProgramme(formData);
+      }else if(type== "Modules"){addToModulesList(formData)}
     }
     
   }
