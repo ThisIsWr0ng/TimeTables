@@ -144,7 +144,7 @@ while ($row = mysqli_fetch_array($result)) {
                         <section class="db-output-window" id="form-prog-mod-output"></section>
   <section class="form-buttons">
                         <section >
-                            <input type="button" value="Save">
+                            <input type="button" value="Save" onclick="SaveProgramModules()">
         </section>
                     </fieldset>
                 </form>
@@ -246,7 +246,6 @@ for (let i = 0; i < modules.length; i++) {//re-arrange array
     }
 }
 modules.length = modules.length-1;//cut last part
-console.log('trimmedModules :>> ', modules);
 refreshModules(`${sem} ${year}`);
 }
 function addToModulesList(id){
@@ -262,13 +261,19 @@ function addToModulesList(id){
     const pSem = document.getElementById('form-prog-sem').value;
     year = pSem.substring(11, 17).trim();
     sem = pSem.substring(0, 10).trim();
+    prog = document.getElementById('form-prog-id').value;
     modul.Semester = sem;
     modul.Year = year;
+    modul.Programme = prog;
     modules.push(modul);
-    console.log('modules :>> ', modules);
     refreshModules(pSem);
 }
-
+function SaveProgramModules(){
+    const xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function () {document.getElementById("form-prog-mod-output").innerHTML = this.responseText; };
+            xmlhttp.open("GET",`php/updateProgramModules.php?q=${JSON.stringify(modules)}`);
+            xmlhttp.send();
+}
 
         </script>
     </main>
