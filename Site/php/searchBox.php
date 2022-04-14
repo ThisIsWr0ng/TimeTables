@@ -9,7 +9,7 @@ $onClick = null;
 switch ($searchType) {
     case "Programmes":
         $columns = array("Id", "Degree", "Name", "Level", "Type");
-        $onClick = "form-programme-id";
+        $onClick = "form-prog-id";
         break;
     case "Modules":
         $columns = array("Id", "Name", "Description");

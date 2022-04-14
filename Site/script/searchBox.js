@@ -7,7 +7,7 @@ function removeText(){//Remove text from field when clicked
     if (type == "Users") {
         findUser(formData);//Fill other form fields with user info
     } else if ((type == "Programmes")){
-        
+        findProgramme(formData);
     }
     
   }
@@ -63,4 +63,29 @@ function feedUserForm(user){
     uProg.value = user.Programme;
     uLvl.value = user.Level;
     console.log('selected programme :>> ', uProg.value);
+  }
+  function feedProgForm(prog){
+    //Locate elements
+    const pId = document.getElementById('form-prog-id');
+    const pName = document.getElementById('form-prog-name');
+    const pDeg = document.getElementById('form-prog-deg');
+    const pDept = document.getElementById('form-prog-dept');
+    const pLvl = document.getElementById('form-prog-level');
+    const pYear = document.getElementById('form-prog-year');
+    const pSdate = document.getElementById('form-prog-sdate');
+    const pEdate = document.getElementById('form-prog-edate');
+    const pDesc = document.getElementById('form-prog-desc');
+     //assign values to form Fields
+     pId.value = prog.Id;
+     pName.value = prog.Name;
+     pDesc.value = prog.Description;
+     pSdate.value = prog.Start_Date;
+     pEdate.value = prog.End_Date;
+     //assign values to dropdowns  
+     pDeg.value = prog.Degree;
+     pDept.val = prog.Department;
+     pLvl.val = prog.Level;
+     pYear.val = null;
+     //Feed modules for selected Programme
+     getModulesForProg(prog.Id);
   }

@@ -115,9 +115,34 @@
     
 }
 #form-section fieldset{
-    max-width: max-content;
+    max-width: 100%;
+    min-width: fit-content;
 }
 
+.form-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#form-prog-desc{
+    width: 90%;
+}
+.db-output-window {
+
+    min-width: 93%;
+   min-height: 200px;
+   background-color: white;
+    border: 1px solid black;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    overflow: scroll;
+    text-align: left;
+}
 
 
 /*----------------Search Box----------------------*/
@@ -132,21 +157,10 @@
     width: 40vw;
     min-width: 300px;
 }
-
-#search-output {
-    width: 93%;
+#search-output{
     min-height: 40vh;
-    border-style: double;
-    border-width: 1px;
-    border-color: black;
-    margin: auto;
-    left: 0;
-    right: 0;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    overflow: scroll;
-    text-align: left;
 }
+
 #search-output #resultstable{
     table-layout: auto;
     min-width: fit-content;

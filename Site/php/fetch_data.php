@@ -135,4 +135,53 @@ FROM Users
     return $users;
     $conn->close();
 }
+function fetchProgrammes(){
+    include 'conn.php';
+    $sql ="SELECT * FROM Programmes";
+    $result = $conn->query($sql);
+    $i =0;
+    $Programmes =null;
+    while ($row = mysqli_fetch_array($result)) {
+        $Programmes[$i] = array(
+            'Id' => $row["Id"],
+            'Name' => $row["Name"],
+            'Degree' => $row["Degree"],
+            'Department' => $row["Department"],
+            'Level' => $row["Level"],
+            'Start_Date' => $row["Start_Date"],
+            'End_Date' => $row["End_Date"],
+            'Description' => $row["Description"],
+            'Type' => $row["Type"]);
+            $i += 1;
+    }
+ 
+    return $Programmes;
+    $conn->close();
+}
+function fetchModulesToProgrammes(){
+    include 'conn.php';
+    $sql ="SELECT `modules`.*, `programmes`.`Id` AS `Programme`, `semesters`.`Year`,`semesters`.`Name` AS `Semester`
+    FROM `modules` 
+        LEFT JOIN `module_assignment` ON `module_assignment`.`Module` = `modules`.`Id` 
+        LEFT JOIN `programmes` ON `module_assignment`.`Programme` = `programmes`.`Id` 
+        LEFT JOIN `semesters` ON `module_assignment`.`Semester` = `semesters`.`Id`";
+   $result = $conn->query($sql);
+   $i =0;
+   $modules =null;
+   while ($row = mysqli_fetch_array($result)) {
+       $modules[$i] = array(
+           'Id' => $row["Id"],
+           'Name' => $row["Name"],
+           'Description' => $row["Description"],
+           'Moodle_Link' => $row["Moodle_Link"],
+           'Programme' => $row["Programme"],
+           'Year' => $row["Year"],
+           'Semester' => $row["Semester"]);
+           $i += 1;
+   }
+   return $modules;
+    $conn->close();
+
+}
+
 ?>
