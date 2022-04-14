@@ -16,6 +16,10 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
+    <script src="script/searchBox.js"></script>
+    <script src="script/sortTable.js"></script>
+    <script src="script/searchBox.js"></script>
+    <?php include 'php/fetch_data.php'?>
   </head>
   <body>
     <header>
@@ -39,10 +43,50 @@ $username = $_SESSION["username"];
       </nav>
       <div id="content-block">
       <div id="form-section">
+        <h1>Modules</h1>
+        <form action="">
+  <label for="id">id:</label><br>
+  <input type="text" id="id" name="id" value=""><br>
+  
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" value=""><br>
+
+  <label for="ml">Moodle Link:</label><br>
+  <input type="text" id="ml" name="ml" value=""><br>
+  
+  <label for="desc">Description</label><br>
+  <textarea id="desc" name="desc" rows="4" cols="50">
+  </textarea> <br>
+  
+  
+
+<button type="button" onclick="">Add</button> 
+<button type="button" onclick="">Delete</button>
+  
+</form> 
 
      </div>
      <div id="search-section">
-       
+     <div id="search-section">
+                <form class="admin-search">
+                    <select name="search-type" id="search-type">
+                        <option value="Users" >Users</option>
+                        <option value="Programmes" selected>Programmes</option>
+                        <option value="Modules">Modules</option>
+                        <option value="Events">Events</option>
+                    </select>
+                    <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
+                </form>
+                <div id="search-list-opt-top">
+                    <input type="button" name="list-remove" id="list-remove" value="-">
+                    <input type="button" name="list-add" id="list-add" value="+" onclick="">
+                </div>
+                <div class="db-output-window" id="search-output"></div>
+                <div id="search-list-opt">
+                    <input type="button" value="Import List">
+                    <input type="button" value="Export list">
+                </div>
+            </div>
      </div>
 </div>
      </div>
