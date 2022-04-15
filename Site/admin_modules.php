@@ -117,27 +117,21 @@ $username = $_SESSION["username"];
      </div>
 </div>
      </div>
-     <script>
-       let Deadlines = null;//Storage for deadlines
-       let Lecturers = null;//Storage for lecturers
-       let Groups = null;//Storage for student groups
-       let MId = null;
+     <script>  //FINISHED HERE <<------------------------------------------------------ add onclicks to remove rows, make all save buttons work
+       let dbData = [0];//Storage for modules, deadlines and groups
        function findModule(id){
             if (id!= "") {
-                var modules = JSON.parse('<?php echo json_encode(fetchModulesFull()) ?>');
-                var modul = null;
-                for (let i = 0; i < modules.length; i++) {
-                if(modules[i].Id == id){modul = modules[i];}
-                else{modules[i] = null;}
-                }
-                if(typeof modul !== "undefined"){
-                feedModForm(modul);
-                getModuleLecturer(modul);
-                getModuleDeadlines(modul);
-                getModuleGroups(modul);
-                modules = null;
-                modul = null;
-          }}}
+              const xmlhttp = new XMLHttpRequest();
+              
+              xmlhttp.onload = function () {dbData = JSON.parse(this.responseText);
+                feedModForm(dbData[0]);
+                getModuleLecturer(dbData[1]);
+                getModuleDeadlines(dbData[2]);
+                getModuleGroups(dbData[3]);
+               };
+              xmlhttp.open("GET",`php/getAllModuleInfo.php?q=${id}`);
+              xmlhttp.send();
+               }}
     function feedModForm(mod){
     const mId = document.getElementById('form-mod-id');
     const mName = document.getElementById('form-mod-name');
@@ -151,13 +145,41 @@ $username = $_SESSION["username"];
 
     }
     function getModuleLecturer(modul){
-
+      const mLect = document.getElementById('form-mod-lect-output');
+      if(typeof modul == 'string'){
+        outputText = modul;
+      }else{
+        outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
+      for (let i = 0; i < modul.length; i++) {
+           outputText += `<tr onclick=""><td>${modul[i].Id}</td><td>${modul[i].First_Name} ${modul[i].Surname}</td></tr>`;
+      
+    }
+    outputText += "</table>"}
+    mLect.innerHTML =  outputText;
     }
     function getModuleDeadlines(modul){
-
+      const mDead = document.getElementById('form-mod-dead-output');
+      if(typeof modul == 'string'){outputText = modul;}else{
+      outputText = "<table class=\"resultstable\"><tr><th>Name</th><th>Date</th><th>Weight</th></tr>";
+      for (let i = 0; i < modules.length; i++) {
+           outputText += `<tr onclick=""><td>${modul[i].Name}</td><td>${modul[i].Date}</td><td>${modul[i].Weight}</td></tr>`; 
+    }
+    outputText += "</table>"}
+    mDead.innerHTML =  outputText;
     }
     function getModuleGroups(modul){
-
+      const mGroup = document.getElementById('form-mod-studgroup-output');
+      const mSelect = document.getElementById('form-group-sel');
+      if(typeof modul == 'string'){outputText = modul;}else{
+      outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
+      for (let i = 0; i < modules.length; i++) {
+       if(mSelect.value == modul[i].Group){
+           outputText += `<tr onclick=""><td>${modul[i].Id}</td><td>${modul[i].First_Name} ${modul[i].Surname}</td></tr>`;
+       }
+        
+    }
+    outputText += "</table>"}
+    mGroup.innerHTML =  outputText;
     }
 
      </script>

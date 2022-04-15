@@ -38,7 +38,7 @@ CREATE TABLE `Users` (
 );
 CREATE TABLE `Requests` (
   `Id` INT AUTO_INCREMENT,
-  `User_Id` VARCHAR(10),
+  `User_Id` VARCHAR(13),
   `Type` VARCHAR(50) NOT NULL,
   `Description` VARCHAR(200),
   `Status` TINYINT DEFAULT 0,
@@ -83,7 +83,7 @@ CREATE TABLE `Rooms` (
 CREATE TABLE `Student_Group` (
   `Id` INT AUTO_INCREMENT,
   `Module` VARCHAR(10),
-  `User` VARCHAR(10),
+  `User` VARCHAR(13),
   `Group_Name` VARCHAR(100),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
@@ -145,7 +145,7 @@ CREATE TABLE `Module_Assignment` (
 );
 CREATE TABLE `Lecturers_Assignment` (
   `Id` INT AUTO_INCREMENT,
-  `Lecturer` VARCHAR(10),
+  `Lecturer` VARCHAR(13),
   `Module` VARCHAR(10),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
@@ -153,14 +153,14 @@ CREATE TABLE `Lecturers_Assignment` (
 );
 CREATE TABLE `Logins` (
   `Id` INT AUTO_INCREMENT,
-  `Username` VARCHAR(10),
+  `Username` VARCHAR(13),
   `Password` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Username`) REFERENCES `Users`(`Id`)
 );
 CREATE TABLE `Student_Enrolment` (
   `Id` INT AUTO_INCREMENT,
-  `Student` VARCHAR(10),
+  `Student` VARCHAR(13),
   `Programme` INT,
   `Date_Enrolled` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Date_Finished` DATE,
@@ -178,7 +178,7 @@ CREATE TABLE `Roles` (
 CREATE TABLE `Role_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Role` INT,
-  `User` VARCHAR(10),
+  `User` VARCHAR(13),
   PRIMARY KEY (`Id`),
   FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`),
   FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
@@ -192,7 +192,7 @@ CREATE TABLE `Holidays` (
   PRIMARY KEY (`Id`)
 );
 CREATE TABLE `Settings` (
-  `User` VARCHAR(10),
+  `User` VARCHAR(13),
   `Color_Scheme` CHAR(1) DEFAULT 1,
   `Notifications` CHAR(1) DEFAULT 1,
   `Default_View` CHAR(1) DEFAULT 1,
@@ -200,7 +200,7 @@ CREATE TABLE `Settings` (
 );
 CREATE TABLE `User_Events` (
   `Id` INT AUTO_INCREMENT,
-  `User` VARCHAR(10),
+  `User` VARCHAR(13),
   `Name` VARCHAR(100),
   `Date` DATE,
   `Time_From` TIME NOT NULL,
@@ -835,6 +835,12 @@ VALUES (
     "Responsible Computing",
     "",
     "https://moodle.glyndwr.ac.uk/course/view.php?id=35184"
+  );
+  INSERT INTO Lecturers_Assignment
+  VALUES (
+NULL,
+"2384923019287",
+"COM539"
   );
 INSERT INTO buildings
 VALUES (
