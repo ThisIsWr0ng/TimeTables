@@ -372,6 +372,13 @@ VALUES (
     "Alex Neill",
     ""
   );
+    INSERT INTO departments
+VALUES (
+    "Psychology",
+    "PSY",
+    "Alex Neill",
+    ""
+  );
 INSERT INTO programmes
 Values (
     NULL,

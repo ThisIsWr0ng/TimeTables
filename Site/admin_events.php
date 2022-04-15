@@ -16,6 +16,10 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
+    <script src="script/searchBox.js"></script>
+    <script src="script/sortTable.js"></script>
+    <script src="script/searchBox.js"></script>
+    <?php include 'php/fetch_data.php'?>
   </head>
   <body>
     <header>
@@ -42,7 +46,26 @@ $username = $_SESSION["username"];
 
      </div>
      <div id="search-section">
-       
+     <div id="search-section">
+                <form class="admin-search">
+                    <select name="search-type" id="search-type">
+                        <option value="Users" >Users</option>
+                        <option value="Programmes" selected>Programmes</option>
+                        <option value="Modules">Modules</option>
+                        <option value="Events">Events</option>
+                    </select>
+                    <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
+                </form>
+                <div id="search-list-opt-top">
+                    <input type="button" name="list-remove" id="list-remove" value="-">
+                    <input type="button" name="list-add" id="list-add" value="+" onclick="">
+                </div>
+                <div class="db-output-window" id="search-output"></div>
+                <div id="search-list-opt">
+                    <input type="button" value="Import List">
+                    <input type="button" value="Export list">
+                </div>
+            </div>
      </div>
 </div>
      </div>

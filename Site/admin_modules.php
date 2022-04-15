@@ -45,25 +45,52 @@ $username = $_SESSION["username"];
       <div id="form-section">
         <h1>Modules</h1>
         <form action="">
-  <label for="id">id:</label><br>
-  <input type="text" id="id" name="id" value=""><br>
+          <fieldset>
+            <legend>Module Details</legend>
+  <label for="id">Id:</label><br>
+  <input type="text" id="form-mod-id" name="id" value=""><br>
   
   <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" value=""><br>
+  <input type="text" id="form-mod-name" name="name" value=""><br>
 
   <label for="ml">Moodle Link:</label><br>
-  <input type="text" id="ml" name="ml" value=""><br>
+  <input type="text" id="form-mod-moodle" name="ml" value=""><br>
   
   <label for="desc">Description</label><br>
-  <textarea id="desc" name="desc" rows="4" cols="50">
+  <textarea id="form-mod-desc" name="desc" rows="4" cols="30">
   </textarea> <br>
   
   
 
-<button type="button" onclick="">Add</button> 
-<button type="button" onclick="">Delete</button>
-  
+<input type="button" value="Save" onclick=""/> 
+</fieldset>
 </form> 
+<form action="">
+  <fieldset>
+    <legend>Lecturers</legend>
+    <section class="db-output-window" id="form-mod-lect-output"></section>
+    <input type="button" value="Save" onclick="">
+
+  </fieldset>
+</form>
+ 
+<form action="">
+  <fieldset>
+    <legend>Deadlines</legend>
+    <section class="db-output-window" id="form-mod-dead-output"></section>
+    <input type="button" onclick="" value="Add"/> 
+<input type="button" onclick="" value="Save"/>
+  </fieldset>
+</form>
+<form action="">
+  <fieldset>
+    <legend>Student Groups</legend>
+    <select name="groupsel" id="form-group-sel"><option value="1">Group 1</option><option value="2">Group 2</option></select>
+    <section class="db-output-window" id="form-mod-studgroup-output"></section>
+    <input type="button" value="Save" onclick="">
+
+  </fieldset>
+</form>
 
      </div>
      <div id="search-section">
@@ -71,8 +98,8 @@ $username = $_SESSION["username"];
                 <form class="admin-search">
                     <select name="search-type" id="search-type">
                         <option value="Users" >Users</option>
-                        <option value="Programmes" selected>Programmes</option>
-                        <option value="Modules">Modules</option>
+                        <option value="Programmes" >Programmes</option>
+                        <option value="Modules"selected>Modules</option>
                         <option value="Events">Events</option>
                     </select>
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
@@ -90,6 +117,38 @@ $username = $_SESSION["username"];
      </div>
 </div>
      </div>
+     <script>
+       let Deadlines = null;//Storage for deadlines
+       let Lecturers = null;//Storage for lecturers
+       let Groups = null;//Storage for student groups
+       function findModule(id){
+            if (id!= "") {
+                var modules = JSON.parse('<?php echo json_encode(fetchModules()) ?>');
+                var modul = null;
+                for (let i = 0; i < modules.length; i++) {
+                if(modules[i].Id == id){modul = modules[i];}
+                else{modules[i] = null;}
+                }
+                if(typeof modul !== "undefined"){
+      feedModForm(modul);
+      modules = null;
+      modul = null;
+    }}}
+    function feedModForm(mod){
+    const mId = document.getElementById('form-mod-id');
+    const mName = document.getElementById('form-mod-name');
+    const mMoodle = document.getElementById('form-mod-moodle');
+    const mDesc = document.getElementById('form-mod-desc');
+    mId.value = mod.Id;
+    mName.value = mod.Name;
+    mMoodle.value = mod.Moodle_Link;
+    mDesc.value = mod.Description;
+    
+
+    }
+
+
+     </script>
     </main>
   </body>
 </html>

@@ -14,6 +14,17 @@ function removeText(){//Remove text from field when clicked
         formField.value = formData;
         findProgramme(formData);
       }else if(type== "Modules"){addToModulesList(formData)}
+    }else if(window.location.href.search("admin_modules.php") != -1){
+      if(type == "Modules"){
+        formField.value = formData;
+        findModule(formData)
+      }else if(type == "Users"){
+        if(formData.length > 12){//add to lecturers
+
+        }else{//add to student groups
+
+        }
+      }
     }
     
   }

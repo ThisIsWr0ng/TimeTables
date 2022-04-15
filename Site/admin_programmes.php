@@ -195,7 +195,7 @@ function getModulesForProg(id){
     const pSem = document.getElementById('form-prog-sem');
     const output = document.getElementById('form-prog-mod-output');
     var id = pId.value;
-    modules = [];
+    modules = [];//Modules are stored here!!
     if (id != "") {
         var dbData = JSON.parse('<?php echo json_encode(fetchModulesToProgrammes()) ?>');//fetch table of modules
         for (let i = 0; i < dbData.length; i++) {

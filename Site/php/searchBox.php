@@ -13,7 +13,7 @@ switch ($searchType) {
         break;
     case "Modules":
         $columns = array("Id", "Name", "Description");
-        $onClick = "form-module-id";
+        $onClick = "form-mod-id";
         break;
     case "Users":
         $columns = array("Id", "First_Name", "Surname", "Title", "Role", "Gender","Birth_Date", "Priv_Email", "Uni_Email", "Telephone", "Next_Of_Kin", "Street_Number", "Street_Name", "Postcode");
