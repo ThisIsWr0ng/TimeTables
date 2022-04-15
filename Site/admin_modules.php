@@ -121,19 +121,23 @@ $username = $_SESSION["username"];
        let Deadlines = null;//Storage for deadlines
        let Lecturers = null;//Storage for lecturers
        let Groups = null;//Storage for student groups
+       let MId = null;
        function findModule(id){
             if (id!= "") {
-                var modules = JSON.parse('<?php echo json_encode(fetchModules()) ?>');
+                var modules = JSON.parse('<?php echo json_encode(fetchModulesFull()) ?>');
                 var modul = null;
                 for (let i = 0; i < modules.length; i++) {
                 if(modules[i].Id == id){modul = modules[i];}
                 else{modules[i] = null;}
                 }
                 if(typeof modul !== "undefined"){
-      feedModForm(modul);
-      modules = null;
-      modul = null;
-    }}}
+                feedModForm(modul);
+                getModuleLecturer(modul);
+                getModuleDeadlines(modul);
+                getModuleGroups(modul);
+                modules = null;
+                modul = null;
+          }}}
     function feedModForm(mod){
     const mId = document.getElementById('form-mod-id');
     const mName = document.getElementById('form-mod-name');
@@ -143,10 +147,18 @@ $username = $_SESSION["username"];
     mName.value = mod.Name;
     mMoodle.value = mod.Moodle_Link;
     mDesc.value = mod.Description;
-    
+
 
     }
+    function getModuleLecturer(modul){
 
+    }
+    function getModuleDeadlines(modul){
+
+    }
+    function getModuleGroups(modul){
+
+    }
 
      </script>
     </main>

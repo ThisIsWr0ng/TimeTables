@@ -202,5 +202,8 @@ function fetchModules(){
     $conn->close();
 
 }
+function fetchModulesFull(){
+
+}
 
 ?>
