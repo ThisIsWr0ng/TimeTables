@@ -59,10 +59,6 @@ $username = $_SESSION["username"];
   <label for="desc">Description</label><br>
   <textarea id="form-mod-desc" name="desc" rows="4" cols="30">
   </textarea> <br>
-  
-  
-
-<input type="button" value="Save" onclick=""/> 
 </fieldset>
 </form> 
 <form action="">
@@ -90,7 +86,7 @@ $username = $_SESSION["username"];
 
   </fieldset>
 </form>
-<input type="button" value="Save" onclick="">
+<input type="button" value="Save" onclick="saveFormModules()">
 
      </div>
      <div id="search-section">
@@ -173,6 +169,7 @@ $username = $_SESSION["username"];
       getModuleDeadlines(dbData[2]);
       getModuleGroups(dbData[3]);
     }
+ 
 
 
      </script>

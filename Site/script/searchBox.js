@@ -179,3 +179,13 @@ function removeFromResultsTable(type, id){//remove rows from output tables in mo
   //refresh all results
   refreshModulesResultTables()
 }
+function saveFormModules(){
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function () {
+    const search = document.getElementById('search-output');
+    //search.innerHTML = this.responseText;
+    window.alert(this.responseText);
+  };
+  xmlhttp.open("GET", `php/saveFormModules.php?q=${JSON.stringify(dbData)}`);
+  xmlhttp.send();
+}
