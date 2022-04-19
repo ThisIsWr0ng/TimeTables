@@ -16,7 +16,9 @@
     height: 900px;
     float: left;
 }
-
+.hidden{
+    display: none;
+}
 #admin-nav {
     padding: 10px 20px;
     display: flex;

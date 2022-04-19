@@ -22,7 +22,6 @@ echo print_r($module);
 $sql = "SELECT * FROM Modules WHERE id = \"{$module['Id']}\"";
 $result = $conn->query($sql);
 if(mysqli_num_rows($result) == 0){//create new module
-    echo print_r($module);
 $sql = "INSERT INTO Modules VALUES (\"{$module['Id']}\",\"{$module['Name']}\",\"{$module['Description']}\",\"{$module['Moodle_Link']}\");";
 $result = $conn->query($sql);
 if(!$result){
@@ -53,9 +52,9 @@ if($lecturers != null){
             array_push($errors, "Updating lecturers failed");
         }
     }
-    
-
-
+}else{//delete lecturers
+    $sql = "DELETE FROM Lecturers_Assignment WHERE Module = \"{$module['Id']}\"";
+    $conn->query($sql);
 }
 
 //----------------Save Deadlines for this Module
@@ -64,17 +63,21 @@ if($deadlines != null){
         $sql ="INSERT INTO Deadlines VALUES (
             NULL,
             \"{$module['Id']}\",
-            \"{$deadlines['Name']}\",
-            \"{$deadlines['Date']}\",
-            \"{$deadlines['Weight']}\",
-            \"{$deadlines['Moodle_Link']}\"
+            \"{$deadlines[$i]['Name']}\",
+            \"{$deadlines[$i]['Date']}\",
+            \"{$deadlines[$i]['Weight']}\",
+            \"{$deadlines[$i]['Moodle_Link']}\"
         );";
+        echo print_r($sql);
          $result = $conn->query($sql);
          if(!$result){
-             array_push($errors, "Updating lecturers failed");
+             array_push($errors, "Updating deadlines failed");
          }
 
     }
+}else{
+ $sql = "DELETE FROM Deadlines WHERE Module_Id = \"{$module['Id']}\"";
+$conn->query($sql);
 }
 //----------------Save Student Groups for this Module
 if($groups != null){
@@ -85,15 +88,15 @@ if($groups != null){
             \"{$groups[$i]['Id']}\",  
             \"{$groups[$i]['Group']}\"
         );"; 
-         echo $sql;
     $result = $conn->query($sql);
     if(!$result){
         array_push($errors, "Updating Student Groups failed");
     }
     }
-    
 
-
+}else{
+    $sql = "DELETE FROM Student_Group WHERE Module = \"{$module['Id']}\"";
+    $conn->query($sql);
 }
 
 

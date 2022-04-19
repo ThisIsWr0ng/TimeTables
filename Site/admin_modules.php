@@ -72,8 +72,21 @@ $username = $_SESSION["username"];
   <fieldset>
     <legend>Deadlines</legend>
     <section class="db-output-window" id="form-mod-dead-output">No Deadlines Assigned</section>
-    <input type="button" onclick="" value="Add"/> 
+    <div id="deadlines-fields">
+    <label for="name">Name:</label><br>
+  <input type="text" id="form-mod-dead-name" name="name" value="" required><br>
 
+  <label for="weight">Weight (%):</label>
+  <input type="number" id="form-mod-dead-weight" name="weight" min="0" max="100" step="5">
+
+  <label for="datetime">Date:</label>
+  <input type="datetime-local" id="form-mod-dead-date" name="datetime">
+
+  <label for="ml">Moodle Link:</label><br>
+  <input type="text" id="form-mod-dead-moodle" name="ml" value=""><br>
+    
+</div>
+<input type="button" id="add-deadlines" value="Add"/> 
   </fieldset>
   </form>
   <form>
@@ -85,7 +98,7 @@ $username = $_SESSION["username"];
 
   </fieldset>
 
-<input type="button" value="Save" onclick="saveFormModules()" >
+<input  type="button" value="Save" onclick="saveFormModules()">
 </form>
      </div>
      <div id="search-section">
@@ -113,6 +126,7 @@ $username = $_SESSION["username"];
 </div>
      </div>
      <script> 
+     hideDeadlineFields();
        let dbData = [0];//Storage for modules, deadlines and groups || [0] - Module Info [1] - Lecturers [2] - Deadlines [3] - Student Groups
        function findModule(id){
             if (id!= "") {
@@ -168,6 +182,39 @@ $username = $_SESSION["username"];
       getModuleLecturer(dbData[1]);
       getModuleDeadlines(dbData[2]);
       getModuleGroups(dbData[3]);
+    }
+    function showDeadlineFields(){
+      hide('deadlines-fields',0);
+      const mAddButton = document.getElementById('add-deadlines');
+      mAddButton.setAttribute("onclick", "addToDeadlinesList()");
+
+
+    }
+    function hideDeadlineFields(){
+      hide('deadlines-fields',1);
+      const mAddButton = document.getElementById('add-deadlines');
+      mAddButton.setAttribute("onclick", "showDeadlineFields()");
+    }
+    function addToDeadlinesList(){
+      const dName = document.getElementById('form-mod-dead-name');
+      const dWeight = document.getElementById('form-mod-dead-weight');
+      const dDate = document.getElementById('form-mod-dead-date');
+      const dLink = document.getElementById('form-mod-dead-moodle');
+      var deadline = {};
+      deadline.Name = dName.value;
+      deadline.Weight = dWeight.value;
+      deadline.Date = dDate.value;
+      deadline.Moodle_Link = dLink.value;
+      console.log('dbData :>> ', dbData);
+      if(typeof dbData[2] == "string"){
+        dbData[2] = [];
+        dbData[2][0] = deadline;
+      }else{
+        dbData[2].push(deadline);
+      }
+
+      getModuleDeadlines(dbData[2]);
+      hideDeadlineFields();
     }
  
 

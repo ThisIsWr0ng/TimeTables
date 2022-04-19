@@ -146,7 +146,7 @@ function getModuleDeadlines(modul){
   const mDead = document.getElementById('form-mod-dead-output');
   if(typeof modul == 'string'){outputText = modul;}else{
   outputText = "<table class=\"resultstable\"><tr><th>Name</th><th>Date</th><th>Weight</th></tr>";
-  for (let i = 0; i < modules.length; i++) {
+  for (let i = 0; i < modul.length; i++) {
        outputText += `<tr onclick="removeFromResultsTable('Deadlines', ${i})"><td>${modul[i].Name}</td><td>${modul[i].Date}</td><td>${modul[i].Weight}</td></tr>`; 
 }
 outputText += "</table>"}
@@ -155,7 +155,7 @@ mDead.innerHTML =  outputText;
 function getModuleGroups(modul){
   const mGroup = document.getElementById('form-mod-studgroup-output');
   const mSelect = document.getElementById('form-group-sel');
-  console.log('students :>> ', dbData);
+  
   if(typeof modul == 'string'){outputText = modul;}else{
   outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
   for (let i = 0; i < modul.length; i++) {
@@ -172,10 +172,13 @@ function removeFromResultsTable(type, id){//remove rows from output tables in mo
   //delete rows
   if(type == "Lecturers"){
     dbData[1].splice(id, 1);
+    if(dbData[1].length == 0){dbData[1] = "No Lecturers Assigned";}
   }else if(type == "Deadlines"){
     dbData[2].splice(id, 1);
+    if(dbData[2].length == 0){dbData[2] = "No Deadlines Assigned";}
   }else if(type == "Groups"){
     dbData[3].splice(id, 1);
+    if(dbData[3].length == 0){dbData[3] = "No Groups Assigned";}
   }
   //refresh all results
   refreshModulesResultTables()
@@ -199,4 +202,11 @@ function saveFormModules(){
   };
   xmlhttp.open("GET", `php/saveFormModules.php?q=${JSON.stringify(dbData)}`);
   xmlhttp.send();
+}
+function hide(el, hide){
+  if(hide == 1){
+    document.getElementById(el).classList.add('hidden');
+  }else{
+    document.getElementById(el).classList.remove('hidden');
+  }
 }
