@@ -69,7 +69,6 @@ $username = $_SESSION["username"];
   <fieldset>
     <legend>Lecturers</legend>
     <section class="db-output-window" id="form-mod-lect-output"></section>
-    <input type="button" value="Save" onclick="">
 
   </fieldset>
 </form>
@@ -79,18 +78,19 @@ $username = $_SESSION["username"];
     <legend>Deadlines</legend>
     <section class="db-output-window" id="form-mod-dead-output"></section>
     <input type="button" onclick="" value="Add"/> 
-<input type="button" onclick="" value="Save"/>
+
   </fieldset>
 </form>
 <form action="">
   <fieldset>
     <legend>Student Groups</legend>
-    <select name="groupsel" id="form-group-sel"><option value="1">Group 1</option><option value="2">Group 2</option></select>
+    <select name="groupsel" id="form-group-sel" onchange="refreshModulesResultTables()"><option value="1">Group 1</option><option value="2">Group 2</option></select>
     <section class="db-output-window" id="form-mod-studgroup-output"></section>
-    <input type="button" value="Save" onclick="">
+    
 
   </fieldset>
 </form>
+<input type="button" value="Save" onclick="">
 
      </div>
      <div id="search-section">
@@ -117,7 +117,7 @@ $username = $_SESSION["username"];
      </div>
 </div>
      </div>
-     <script>  //FINISHED HERE <<------ add onclicks to remove rows, make all save buttons work
+     <script> 
        let dbData = [0];//Storage for modules, deadlines and groups || [0] - Module Info [1] - Lecturers [2] - Deadlines [3] - Student Groups
        function findModule(id){
             if (id!= "") {
@@ -125,9 +125,7 @@ $username = $_SESSION["username"];
               
               xmlhttp.onload = function () {dbData = JSON.parse(this.responseText);
                 feedModForm(dbData[0]);
-                getModuleLecturer(dbData[1]);
-                getModuleDeadlines(dbData[2]);
-                getModuleGroups(dbData[3]);
+                refreshModulesResultTables()
                };
               xmlhttp.open("GET",`php/getAllModuleInfo.php?q=${id}`);
               xmlhttp.send();
@@ -144,19 +142,36 @@ $username = $_SESSION["username"];
     }
     function addToModulesTables(type, userId){//add students or lecturers to tables on modules page
       var user = null;
-      if (userId!= "") {
+      if (userId!= "") {//Get user info
               const xmlhttp = new XMLHttpRequest();
               
-              xmlhttp.onload = function () {user = JSON.parse(this.responseText);};
+              xmlhttp.onload = function () {
+                user = JSON.parse(this.responseText);
+                if(type== "Lecturer"){
+                  if(typeof dbData[1] == "string"){dbData[1] = []}
+        dbData[1].push(user);
+      }else if(type == "Student"){//add student to selected group
+        const mGroup = document.getElementById('form-group-sel');
+        user.Group = mGroup.value;
+        if(typeof dbData[3] == "string"){dbData[3] = []}
+        dbData[3].push(user);
+      }
+      //refresh tables
+      refreshModulesResultTables()
+              
+              };
               xmlhttp.open("GET",`php/getUserById.php?q=${userId}`);
               xmlhttp.send();
-               }}
-      if(type== "Lecturer"){
+               }
 
-      }else if(type == "Student"){//add student to selected group
+    
+      
 
-      }
-
+    }
+    function refreshModulesResultTables(){
+      getModuleLecturer(dbData[1]);
+      getModuleDeadlines(dbData[2]);
+      getModuleGroups(dbData[3]);
     }
 
 

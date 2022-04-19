@@ -20,9 +20,9 @@ function removeText(){//Remove text from field when clicked
         findModule(formData)
       }else if(type == "Users"){
         if(formData.length > 12){//add to lecturers
-
+          addToModulesTables("Lecturer", formData);
         }else{//add to student groups
-
+          addToModulesTables("Student", formData);
         }
       }
     }
@@ -128,4 +128,54 @@ function SaveProgramModules(){
           xmlhttp.open("GET",`php/updateProgramModules.php?q=${JSON.stringify(modules)}`);
           xmlhttp.send();
          
+}
+function getModuleLecturer(modul){
+  const mLect = document.getElementById('form-mod-lect-output');
+  if(typeof modul == 'string'){
+    outputText = modul;
+  }else{
+    outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
+  for (let i = 0; i < modul.length; i++) {
+       outputText += `<tr onclick="removeFromResultsTable('Lecturers', ${i})"><td>${modul[i].Id}</td><td>${modul[i].First_Name} ${modul[i].Surname}</td></tr>`;
+  
+}
+outputText += "</table>"}
+mLect.innerHTML =  outputText;
+}
+function getModuleDeadlines(modul){
+  const mDead = document.getElementById('form-mod-dead-output');
+  if(typeof modul == 'string'){outputText = modul;}else{
+  outputText = "<table class=\"resultstable\"><tr><th>Name</th><th>Date</th><th>Weight</th></tr>";
+  for (let i = 0; i < modules.length; i++) {
+       outputText += `<tr onclick="removeFromResultsTable('Deadlines', ${i})"><td>${modul[i].Name}</td><td>${modul[i].Date}</td><td>${modul[i].Weight}</td></tr>`; 
+}
+outputText += "</table>"}
+mDead.innerHTML =  outputText;
+}
+function getModuleGroups(modul){
+  const mGroup = document.getElementById('form-mod-studgroup-output');
+  const mSelect = document.getElementById('form-group-sel');
+  if(typeof modul == 'string'){outputText = modul;}else{
+  outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
+  for (let i = 0; i < modul.length; i++) {
+   if(mSelect.value == modul[i].Group){
+       outputText += `<tr onclick="removeFromResultsTable('Groups', ${i})"><td>${modul[i].Id}</td><td>${modul[i].First_Name} ${modul[i].Surname}</td></tr>`;
+   }
+    
+}
+outputText += "</table>"}
+mGroup.innerHTML =  outputText;
+}
+function removeFromResultsTable(type, id){//remove rows from output tables in modules subpage
+
+  //delete rows
+  if(type == "Lecturers"){
+    dbData[1].splice(id, 1);
+  }else if(type == "Deadlines"){
+    dbData[2].splice(id, 1);
+  }else if(type == "Groups"){
+    dbData[3].splice(id, 1);
+  }
+  //refresh all results
+  refreshModulesResultTables()
 }
