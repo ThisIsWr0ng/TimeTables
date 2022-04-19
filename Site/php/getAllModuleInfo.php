@@ -45,38 +45,37 @@ $modules[1] = $users;
     $modules[1] = "No Lecturers Assigned";
 }
 //Get Deadlines on this module
-$sql = "SELECT * FROM Deadlnes WHERE Module_Id = \"$moduleId\"";
+$sql = "SELECT * FROM Deadlines WHERE Module_Id = \"$moduleId\"";
 $result = $conn->query($sql);
 $i =0;
 $deadlines =null;
-
-if ($result){
+if ($result->num_rows > 0){
 while ($row = mysqli_fetch_array($result)) {
     $deadlines[$i] = array(
-        'Name'=>$row['Name'],
-        'Date'=>$row['Date'],
-        'Weight'=>$row['Weight'],
-        'Moodle_Link'=>$row['Moodle_Link'],
-    );
+        "Name"=>$row["Name"],
+        "Date"=>$row["Date"],
+        "Weight"=>$row["Weight"],
+        "Moodle_Link"=>$row["Moodle_Link"]);
+        $i += 1;
 }
 $modules[2] = $deadlines;
 }else{
     $modules[2] = "No Deadlines For $moduleId";
 }
 //Get Groups of students for this module
-$sql = "SELECT Users.Id, Users.First_Name, Users.Surname, Student_Group.Group_Name AS Group FROM Users LEFT JOIN Student_Group ON Student_Group.User = Users.Id
+$sql = "SELECT Users.Id, Users.First_Name, Users.Surname, Student_Group.Group_Name AS \"Group\" FROM Users LEFT JOIN Student_Group ON Student_Group.User = Users.Id
 WHERE Student_Group.Module = \"$moduleId\"";
 $result = $conn->query($sql);
 $i =0;
 $groups =null;
-if ($result){
+if ($result->num_rows > 0){
 while ($row = mysqli_fetch_array($result)) {
     $groups[$i] = array(
-        'Id'=>$row['Id'],
-        'First_Name'=>$row['First_Name'],
-        'Surname'=>$row['Surname'],
-        'Group'=>$row['Group'],
-    );
+        "Id"=>$row["Id"],
+        "First_Name"=>$row["First_Name"],
+        "Surname"=>$row["Surname"],
+        "Group"=>$row["Group"]);
+        $i += 1;
 }
 $modules[3] = $groups;
 }else{

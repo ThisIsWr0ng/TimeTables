@@ -44,14 +44,14 @@ $username = $_SESSION["username"];
       <div id="content-block">
       <div id="form-section">
         <h1>Modules</h1>
-        <form action="">
+        <form>
           <fieldset>
             <legend>Module Details</legend>
   <label for="id">Id:</label><br>
-  <input type="text" id="form-mod-id" name="id" value=""><br>
+  <input type="text" id="form-mod-id" name="id" value="" required><br>
   
   <label for="name">Name:</label><br>
-  <input type="text" id="form-mod-name" name="name" value=""><br>
+  <input type="text" id="form-mod-name" name="name" value="" required><br>
 
   <label for="ml">Moodle Link:</label><br>
   <input type="text" id="form-mod-moodle" name="ml" value=""><br>
@@ -60,34 +60,33 @@ $username = $_SESSION["username"];
   <textarea id="form-mod-desc" name="desc" rows="4" cols="30">
   </textarea> <br>
 </fieldset>
-</form> 
-<form action="">
+</form>
+<form>
   <fieldset>
     <legend>Lecturers</legend>
-    <section class="db-output-window" id="form-mod-lect-output"></section>
+    <section class="db-output-window" id="form-mod-lect-output">No Lecturers Assigned</section>
 
   </fieldset>
-</form>
- 
-<form action="">
+  </form>
+  <form>
   <fieldset>
     <legend>Deadlines</legend>
-    <section class="db-output-window" id="form-mod-dead-output"></section>
+    <section class="db-output-window" id="form-mod-dead-output">No Deadlines Assigned</section>
     <input type="button" onclick="" value="Add"/> 
 
   </fieldset>
-</form>
-<form action="">
+  </form>
+  <form>
   <fieldset>
     <legend>Student Groups</legend>
-    <select name="groupsel" id="form-group-sel" onchange="refreshModulesResultTables()"><option value="1">Group 1</option><option value="2">Group 2</option></select>
-    <section class="db-output-window" id="form-mod-studgroup-output"></section>
+    <select name="groupsel" id="form-group-sel" onchange="refreshModulesResultTables() "><option value="Group 1">Group 1</option><option value="Group 2">Group 2</option></select>
+    <section class="db-output-window" id="form-mod-studgroup-output">No Groups Assigned</section>
     
 
   </fieldset>
-</form>
-<input type="button" value="Save" onclick="saveFormModules()">
 
+<input type="button" value="Save" onclick="saveFormModules()" >
+</form>
      </div>
      <div id="search-section">
      <div id="search-section">
@@ -119,7 +118,10 @@ $username = $_SESSION["username"];
             if (id!= "") {
               const xmlhttp = new XMLHttpRequest();
               
-              xmlhttp.onload = function () {dbData = JSON.parse(this.responseText);
+              xmlhttp.onload = function () {
+                const output = document.getElementById('search-output');
+                output.innerHTML = this.responseText;
+                dbData = JSON.parse(this.responseText);
                 feedModForm(dbData[0]);
                 refreshModulesResultTables()
                };

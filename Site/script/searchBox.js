@@ -155,6 +155,7 @@ mDead.innerHTML =  outputText;
 function getModuleGroups(modul){
   const mGroup = document.getElementById('form-mod-studgroup-output');
   const mSelect = document.getElementById('form-group-sel');
+  console.log('students :>> ', dbData);
   if(typeof modul == 'string'){outputText = modul;}else{
   outputText = "<table class=\"resultstable\"><tr><th>Id</th><th>Name</th></tr>";
   for (let i = 0; i < modul.length; i++) {
@@ -180,11 +181,21 @@ function removeFromResultsTable(type, id){//remove rows from output tables in mo
   refreshModulesResultTables()
 }
 function saveFormModules(){
+  const mId = document.getElementById('form-mod-id');
+  const mName = document.getElementById('form-mod-name');
+  const mDesc = document.getElementById('form-mod-desc');
+  const mLink = document.getElementById('form-mod-moodle');
+  dbData[0].Id = mId.value;
+  dbData[0].Name = mName.value;
+  dbData[0].Description = mDesc.value;
+  dbData[0].Moodle_Link = mLink.value;
   const xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
     const search = document.getElementById('search-output');
     //search.innerHTML = this.responseText;
-    window.alert(this.responseText);
+    //window.alert(this.responseText);
+    const doc = document.getElementById('search-output');
+    doc.innerHTML = this.responseText;
   };
   xmlhttp.open("GET", `php/saveFormModules.php?q=${JSON.stringify(dbData)}`);
   xmlhttp.send();
