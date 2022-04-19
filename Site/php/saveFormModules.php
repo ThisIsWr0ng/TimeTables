@@ -18,7 +18,6 @@ if(gettype($deadlines) == "string"){$deadlines = null;};
 if(gettype($groups) == "string"){$groups = null;};
 //----------------Save module data
 //check if this module already exists
-echo print_r($module);
 $sql = "SELECT * FROM Modules WHERE id = \"{$module['Id']}\"";
 $result = $conn->query($sql);
 if(mysqli_num_rows($result) == 0){//create new module
@@ -94,7 +93,7 @@ if($deadlines != null){
             \"{$deadlines[$i]['Weight']}\",
             \"{$deadlines[$i]['Moodle_Link']}\"
         );";
-        echo print_r($sql);
+        
          $result = $conn->query($sql);
          if(!$result){
              array_push($errors, "Updating deadlines failed");

@@ -194,11 +194,7 @@ function saveFormModules(){
   dbData[0].Moodle_Link = mLink.value;
   const xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
-    const search = document.getElementById('search-output');
-    //search.innerHTML = this.responseText;
-    //window.alert(this.responseText);
-    const doc = document.getElementById('search-output');
-    doc.innerHTML = this.responseText;
+    window.alert(this.responseText);
   };
   xmlhttp.open("GET", `php/saveFormModules.php?q=${JSON.stringify(dbData)}`);
   xmlhttp.send();
@@ -209,4 +205,89 @@ function hide(el, hide){
   }else{
     document.getElementById(el).classList.remove('hidden');
   }
+}
+function findModule(id){
+  if (id!= "") {
+    const xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onload = function () {
+      dbData = JSON.parse(this.responseText);
+      feedModForm(dbData[0]);
+      refreshModulesResultTables()
+     };
+    xmlhttp.open("GET",`php/getAllModuleInfo.php?q=${id}`);
+    xmlhttp.send();
+     }}
+function feedModForm(mod){
+const mId = document.getElementById('form-mod-id');
+const mName = document.getElementById('form-mod-name');
+const mMoodle = document.getElementById('form-mod-moodle');
+const mDesc = document.getElementById('form-mod-desc');
+mId.value = mod.Id;
+mName.value = mod.Name;
+mMoodle.value = mod.Moodle_Link;
+mDesc.value = mod.Description;
+}
+function addToModulesTables(type, userId){//add students or lecturers to tables on modules page
+var user = null;
+if (userId!= "") {//Get user info
+    const xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onload = function () {
+      user = JSON.parse(this.responseText);
+      if(type== "Lecturer"){
+        if(typeof dbData[1] == "string"){dbData[1] = []}
+dbData[1].push(user);
+}else if(type == "Student"){//add student to selected group
+const mGroup = document.getElementById('form-group-sel');
+user.Group = mGroup.value;
+if(typeof dbData[3] == "string"){dbData[3] = []}
+dbData[3].push(user);
+}
+//refresh tables
+refreshModulesResultTables()
+    
+    };
+    xmlhttp.open("GET",`php/getUserById.php?q=${userId}`);
+    xmlhttp.send();
+     }
+}
+function refreshModulesResultTables(){
+  console.log('dbData[1] :>> ', dbData[1]);
+getModuleLecturer(dbData[1]);
+getModuleDeadlines(dbData[2]);
+getModuleGroups(dbData[3]);
+}
+function showDeadlineFields(){
+hide('deadlines-fields',0);
+const mAddButton = document.getElementById('add-deadlines');
+mAddButton.setAttribute("onclick", "addToDeadlinesList()");
+
+
+}
+function hideDeadlineFields(){
+hide('deadlines-fields',1);
+const mAddButton = document.getElementById('add-deadlines');
+mAddButton.setAttribute("onclick", "showDeadlineFields()");
+}
+function addToDeadlinesList(){
+const dName = document.getElementById('form-mod-dead-name');
+const dWeight = document.getElementById('form-mod-dead-weight');
+const dDate = document.getElementById('form-mod-dead-date');
+const dLink = document.getElementById('form-mod-dead-moodle');
+var deadline = {};
+deadline.Name = dName.value;
+deadline.Weight = dWeight.value;
+deadline.Date = dDate.value;
+deadline.Moodle_Link = dLink.value;
+console.log('dbData :>> ', dbData);
+if(typeof dbData[2] == "string"){
+dbData[2] = [];
+dbData[2][0] = deadline;
+}else{
+dbData[2].push(deadline);
+}
+
+getModuleDeadlines(dbData[2]);
+hideDeadlineFields();
 }

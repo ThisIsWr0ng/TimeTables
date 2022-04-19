@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_array($result)) {
         break;
 }
 //Get Lecturers Info on this module
-$sql ="SELECT * FROM Users LEFT JOIN Lecturers_Assignment ON Lecturers_Assignment.Lecturer = Users.Id
+$sql ="SELECT Users.*, Lecturers_Assignment.Lecturer, Lecturers_Assignment.Module FROM Users LEFT JOIN Lecturers_Assignment ON Lecturers_Assignment.Lecturer = Users.Id
 WHERE Lecturers_Assignment.Module = \"$moduleId\"";
 
 $result = $conn->query($sql);
