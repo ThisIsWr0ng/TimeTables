@@ -44,6 +44,19 @@ if(!$result){
 //----------------Save lecturers assigned to this module
 if($lecturers != null){
     for ($i=0; $i < count($lecturers); $i++) { //add all lecturers
+        $sql = "SELECT Lecturer FROM  Lecturers_Assignment WHERE Module = \"{$module['Id']}\"";//check for similalities in db
+        $result = $conn->query($sql);
+        $cont = false;
+        if($result->num_rows >0){
+            while($row = $result->fetch_assoc()) { 
+               if($lecturers[$i]['Id'] == $row['Lecturer']){
+                   $cont = true;
+                   break;
+               }
+            }
+        }
+        if($cont == true){continue;}//if it already exists, continue
+
         $sql = "INSERT INTO Lecturers_Assignment VALUES(
             NULL, \"{$lecturers[$i]['Id']}\", \"{$module['Id']}\" 
         );"; 
@@ -60,6 +73,19 @@ if($lecturers != null){
 //----------------Save Deadlines for this Module
 if($deadlines != null){
     for ($i=0; $i < count($deadlines); $i++) { 
+        $sql = "SELECT Name FROM Deadlines WHERE Module_Id = \"{$module['Id']}\"";//check for similalities in db
+        $result = $conn->query($sql);
+        $cont = false;
+        if($result->num_rows >0){
+            while($row = $result->fetch_assoc()) { 
+               if($deadlines[$i]['Name'] == $row['Name']){
+                   $cont = true;
+                   break;
+               }
+            }
+        }
+        if($cont == true){continue;}//if it already exists, continue
+
         $sql ="INSERT INTO Deadlines VALUES (
             NULL,
             \"{$module['Id']}\",
@@ -73,7 +99,6 @@ if($deadlines != null){
          if(!$result){
              array_push($errors, "Updating deadlines failed");
          }
-
     }
 }else{
  $sql = "DELETE FROM Deadlines WHERE Module_Id = \"{$module['Id']}\"";
@@ -82,6 +107,18 @@ $conn->query($sql);
 //----------------Save Student Groups for this Module
 if($groups != null){
     for ($i=0; $i < count($groups); $i++) { //add all lecturers
+        $sql = "SELECT User, Group_Name FROM Student_Group WHERE Module = \"{$module['Id']}\"";//check for similalities in db
+        $result = $conn->query($sql);
+        $cont = false;
+        if($result->num_rows >0){
+            while($row = $result->fetch_assoc()) { 
+               if($groups[$i]['Group'] == $row['Group_Name'] && $groups[$i]['Id'] == $row['User']){
+                   $cont = true;
+                   break;
+               }
+            }
+        }
+        if($cont == true){continue;}//if it already exists, continue
         $sql = "INSERT INTO Student_Group VALUES(
             NULL, 
             \"{$module['Id']}\", 
