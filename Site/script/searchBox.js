@@ -194,6 +194,7 @@ function saveFormModules(){
   dbData[0].Moodle_Link = mLink.value;
   const xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
+    document.getElementById("search-output").innerHTML = this.responseText;
     window.alert(this.responseText);
   };
   xmlhttp.open("GET", `php/saveFormModules.php?q=${JSON.stringify(dbData)}`);
