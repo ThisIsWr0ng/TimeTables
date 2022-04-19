@@ -8,6 +8,7 @@ if(count($dbData) == 1){
     }
 }
 $module = $dbData[0];
+echo $print_r($module);
 $lecturers = $dbData[1];
 $deadlines = $dbData[2];
 $groups = $dbData[3];

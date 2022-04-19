@@ -43,7 +43,7 @@ CREATE TABLE `Requests` (
   `Description` VARCHAR(200),
   `Status` TINYINT DEFAULT 0,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`User_Id`) REFERENCES `Users`(`Id`),
+  FOREIGN KEY (`User_Id`) REFERENCES `Users`(`Id`) ON DELETE CASCADE,
   INDEX (Type)
 );
 CREATE TABLE `Modules` (
@@ -61,7 +61,7 @@ CREATE TABLE `Deadlines` (
   `Weight` VARCHAR(5) NOT NULL,
   `Moodle_Link` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module_Id`) REFERENCES `Modules`(`Id`)
+  FOREIGN KEY (`Module_Id`) REFERENCES `Modules`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Buildings` (
   `Name` VARCHAR(50),
@@ -78,7 +78,7 @@ CREATE TABLE `Rooms` (
   `Equipment` VARCHAR(200),
   `Section` VARCHAR(50),
   PRIMARY KEY (`Number`, `Building`),
-  FOREIGN KEY (`Building`) REFERENCES `Buildings`(`Name`)
+  FOREIGN KEY (`Building`) REFERENCES `Buildings`(`Name`) ON DELETE CASCADE
 );
 CREATE TABLE `Student_Group` (
   `Id` INT AUTO_INCREMENT,
@@ -86,8 +86,8 @@ CREATE TABLE `Student_Group` (
   `User` VARCHAR(13),
   `Group_Name` VARCHAR(100),
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
-  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
+  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Events` (
   `Id` INT AUTO_INCREMENT,
@@ -100,9 +100,9 @@ CREATE TABLE `Events` (
   `Description` VARCHAR(200),
   `Group` INT,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
-  FOREIGN KEY (`Room`) REFERENCES `Rooms`(`Number`),
-  FOREIGN KEY (`Group`) REFERENCES `Student_Group`(`Id`),
+  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`Room`) REFERENCES `Rooms`(`Number`) ON DELETE CASCADE,
+  FOREIGN KEY (`Group`) REFERENCES `Student_Group`(`Id`) ON DELETE CASCADE,
   INDEX (Module)
 );
 CREATE TABLE `Departments` (
@@ -123,7 +123,7 @@ CREATE TABLE `Programmes` (
   `End_Date` DATE NOT NULL,
   `Description` VARCHAR(200),
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Department`) REFERENCES `Departments`(`Name`)
+  FOREIGN KEY (`Department`) REFERENCES `Departments`(`Name`) ON DELETE CASCADE
 );
 CREATE TABLE `Semesters` (
   `Id` INT AUTO_INCREMENT,
@@ -139,24 +139,24 @@ CREATE TABLE `Module_Assignment` (
   `Module` VARCHAR(10),
   `Semester` INT,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`),
-  FOREIGN KEY (`Semester`) REFERENCES `Semesters`(`Id`),
-  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`)
+  FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`Semester`) REFERENCES `Semesters`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Lecturers_Assignment` (
   `Id` INT AUTO_INCREMENT,
   `Lecturer` VARCHAR(13),
   `Module` VARCHAR(10),
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`),
-  FOREIGN KEY (`Lecturer`) REFERENCES `Users`(`Id`)
+  FOREIGN KEY (`Module`) REFERENCES `Modules`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`Lecturer`) REFERENCES `Users`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Logins` (
   `Id` INT AUTO_INCREMENT,
   `Username` VARCHAR(13),
   `Password` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Username`) REFERENCES `Users`(`Id`)
+  FOREIGN KEY (`Username`) REFERENCES `Users`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Student_Enrolment` (
   `Id` INT AUTO_INCREMENT,
@@ -165,8 +165,8 @@ CREATE TABLE `Student_Enrolment` (
   `Date_Enrolled` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Date_Finished` DATE,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`),
-  FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`)
+  FOREIGN KEY (`Student`) REFERENCES `Users`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`Programme`) REFERENCES `Programmes`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Roles` (
   `Id` INT AUTO_INCREMENT,
@@ -180,8 +180,8 @@ CREATE TABLE `Role_Assignment` (
   `Role` INT,
   `User` VARCHAR(13),
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`),
-  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
+  FOREIGN KEY (`Role`) REFERENCES `Roles`(`Id`) ON DELETE CASCADE,
+  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`) ON DELETE CASCADE
 );
 CREATE TABLE `Holidays` (
   `Id` INT AUTO_INCREMENT,
@@ -207,7 +207,7 @@ CREATE TABLE `User_Events` (
   `Time_To` TIME NOT NULL,
   `Description` VARCHAR(300),
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`)
+  FOREIGN KEY (`User`) REFERENCES `Users`(`Id`) ON DELETE CASCADE
 );
 
 INSERT INTO users
