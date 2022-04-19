@@ -119,8 +119,6 @@ $username = $_SESSION["username"];
               const xmlhttp = new XMLHttpRequest();
               
               xmlhttp.onload = function () {
-                const output = document.getElementById('search-output');
-                output.innerHTML = this.responseText;
                 dbData = JSON.parse(this.responseText);
                 feedModForm(dbData[0]);
                 refreshModulesResultTables()

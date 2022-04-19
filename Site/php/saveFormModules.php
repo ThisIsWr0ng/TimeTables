@@ -48,7 +48,6 @@ if($lecturers != null){
         $sql = "INSERT INTO Lecturers_Assignment VALUES(
             NULL, \"{$lecturers[$i]['Id']}\", \"{$module['Id']}\" 
         );"; 
-        echo $sql;
         $result = $conn->query($sql);
         if(!$result){
             array_push($errors, "Updating lecturers failed");
@@ -60,7 +59,23 @@ if($lecturers != null){
 }
 
 //----------------Save Deadlines for this Module
+if($deadlines != null){
+    for ($i=0; $i < count($deadlines); $i++) { 
+        $sql ="INSERT INTO Deadlines VALUES (
+            NULL,
+            \"{$module['Id']}\",
+            \"{$deadlines['Name']}\",
+            \"{$deadlines['Date']}\",
+            \"{$deadlines['Weight']}\",
+            \"{$deadlines['Moodle_Link']}\"
+        );";
+         $result = $conn->query($sql);
+         if(!$result){
+             array_push($errors, "Updating lecturers failed");
+         }
 
+    }
+}
 //----------------Save Student Groups for this Module
 if($groups != null){
     for ($i=0; $i < count($groups); $i++) { //add all lecturers
