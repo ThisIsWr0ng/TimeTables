@@ -188,13 +188,27 @@ function saveFormModules(){
   const mName = document.getElementById('form-mod-name');
   const mDesc = document.getElementById('form-mod-desc');
   const mLink = document.getElementById('form-mod-moodle');
+  if(dbData.length > 1){
   dbData[0].Id = mId.value;
   dbData[0].Name = mName.value;
   dbData[0].Description = mDesc.value;
   dbData[0].Moodle_Link = mLink.value;
+  }else{//if it's a new module
+    var modul = {
+      Id:mId.value,
+      Name:mName.value,
+      Description:mDesc.value,
+      Moodle_Link:mLink.value
+    };
+    dbData[0] = modul;
+    dbData[1] = "string";
+    dbData[2] = "string";
+    dbData[3] = "string";
+  }
+  console.log('dbData :>> ', dbData);
   const xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
-    document.getElementById("search-output").innerHTML = this.responseText;
+    //document.getElementById("search-output").innerHTML = this.responseText;//<<<<For debugging
     window.alert(this.responseText);
   };
   xmlhttp.open("GET", `php/saveFormModules.php?q=${JSON.stringify(dbData)}`);

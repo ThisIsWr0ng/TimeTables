@@ -25,6 +25,8 @@ $sql = "INSERT INTO Modules VALUES (\"{$module['Id']}\",\"{$module['Name']}\",\"
 $result = $conn->query($sql);
 if(!$result){
     array_push($errors, "adding new module failed");
+}else{
+    echo "Added a new module.\n";
 }
 
 }else{//update existing module
@@ -33,11 +35,14 @@ $sql = "UPDATE Modules SET
  `Description` = \"{$module['Description']}\",
  `Moodle_Link` = \"{$module['Moodle_Link']}\" 
  WHERE Id = \"{$module['Id']}\"";
+ $result = $conn->query($sql);
+ if(!$result){
+     array_push($errors, "Updating module failed", $sql);
+ }else{
+     echo "Updated existing module.\n";
+ }
 }
-$result = $conn->query($sql);
-if(!$result){
-    array_push($errors, "Updating module failed");
-}
+
 
 
 //----------------Save lecturers assigned to this module
@@ -141,7 +146,7 @@ if($errors == null){
 }else{
     echo "Could not save!";
     for ($i=0; $i < count($errors); $i++) { 
-     echo "error: {$errors[$i]}";
+     echo "error: {$errors[$i]}\n";
     }
 }
 ?>
