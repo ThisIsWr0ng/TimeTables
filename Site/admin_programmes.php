@@ -27,6 +27,7 @@ $username = $_SESSION["username"];
         <img id="logo" src="img/TimeTables-logos/TimeTables-logos_white_cropped.png" alt="TimeTables Logo"/>
     </header>
     <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
+    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
     <main class="admin-content">
         <h1 id="admin-title">Manage Programmes</h1>
         <nav id="admin-nav">

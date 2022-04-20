@@ -16,9 +16,11 @@
     height: 900px;
     float: left;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
+
 #admin-nav {
     padding: 10px 20px;
     display: flex;
@@ -63,7 +65,19 @@
     background-color: rgba(120, 176, 241, 1);
     font-weight: bold;
 }
+
+#log {
+    position: fixed;
+    right: 20px;
+    top: 50px;
+    padding: 8px 14px;
+    background-color: rgba(120, 176, 241, 1);
+    font-weight: bold;
+}
+
+
 /*---------------------Content-block------------------*/
+
 #content-block {
     display: flex;
     flex-direction: row;
@@ -74,7 +88,8 @@
     max-height: fit-content;
     margin-top: 30px;
 }
-#content-block input[type=button]{
+
+#content-block input[type=button] {
     width: fit-content;
     font-weight: bold;
     background-color: lightgrey;
@@ -84,7 +99,10 @@
     border-radius: 5px;
     box-shadow: 2px 2px 4px;
 }
+
+
 /*----------------Form-section----------------------*/
+
 #form-section {
     display: flex;
     flex-direction: row;
@@ -97,12 +115,14 @@
     min-width: 300px;
     padding: 10px;
 }
-#form-section section{
+
+#form-section section {
     display: flex;
     width: fit-content;
-
 }
-#form-section select, #form-section input{
+
+#form-section select,
+#form-section input {
     background-color: rgb(255, 255, 255);
     width: 90%;
     padding: 5px 5px;
@@ -114,28 +134,28 @@
     border-bottom: 2px solid rgb(49, 27, 255);
     border-radius: 6px;
     margin: 5px 5px;
-    
 }
-#form-section fieldset{
+
+#form-section fieldset {
     max-width: 100%;
     min-width: fit-content;
 }
 
-.form-buttons{
+.form-buttons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
 
-#form-prog-desc{
+#form-prog-desc {
     width: 90%;
 }
-.db-output-window {
 
+.db-output-window {
     min-width: 93%;
-   min-height: 200px;
-   background-color: white;
+    min-height: 200px;
+    background-color: white;
     border: 1px solid black;
     margin: auto;
     left: 0;
@@ -148,6 +168,7 @@
 
 
 /*----------------Search Box----------------------*/
+
 #search-section {
     position: relative;
     height: 100%;
@@ -159,35 +180,35 @@
     width: 40vw;
     min-width: 300px;
 }
-#search-output{
+
+#search-output {
     min-height: 40vh;
 }
 
-.resultstable{
+.resultstable {
     table-layout: auto;
     min-width: fit-content;
     width: 400px;
-
-    
 }
-.resultstable td{
+
+.resultstable td {
     width: min-content;
     white-space: nowrap;
     padding-right: 5px;
     padding-bottom: 1px;
     border-bottom: 2px solid white;
-    
 }
-.resultstable tr{
+
+.resultstable tr {
     background-color: lightgrey;
     transition-duration: 0.5s;
     height: fit-content;
 }
-.resultstable tr:hover{
+
+.resultstable tr:hover {
     background-color: grey;
     margin-bottom: 4px;
 }
-
 
 #search-list-opt {
     position: absolute;
@@ -197,7 +218,6 @@
 }
 
 #search-list-opt-top {}
-
 
 #formSection {
     border: 1px dotted black;
