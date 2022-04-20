@@ -7,7 +7,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 $username = $_SESSION["username"];
-echo$username;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +28,8 @@ echo$username;
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" value="Logout" onclick="location.href='php/logout.php'"/>
+    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
+    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
     <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
     <main class="content">
       <div id="cal-wrap">
