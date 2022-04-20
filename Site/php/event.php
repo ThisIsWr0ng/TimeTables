@@ -24,7 +24,7 @@ $sql = "INSERT INTO Events VALUES (
     \"$timeFrom\",
     \"$timeTo\",
     \"$desc\",
-    '$group'
+    $group
 )";
 $result = $conn->query($sql);
 
