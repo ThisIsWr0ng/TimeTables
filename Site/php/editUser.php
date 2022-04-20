@@ -10,17 +10,17 @@ $dob = mysqli_real_escape_string($conn, $_REQUEST['dob']);
 $nextofkin = mysqli_real_escape_string($conn, $_REQUEST['nextofkin']);
 $privatemeail = mysqli_real_escape_string($conn, $_REQUEST['privateemail']);
 $tel = mysqli_real_escape_string($conn, $_REQUEST['tel']);
-
 $housenumber = mysqli_real_escape_string($conn, $_REQUEST['housenumber']);
 $street = mysqli_real_escape_string($conn, $_REQUEST['street']);
 $postcode = mysqli_real_escape_string($conn, $_REQUEST['postcode']);
-
-$role = mysqli_real_escape_string($conn, $_REQUEST['role']);
-$progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
-$level = mysqli_real_escape_string($conn, $_REQUEST['level']);
 $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
+$programme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 
-$sql = "SELECT * FROM users WHERE "
+$sqluser = "UPDATE users SET First_Name='$firstname', Surname='$surname', Title='$title', Gender='$gender', Birth_Date='$dob', Priv_Email='$privatemeail', Uni_Email='$uniemail', Telephone='$tel', Next_Of_Kin='$nextofkin', Street_Number='$housenumber', Street_Name='$street', Postcode='$postcode' WHERE Id='$id'";
+$conn->query($sqluser);
 
+$sqlenrolment = "UPDATE student_enrolment SET Programme='$programme', Date_Enrolled=NOW() WHERE Student='$id'";
+$conn->query($sqlenrolment);
 
+header("location: ../admin_user.php");
 ?>

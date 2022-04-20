@@ -44,7 +44,7 @@ $username = $_SESSION["username"];
       <div id="content-block">
       <div id="form-section">
       <section>
-        <form action="php/addUser.php" method="POST">
+        <form action="php/User.php" method="POST">
           <h1>Users</h1>
           <section>
             <fieldset>
@@ -138,9 +138,9 @@ while ($row = mysqli_fetch_array($result)) {
             </fieldset>
           </section>
           <section>
-            <button type="submit" value="Submit">Add</button>
-            <input type="button" value="Delete">
-            <input type="button" value="Update">
+            <input type="submit" name="Submit" value="Submit">
+            <input type="submit" name="Delete" value="Delete">
+            <input type="submit" name="Update" value="Update">
             <input type="button" value="Reset Password">
             <input type="button" value="Default Settings">
           </section>
@@ -192,4 +192,5 @@ function findUser(id){
 
     </script>
   </body>
+
 </html>
