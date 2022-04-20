@@ -42,7 +42,7 @@ $username = $_SESSION["username"];
       
       <section>
       <?php
-        echo "<h1>Welcome $username</h1>"
+        echo "<h1 id='welcome'>Welcome $username!</h1>"
       ?>
       </section>
 </div>
