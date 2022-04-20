@@ -27,11 +27,11 @@ function removeText(){//Remove text from field when clicked
       }
     }else if(window.location.href.search("admin_events.php") != -1){
       if(type == "Modules"){
-
+        findEventByType(formData, "Module");
       }else if(type == "Events"){
-
+        findEventByType(formData, "Event");
       }else if(type == "Users"){
-        
+        findEventByType(formData, "User");
       }
 
     }

@@ -19,7 +19,7 @@ $username = $_SESSION["username"];
     <script src="script/searchBox.js"></script>
     <script src="script/sortTable.js"></script>
     <script src="script/searchBox.js"></script>
-    <?php include 'php/fetch_data.php'?>
+    <script src="script/events.js"></script>
   </head>
   <body>
     <header>
@@ -46,20 +46,20 @@ $username = $_SESSION["username"];
         <h1>Events</h1>
         <fieldset >
           <legend>Event Type</legend>
-          <form>
+          <form action="php/event.php" method="post">
           <label><input type="radio" id="ev-radio-session"name="sessionradio" value="Session" checked="checked"/>Session</label>
           
           <label><input type="radio" id="ev-radio-user"name="sessionradio" value="User Event"/>User Event</label>
-          </form>
+          
         </fieldset>
         <fieldset>
           <legend>Event</legend>
-        <form action="">
+        
         <label for="form-evt-id">Module:</label><br>
-        <input type="text" id="form-evt-id" name="mod" value=""><br>
+        <input type="text" id="form-evt-id" name="Id" value=""><br>
   
   <label for="form-evt-name">Name:</label><br>
-  <input type="text" id="form-evt-name" name="lname" value="" required><br><br>
+  <input type="text" id="form-evt-name" name="Name" value="" required><br><br>
 
   <label for="form-evt-type">Type:</label><br>
   <select name="type" id="form-evt-type">
@@ -70,40 +70,40 @@ $username = $_SESSION["username"];
   </select><br><br>
   
   <label for="form-evt-date">Date:</label><br>
-  <input type="date" id="form-evt-date" name="dow" value=""><br>
+  <input type="date" id="form-evt-date" name="Date" value=""><br>
 
   <label for="form-evt-timefrom">Time from:</label><br>
-  <input type="time" id="form-evt-timefrom" name="tf" value=""><br>
+  <input type="time" id="form-evt-timefrom" name="TimeF" value=""><br>
   
   <label for="form-evt-timeto">Time to:</label><br>
-  <input type="time" id="form-evt-timeto" name="tt" value=""><br>
+  <input type="time" id="form-evt-timeto" name="TimeT" value=""><br>
   
   <label for="form-evt-room">Rooms Available:</label><br>
-  <select name="" id="form-evt-room">
+  <select name="Rooms" id="form-evt-room">
   <option value="None">Select Date and Time</option>
   </select><br>
 
   <label for="form-evt-group">Group:</label><br>
-  <select name="" id="form-evt-group">
+  <select name="Group" id="form-evt-group">
     <option value="None">None</option>
   </select><br><br>
 
   <label for="form-evt-recurring">Recurring:</label><br>
-  <select name="" id="form-evt-recurring">
+  <select name="Recurring" id="form-evt-recurring">
     <option value="Once">Once</option>
     <option value="Weekly">Weekly</option>
   </select><br><br>
 
 
   <label for="form-evt-desc">Description</label><br>
-  <textarea id="form-evt-desc" name="desc" rows="4" cols="30">
+  <textarea id="form-evt-desc" name="Description" rows="4" cols="30">
   </textarea>
   
   
   <br>
   
-  <input type="submit" id="form-evt-save" name="btSubmit" value="Save">
-  <input type="submit" id="form-evt-delete" name="btSubmit" value="Delete">
+  <input type="submit" id="form-evt-save" name="Button" value="Save">
+  <input type="submit" id="form-evt-delete" name="Button" value="Delete">
 </form> 
 </fieldset>
 

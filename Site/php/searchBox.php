@@ -21,7 +21,7 @@ switch ($searchType) {
         break;
     case "Events":
         $columns = array("Id", "Module", "Room", "Type", "Date", "Time_From", "Time_To", "Description", "Group");
-        $onClick = "form-event-id";
+        $onClick = "form-evt-id";
         break;
     default:
     $columns = array("Id");
