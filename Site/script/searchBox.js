@@ -254,7 +254,6 @@ refreshModulesResultTables()
      }
 }
 function refreshModulesResultTables(){
-  console.log('dbData[1] :>> ', dbData[1]);
 getModuleLecturer(dbData[1]);
 getModuleDeadlines(dbData[2]);
 getModuleGroups(dbData[3]);

@@ -20,6 +20,8 @@ $role = mysqli_real_escape_string($conn, $_REQUEST['role']);
 $progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
 $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
+$requestType = $_POST['btSubmit'];
+if ($requestType == "Add") {//<<<<<<<<< ADD Code Here
 
 if ($role == "Undergraduate Student")
 {
@@ -64,4 +66,18 @@ $progammeid = $row['Id'];
 $sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$progammeid', NOW(), NULL)";
 
 header("location: ../admin_users.php");
+}else if($requestType == "Delete"){//<<<<<<<<<Delete code here
+
+
+
+
+
+}else if($requestType == "Update"){//<<<<<<<<<Update code here
+
+
+}else if($requestType == "Reset Password"){
+
+}else if($requestType == "Default Settings"){
+    
+}
 ?>

@@ -44,7 +44,7 @@ $username = $_SESSION["username"];
       <div id="content-block">
       <div id="form-section">
       <section>
-        <form action="php/User.php" method="POST">
+        <form id="users-form"action="php/addUser.php" method="POST">
           <h1>Users</h1>
           <section>
             <fieldset>
@@ -138,11 +138,11 @@ while ($row = mysqli_fetch_array($result)) {
             </fieldset>
           </section>
           <section>
-            <input type="submit" name="Submit" value="Submit">
-            <input type="submit" name="Delete" value="Delete">
-            <input type="submit" name="Update" value="Update">
-            <input type="button" value="Reset Password">
-            <input type="button" value="Default Settings">
+            <input type="submit" name="btSubmit" value="Add">
+            <input type="submit" name="btSubmit" value="Delete">
+            <input type="submit" name="btSubmit" value="Update">
+            <input type="button" name="btSubmit" value="Reset Password">
+            <input type="button" name="btSubmit" value="Default Settings">
           </section>
         </form>
       </section>
@@ -169,11 +169,17 @@ while ($row = mysqli_fetch_array($result)) {
 </div>
     </main>
     <script>
+function formLocation(loc){
+  const form = document.getElementById('users-form'); 
+      form.setAttribute("action", "${loc}")
+    
+
+}
       
 function findUser(id){
     if(id != ""){
     console.log('id :>> ', id);
-    const users = JSON.parse('<?php echo json_encode(fetchUsers())?>');
+    var users = JSON.parse('<?php echo json_encode(fetchUsers())?>');
     var user = null;
     for (let i = 0; i < users.length; i++) {
       if(users[i].Id == id){user = users[i];}
