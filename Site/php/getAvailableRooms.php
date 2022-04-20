@@ -25,6 +25,7 @@ if ($result->num_rows > 0) {
     }
 }
 //Get numbers of students enrolled for this module
+if($module != "" || $module == null){
 $sql ="SELECT Users.Id FROM Users
 LEFT JOIN Student_Enrolment ON Users.Id = Student_Enrolment.Student
 LEFT JOIN Programmes ON Programmes.Id = Student_Enrolment.Programme
@@ -42,6 +43,11 @@ for ($i=0; $i < count($rooms); $i++) {
     }
     
 }
+}else{
+    for ($i=0; $i < count($rooms); $i++) { 
+        array_push($roomsAvailable[1], $rooms[$i]);
+    }
 
+}
 echo json_encode($roomsAvailable);
 ?>

@@ -47,7 +47,7 @@ $username = $_SESSION["username"];
         <h1>Events</h1>
         <fieldset >
           <legend>Event Type</legend>
-          <form action="php/event.php" method="post">
+          <form action="php/event.php" method="post" novalidate>
           <label><input type="radio" id="ev-radio-session"name="sessionradio" value="Session" checked="checked" onchange="displayEventFields(this.value)"/>Session</label>
           <label><input type="radio" id="ev-radio-user"name="sessionradio" value="User Event" onchange="displayEventFields(this.value)"/>User Event</label>
           
@@ -59,10 +59,10 @@ $username = $_SESSION["username"];
         <input type="text" id="form-evt-id" name="Id" value=""><br>
   <div id="form-name">
   <label for="form-evt-name">Name:</label><br>
-  <input type="text" id="form-evt-name" name="Name" value="" required><br><br></div>
+  <input type="text" id="form-evt-name" name="eName" value="" required><br><br></div>
 
   <div id="form-type"><label for="form-evt-type">Type:</label><br>
-  <select name="type" id="form-evt-type">
+  <select name="Type" id="form-evt-type">
     <option value="Exam">Exam</option>
     <option value="Practical">Practical</option>
     <option value="Seminar">Seminar</option>
@@ -79,13 +79,13 @@ $username = $_SESSION["username"];
   <input type="time" id="form-evt-timeto" name="TimeT" value=""><br>
   
   <div id="form-rooms"><label for="form-evt-room">Rooms Available:</label><br>
-  <select name="Rooms" id="form-evt-room">
+  <select name="Rooms" id="form-evt-room" >
   <option value="None">Select Date and Time</option>
-  </select><br></div>
+  </select><input type="button" value="Refresh" onclick="refreshRooms()"><br></div>
 
   <div id="form-group"><label for="form-evt-group">Group:</label><br>
   <select name="Group" id="form-evt-group">
-    <option value="None">None</option>
+    <option value="NULL" selected>None</option>
   </select><br><br></div>
 
   <label for="form-evt-recurring">Recurring:</label><br>
@@ -102,8 +102,8 @@ $username = $_SESSION["username"];
   
   <br>
   
-  <input type="submit" id="form-evt-save" name="Button" value="Save">
-  <input type="submit" id="form-evt-delete" name="Button" value="Delete">
+  <input type="submit" id="form-evt-save" name="sButton" value="Save">
+  <input type="submit" id="form-evt-delete" name="sButton" value="Delete">
 </form> 
 </fieldset>
 

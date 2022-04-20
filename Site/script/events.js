@@ -67,7 +67,6 @@ function getAvailableRooms(date, timeFrom, timeTo, module){
     xmlhttp.onload = function () {
         //document.getElementById('search-output').innerHTML= this.responseText;
         var rooms = JSON.parse(this.responseText);
-        console.log('rooms :>> ', rooms);
         const fRoom = document.getElementById('form-evt-room');
         removeAllChildNodes(fRoom);
         optgroup = document.createElement("optgroup");
@@ -103,4 +102,11 @@ function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+}
+function refreshRooms(){
+    const fId = document.getElementById('form-evt-id');
+    const fDate = document.getElementById('form-evt-date');
+    const fTimef = document.getElementById('form-evt-timefrom');
+    const fTimet = document.getElementById('form-evt-timeto');
+    getAvailableRooms(fDate.value, fTimef.value, fTimet.value, fId.value);
 }
