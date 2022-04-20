@@ -44,7 +44,7 @@ $username = $_SESSION["username"];
       <div id="content-block">
       <div id="form-section">
       <section>
-        <form id="users-form"action="php/addUser.php" method="POST">
+        <form id="users-form"action="php/user.php" method="POST">
           <h1>Users</h1>
           <section>
             <fieldset>
