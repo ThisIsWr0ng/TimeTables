@@ -141,8 +141,8 @@ while ($row = mysqli_fetch_array($result)) {
             <input type="submit" name="btSubmit" value="Add">
             <input type="submit" name="btSubmit" value="Delete">
             <input type="submit" name="btSubmit" value="Update">
-            <input type="button" name="btSubmit" value="Reset Password">
-            <input type="button" name="btSubmit" value="Default Settings">
+            <input type="submit" name="btSubmit" value="Reset Password">
+            <input type="submit" name="btSubmit" value="Default Settings">
           </section>
         </form>
       </section>

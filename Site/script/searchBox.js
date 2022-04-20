@@ -25,6 +25,15 @@ function removeText(){//Remove text from field when clicked
           addToModulesTables("Student", formData);
         }
       }
+    }else if(window.location.href.search("admin_events.php") != -1){
+      if(type == "Modules"){
+
+      }else if(type == "Events"){
+
+      }else if(type == "Users"){
+        
+      }
+
     }
     
   }
