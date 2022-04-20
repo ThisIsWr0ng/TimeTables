@@ -26,6 +26,7 @@ $username = $_SESSION["username"];
       />
     </header>
     <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
+    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
     <main class="admin-content">
       <h1 id="admin-title">Manage Requests</h1>
       <nav id="admin-nav">

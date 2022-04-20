@@ -26,6 +26,7 @@ $username = $_SESSION["username"];
       />
     </header>
     <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
+    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
     <main class="admin-content">
       <h1 id="admin-title">Admin Dashboard</h1>
       <nav id="admin-nav">
@@ -39,6 +40,11 @@ $username = $_SESSION["username"];
       </nav>
       <div id="content-block">
       
+      <section>
+      <?php
+        echo "<h1 id='welcome'>Welcome $username!</h1>"
+      ?>
+      </section>
 </div>
     </main>
   </body>

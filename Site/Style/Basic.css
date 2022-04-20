@@ -1,57 +1,83 @@
 @charset "utf-8";
+
 /* CSS Document */
 
 body {
-  background-image: url("../img/Background.jpg");
-  background-size: 150vw;
-  background-attachment: fixed;
-  background-repeat: repeat;
-  background-position: center;
-}
-#logo {
-  display: block;
-  background-color: rgba(117, 117, 114, 0.911);
-  border-radius: 12px;
-  width: 120px;
-  padding: 0px 40px;
-  height: auto;
-  margin: auto;
-  left: 0;
-  right: 0;
-  margin-bottom: 20px;
-}
-.content {
-  background-color: rgba(226, 226, 219, 0.911);
-  width: 90vw;
-  max-width: 2000px;
-  min-width: 500px;
-}
-#resultstable{
-  width: 100%;
-  border-color: rgba(61, 61, 61, 0.911);
-  border-width: 2px;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-#resulttable th{
-text-align: left;
-font-size: large;
-}
-#resulttable tr{
-height: 4em;
-}
-#resulttable td{
-text-align: center;
+    background-image: url("../img/Background.jpg");
+    background-size: 150vw;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-position: center;
 }
 
-#searchbar{
-  position: absolute;
-  top: 40px;
-  left: 20px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-  padding: 10px 20px;
+#logo {
+    display: block;
+    background-color: rgba(117, 117, 114, 0.911);
+    border-radius: 12px;
+    width: 120px;
+    padding: 0px 40px;
+    height: auto;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
 }
-#searchbar select{
-  border: none;
+
+.content {
+    background-color: rgba(226, 226, 219, 0.911);
+    width: 90vw;
+    max-width: 2000px;
+    min-width: 500px;
+}
+
+#resultstable {
+    width: 100%;
+    border-color: rgba(61, 61, 61, 0.911);
+    border-width: 2px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#resulttable th {
+    text-align: left;
+    font-size: large;
+}
+
+#resulttable tr {
+    height: 4em;
+}
+
+#resulttable td {
+    text-align: center;
+}
+
+#searchbar {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+#searchbar select {
+    border: none;
+}
+
+#logout {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    padding: 8px 14px;
+    background-color: rgba(120, 176, 241, 1);
+    font-weight: bold;
+}
+
+#log {
+    position: fixed;
+    right: 20px;
+    top: 50px;
+    padding: 8px 14px;
+    background-color: rgba(120, 176, 241, 1);
+    font-weight: bold;
 }
