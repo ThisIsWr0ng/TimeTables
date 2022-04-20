@@ -79,8 +79,9 @@ $conn->query($sqluser);
 
 $sqlenrolment = "UPDATE student_enrolment SET Programme='$programme', Date_Enrolled=NOW() WHERE Student='$id'";
 $conn->query($sqlenrolment);
-
-header("location: ../admin_users.php");
+echo $sql;
+echo $sqlenrolment;
+//header("location: ../admin_users.php");
 
 }else if($requestType == "Reset Password"){
 
