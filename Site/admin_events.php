@@ -47,27 +47,26 @@ $username = $_SESSION["username"];
         <fieldset >
           <legend>Event Type</legend>
           <form action="php/event.php" method="post">
-          <label><input type="radio" id="ev-radio-session"name="sessionradio" value="Session" checked="checked"/>Session</label>
-          
-          <label><input type="radio" id="ev-radio-user"name="sessionradio" value="User Event"/>User Event</label>
+          <label><input type="radio" id="ev-radio-session"name="sessionradio" value="Session" checked="checked" onchange="displayEventFields(this.value)"/>Session</label>
+          <label><input type="radio" id="ev-radio-user"name="sessionradio" value="User Event" onchange="displayEventFields(this.value)"/>User Event</label>
           
         </fieldset>
         <fieldset>
           <legend>Event</legend>
         
-        <label for="form-evt-id">Module:</label><br>
+        <label for="form-evt-id" id="form-evt-idlabel">Module:</label><br>
         <input type="text" id="form-evt-id" name="Id" value=""><br>
-  
+  <div id="form-name">
   <label for="form-evt-name">Name:</label><br>
-  <input type="text" id="form-evt-name" name="Name" value="" required><br><br>
+  <input type="text" id="form-evt-name" name="Name" value="" required><br><br></div>
 
-  <label for="form-evt-type">Type:</label><br>
+  <div id="form-type"><label for="form-evt-type">Type:</label><br>
   <select name="type" id="form-evt-type">
     <option value="Exam">Exam</option>
     <option value="Practical">Practical</option>
     <option value="Seminar">Seminar</option>
     <option value="Tutorials">Tutorials</option>
-  </select><br><br>
+  </select><br><br></div>
   
   <label for="form-evt-date">Date:</label><br>
   <input type="date" id="form-evt-date" name="Date" value=""><br>
@@ -78,19 +77,19 @@ $username = $_SESSION["username"];
   <label for="form-evt-timeto">Time to:</label><br>
   <input type="time" id="form-evt-timeto" name="TimeT" value=""><br>
   
-  <label for="form-evt-room">Rooms Available:</label><br>
+  <div id="form-rooms"><label for="form-evt-room">Rooms Available:</label><br>
   <select name="Rooms" id="form-evt-room">
   <option value="None">Select Date and Time</option>
-  </select><br>
+  </select><br></div>
 
-  <label for="form-evt-group">Group:</label><br>
+  <div id="form-group"><label for="form-evt-group">Group:</label><br>
   <select name="Group" id="form-evt-group">
     <option value="None">None</option>
-  </select><br><br>
+  </select><br><br></div>
 
   <label for="form-evt-recurring">Recurring:</label><br>
   <select name="Recurring" id="form-evt-recurring">
-    <option value="Once">Once</option>
+    <option value="Once" selected>Once</option>
     <option value="Weekly">Weekly</option>
   </select><br><br>
 
@@ -114,9 +113,9 @@ $username = $_SESSION["username"];
                 <form class="admin-search">
                     <select name="search-type" id="search-type">
                         <option value="Users" >Users</option>
-                        <option value="Programmes" selected>Programmes</option>
+                        <option value="Programmes" >Programmes</option>
                         <option value="Modules">Modules</option>
-                        <option value="Events">Events</option>
+                        <option value="Events" selected>Events</option>
                     </select>
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
                 </form>
@@ -133,6 +132,10 @@ $username = $_SESSION["username"];
      </div>
 </div>
      </div>
+     <script>
+       displayEventFields("Session");
+
+     </script>
     </main>
   </body>
 </html>

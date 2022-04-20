@@ -27,10 +27,15 @@ function removeText(){//Remove text from field when clicked
       }
     }else if(window.location.href.search("admin_events.php") != -1){
       if(type == "Modules"){
-        findEventByType(formData, "Module");
+        document.getElementById('ev-radio-session').checked = true;
+        displayEventFields("Session");
+        document.getElementById('form-evt-id').value = formData;
       }else if(type == "Events"){
         findEventByType(formData, "Event");
       }else if(type == "Users"){
+        document.getElementById('ev-radio-user').checked = true;
+        displayEventFields("User Event");
+        document.getElementById('form-evt-id').value = formData;
         findEventByType(formData, "User");
       }
 

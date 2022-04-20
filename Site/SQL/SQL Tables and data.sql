@@ -867,6 +867,24 @@ VALUES (
     "Projector, 20 pc's",
     "B"
   );
+  INSERT INTO rooms
+VALUES (
+    "B115",
+    "Main Building",
+    35,
+    "Lecture Room",
+    "",
+    "B"
+  );
+  INSERT INTO rooms
+VALUES (
+    "A102",
+    "Main Building",
+    65,
+    "Lecture Room",
+    "",
+    "A"
+  );
 INSERT INTO rooms
 VALUES (
     "C124",
