@@ -70,7 +70,8 @@ $username = $_SESSION["username"];
   </select><br><br></div>
   
   <label for="form-evt-date">Date:</label><br>
-  <input type="date" id="form-evt-date" name="Date" value=""><br>
+  <input type="date" id="form-evt-date" name="Date" value="">
+  <input type="button" value="Start of Semester" onclick="getModuleStartDate()"><br>
 
   <label for="form-evt-timefrom">Time from:</label><br>
   <input type="time" id="form-evt-timefrom" name="TimeF" value=""><br>

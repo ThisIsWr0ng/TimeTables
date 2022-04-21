@@ -110,3 +110,19 @@ function refreshRooms(){
     const fTimet = document.getElementById('form-evt-timeto');
     getAvailableRooms(fDate.value, fTimef.value, fTimet.value, fId.value);
 }
+function getModuleStartDate(){
+    const fId = document.getElementById('form-evt-id');
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {
+        //document.getElementById('search-output').innerHTML= this.responseText;
+       
+        const fDate = document.getElementById('form-evt-date');
+        fDate.value = this.responseText;
+    }
+    if(fId.value != ""){
+    xmlhttp.open("GET", `php/getSemesterDate.php?q=${fId.value}`);
+    xmlhttp.send();
+
+
+    }
+}
