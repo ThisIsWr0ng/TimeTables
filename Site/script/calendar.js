@@ -290,6 +290,16 @@ var cal = {
       
     }
   };
+  function displayCalendarFor(type, id){
+    window.location=`timetable.php?id=${id}&type=${type}`;
+    if(type =="Module"){
+      
+    }else if (type == "Programme") {
+      
+    } else if(type == "User"){
+      
+    }
+  }
  
 
   

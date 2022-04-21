@@ -39,8 +39,17 @@ function removeText(){//Remove text from field when clicked
         findEventByType(formData, "User");
       }
 
+    }else if(window.location.href.search("admin_calendar.php") != -1){
+      if(type == "Modules"){
+        displayCalendarFor("Module", formData);
+      }else if(type == "Users"){
+        displayCalendarFor("User", formData);
+      }else if(type == "Programmes"){
+        displayCalendarFor("Programme", formData);
+      }
+
     }
-    
+
   }
   function searchBar(data){//Get search Type and ask for output
     if(data != ""){

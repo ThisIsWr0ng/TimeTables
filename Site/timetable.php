@@ -76,9 +76,7 @@
       <script>
 console.log( "headers:",<?php echo json_encode($_REQUEST['type']); ?>, <?php echo json_encode($_REQUEST['id']); ?>);
 
-        function loadContent(a, b){
-            document.getElementById(a).innerHTML= b;
-        }
+        
             var dbData = JSON.parse( '<?php echo json_encode(fetchProgrammeEvents($_REQUEST['id']))?>' );//Request data
             var name = "";
             if(<?php echo json_encode($_REQUEST['type']); ?> == "Programme"){//timetable header
