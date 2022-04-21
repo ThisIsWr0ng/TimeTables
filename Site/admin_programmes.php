@@ -95,6 +95,7 @@ while ($row = mysqli_fetch_array($result)) {
                             <option value="7">7</option>
                             <option value="8">8</option>
                         </select>
+                        <fieldset>
                         <label for="year">Academic Year:</label><br>
                         <select id="form-prog-year" name="year">
                             <?php
@@ -108,6 +109,8 @@ while ($row = mysqli_fetch_array($result)) {
 }
 ?>
                         </select>
+                        <input type="button" value="set dates">
+                        </fieldset>
                         <label>Start Date</label><br>
                         <input id="form-prog-sdate" type="date" name="dob"><br><br>
 

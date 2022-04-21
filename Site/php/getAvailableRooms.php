@@ -6,7 +6,7 @@ $timeTo = mysqli_real_escape_string($conn, $_REQUEST['timet']);
 $module = mysqli_real_escape_string($conn, $_REQUEST['module']);
 $sql = "SELECT DISTINCT Rooms.* FROM Rooms 
 LEFT JOIN Events ON  Events.Room = Rooms.Number
-WHERE (NOT Events.Date = \"$date\" AND NOT events.Time_From = \"$timeFrom\") OR Events.Room IS NULL";
+WHERE (NOT Events.Date = \"$date\" AND (NOT events.Time_From <= \"$timeFrom\" AND NOT events.Time_To >= \"$timeTo\")) OR Events.Room IS NULL";
 $result = $conn->query($sql);
 
 $rooms = [];

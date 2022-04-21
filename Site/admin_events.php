@@ -89,22 +89,21 @@ $username = $_SESSION["username"];
     <option value="NULL" selected>None</option>
   </select><br><br></div>
 
+
+  <label for="form-evt-desc">Description</label><br>
+  <textarea id="form-evt-desc" name="Description" rows="4" cols="30">
+  </textarea>
+  <br>
+  <fieldset>
   <label for="form-evt-recurring">Recurring:</label><br>
   <select name="Recurring" id="form-evt-recurring">
     <option value="Once" selected>Once</option>
     <option value="Weekly">Weekly</option>
   </select><br><br>
 
-
-  <label for="form-evt-desc">Description</label><br>
-  <textarea id="form-evt-desc" name="Description" rows="4" cols="30">
-  </textarea>
-  
-  
-  <br>
-  
   <input type="submit" id="form-evt-save" name="sButton" value="Save">
   <input type="submit" id="form-evt-delete" name="sButton" value="Delete">
+  </fieldset>
 </form> 
 </fieldset>
 

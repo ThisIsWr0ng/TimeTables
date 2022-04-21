@@ -34,6 +34,7 @@ if($radio == "Session"){
             $group
         )";
         $result = $conn->query($sql);
+        if($result){$count++;}else if (!$result){array_push($errors, "Failed to create single session event");}
     }else{//recurring event
         //get start and end date of this module's semester
         $sql="SELECT Semesters.Start_Date, Semesters.End_Date FROM
@@ -90,33 +91,77 @@ if($radio == "Session"){
                     $group
                 )";
                 $result = $conn->query($sql);
-                $count++;
+                if($result){$count++;}else if (!$result){array_push($errors, "Failed to create recurring session event on $tempDate");}
+
             }
             //Set the next date next week
            $tempDate = strtotime($tempDate);
            $tempDate = strtotime("+1 week", $tempDate);
            $tempDate = date('Y-m-d', $tempDate);
         } while ($tempDate < $programmeEnd);
-
-       
-
     }
-
-
-
 }else if($radio == "User Event"){
+    $sql = "INSERT INTO User_Events VALUES (
+    NULL,
+    \"$id\",
+    \"$name\",
+    \"$date\",
+    \"$timeFrom\",
+    \"$timeTo\",
+    \"$desc\"
+    )";
+$result = $conn->query($sql);
+if (!$result){array_push($errors, "Failed to create user event on $date");}
 
 }
 
 
 
 }else if($sButton == "Delete"){
+    if($radio == "User Event"){
+        $sql="DELETE FROM User_Events WHERE
+        User = \"$id\" AND
+        Name = \"$name\" AND
+        Date = \"$date\" AND
+        Time_From = \"$timeFrom\" AND
+        Time_To = \"$timeTo\"";
+        $result = $conn->query($sql);
+        if (!$result){array_push($errors, "Failed to delete user event on $date");}
+    }else{//session
+
+        if($rec == "Once"){
+            $sql="DELETE FROM Events WHERE
+            Module = \"$id\" AND
+            Type = \"$type\" AND
+            Date = \"$date\" AND
+            Time_From = \"$timeFrom\" AND
+            Time_To = \"$timeTo\"";
+            $result = $conn->query($sql);
+            if (!$result){array_push($errors, "Failed to delete session event on $date");}
+            
+        }else{
+            $sql = "DELETE FROM Events WHERE
+            Module = \"$id\" AND
+            Type = \"$type\" AND
+            Time_From = \"$timeFrom\" AND
+            Time_To = \"$timeTo\"";
+             $result = $conn->query($sql);
+             if (!$result){array_push($errors, "Failed to delete multiple sessios of $id");}else{echo "Succesfully deleted multiple events";}
+        }
+
+    }
+
+ 
 
 }
 if(count($errors) > 0){
-    echo print_r($errors);
+    //echo "<script type=\"text/javascript\"> alert(\"Errors: $errors)\")</script>";
 }
 if($count > 0){
-echo "succesfully created $count events";}
-//header("location: ../admin_events.php");
+   // echo "<script type=\"text/javascript\"> alert(\"succesfully created $count events\"); window.location.assign(../admin_events.php);</script>";
+
+}
+header("location: ../admin_events.php");
+
+
 ?>
