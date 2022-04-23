@@ -83,12 +83,7 @@ $conn->query($sqluser);
 
 $sqlenrolment = "UPDATE student_enrolment SET Programme='$programmeResult', Date_Enrolled=NOW() WHERE Student='$formuid'";
 $conn->query($sqlenrolment);
-<<<<<<< Updated upstream
-echo $sql;
-echo $sqlenrolment;
-=======
 
->>>>>>> Stashed changes
 //header("location: ../admin_users.php");
 
 }else if($requestType == "Reset Password"){
