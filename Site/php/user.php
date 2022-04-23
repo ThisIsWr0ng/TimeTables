@@ -16,6 +16,7 @@ $housenumber = mysqli_real_escape_string($conn, $_REQUEST['housenumber']);
 $street = mysqli_real_escape_string($conn, $_REQUEST['street']);
 $postcode = mysqli_real_escape_string($conn, $_REQUEST['postcode']);
 
+$formuid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 $role = mysqli_real_escape_string($conn, $_REQUEST['role']);
 $progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
@@ -74,13 +75,20 @@ header("location: ../admin_users.php");
 
 }else if($requestType == "Update"){//<<<<<<<<<Update code here
 
-$sqluser = "UPDATE users SET First_Name='$firstname', Surname='$surname', Title='$title', Gender='$gender', Birth_Date='$dob', Priv_Email='$privatemeail', Uni_Email='$uniemail', Telephone='$tel', Next_Of_Kin='$nextofkin', Street_Number='$housenumber', Street_Name='$street', Postcode='$postcode' WHERE Id='$id'";
+$sqlprogramme = "SELECT Id FROM progammes WHERE Name='$progamme'";
+$programmeResult = $conn->query($sqlprogramme);
+
+$sqluser = "UPDATE users SET First_Name='$firstname', Surname='$surname', Title='$title', Gender='$gender', Birth_Date='$dob', Priv_Email='$privatemeail', Uni_Email='$uniemail', Telephone='$tel', Next_Of_Kin='$nextofkin', Street_Number='$housenumber', Street_Name='$street', Postcode='$postcode' WHERE Id='$formuid'";
 $conn->query($sqluser);
 
-$sqlenrolment = "UPDATE student_enrolment SET Programme='$programme', Date_Enrolled=NOW() WHERE Student='$id'";
+$sqlenrolment = "UPDATE student_enrolment SET Programme='$programmeResult', Date_Enrolled=NOW() WHERE Student='$formuid'";
 $conn->query($sqlenrolment);
+<<<<<<< Updated upstream
 echo $sql;
 echo $sqlenrolment;
+=======
+
+>>>>>>> Stashed changes
 //header("location: ../admin_users.php");
 
 }else if($requestType == "Reset Password"){
