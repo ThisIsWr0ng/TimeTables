@@ -16,11 +16,9 @@ $housenumber = mysqli_real_escape_string($conn, $_REQUEST['housenumber']);
 $street = mysqli_real_escape_string($conn, $_REQUEST['street']);
 $postcode = mysqli_real_escape_string($conn, $_REQUEST['postcode']);
 
-$formuid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 $role = mysqli_real_escape_string($conn, $_REQUEST['role']);
 $progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
-$uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
 $requestType = $_POST['btSubmit'];
 if ($requestType == "Add") {//<<<<<<<<< ADD Code Here
 
@@ -50,12 +48,20 @@ else
 $Suser = $usernew + 1;
 
 $s = "S";
-$user = $s.=$Suser;
-echo $user;
+if ($role == "Undergraduate Student")
+{
+    $user = $s.=$Suser;
+}
+else
+{
+    $user = $Suser;
+}
+$domain = "@mail.glyndwr.ac.uk";
+$uniemail = $user.$domain;
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
 
-$sqluserid = "SELECT * FROM users WHERE First_Name='$firstname'";
+$sqluserid = "SELECT * FROM users WHERE Id='$user'";
 $userid = mysqli_query($conn, $sqluserid);
 
 $sqlprogrammeid = "SELECT * FROM programmes WHERE Name='$progamme'";
@@ -63,10 +69,11 @@ $progammeid = mysqli_query($conn, $sqlprogrammeid);
 $row = $userid->fetch_assoc();
 $userid = $row['Id'];
 $row = $progammeid->fetch_assoc();
-$progammeid = $row['Id'];
-$sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$progammeid', NOW(), NULL)";
+$programmeid = $row['Id'];
+$sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$programmeid', NOW(), NULL)";
+mysqli_query($conn, $sqlenrol);
 
-header("location: ../admin_users.php");
+//header("location: ../admin_users.php");
 }else if($requestType == "Delete"){//<<<<<<<<<Delete code here
 
 
@@ -74,6 +81,8 @@ header("location: ../admin_users.php");
 
 
 }else if($requestType == "Update"){//<<<<<<<<<Update code here
+
+$formuid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 
 $sqlprogramme = "SELECT Id FROM progammes WHERE Name='$progamme'";
 $programmeResult = $conn->query($sqlprogramme);
