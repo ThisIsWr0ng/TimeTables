@@ -41,7 +41,49 @@ $username = $_SESSION["username"];
      
       <div id="content-block">
       <div id="form-section">
+      <section>
+        <form id="request-form" action="php/request.php" method="POST">
+          <h1>Requests</h1>
+          <section>
+            <fieldset>
+              <legend>Details</legend>
+              <label>Id</label><br>
+              <input type="text" name="requestid">
 
+              <label>User Id</label>
+              <input type="text" name="userid">
+
+              <label>Username</label>
+              <input type="text" name="username">
+
+              <label>Request Type</label>
+              <input type="text" name="requesttype">
+
+              <label>Module</label>
+              <input type="text" name="module">
+
+              <label>Current Status</label>
+              <input type="text" name="status">
+
+              <label>Description</label>
+              <input type="text" name="description">
+            </fieldset>
+          </section>
+          <section>
+            <fieldset>
+              <legend>Comments/Messages</legend>
+              <input type="text" name="comment">
+            </fieldset>
+          </section>
+          <section>
+            <input type="submit" value="Mark as Completed">
+            <input type="submit" value="Mark as Denied">
+            <input type="submit" value="Delete">
+            <input type="submit" value="Message User">
+          </section>
+
+        </form>
+      </section>
      </div>
      <div id="search-section">
        
