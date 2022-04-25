@@ -16,7 +16,6 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable"/>
     <link rel="stylesheet" href="Style/Basic.css"/>
     <link rel="stylesheet" href="Style/admin.css"/>
-    <script src="script/searchBox.js"></script>
     <script src="script/sortTable.js"></script>
     <script src="script/searchBox.js"></script>
     <?php include 'php/fetch_data.php'?>

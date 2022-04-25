@@ -16,6 +16,8 @@ $username = $_SESSION["username"];
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
+    <script src="script/sortTable.js"></script>
+    <script src="script/searchBox.js"></script>
   </head>
   <body>
     <header>
@@ -48,31 +50,28 @@ $username = $_SESSION["username"];
             <fieldset>
               <legend>Details</legend>
               <label>Id</label><br>
-              <input type="text" name="requestid">
+              <input type="text" id="form-req-id" name="requestid">
 
               <label>User Id</label>
-              <input type="text" name="userid">
+              <input type="text" id="form-req-uid" name="userid">
 
               <label>Username</label>
-              <input type="text" name="username">
+              <input type="text" id="form-req-username" name="username">
 
               <label>Request Type</label>
-              <input type="text" name="requesttype">
-
-              <label>Module</label>
-              <input type="text" name="module">
+              <input type="text" id="form-req-type" name="requesttype">
 
               <label>Current Status</label>
-              <input type="text" name="status">
+              <input type="text" id="form-req-stat" name="status">
 
               <label>Description</label>
-              <input type="text" name="description">
+              <input type="text" id="form-req-desc" name="description">
             </fieldset>
           </section>
           <section>
             <fieldset>
               <legend>Comments/Messages</legend>
-              <input type="text" name="comment">
+              <input type="text" id="form-req-comm" name="comment">
             </fieldset>
           </section>
           <section>
@@ -86,7 +85,26 @@ $username = $_SESSION["username"];
       </section>
      </div>
      <div id="search-section">
-       
+                <form class="admin-search">
+                    <select name="search-type" id="search-type">
+                    <option value="Requests" selected>Requests</option>
+                        <option value="Users" >Users</option>
+                        <option value="Programmes">Programmes</option>
+                        <option value="Modules">Modules</option>
+                        <option value="Events">Events</option>
+                    </select>
+                    <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
+                </form>
+                <div id="search-list-opt-top">
+                    <input type="button" name="list-remove" id="list-remove" value="-">
+                    <input type="button" name="list-add" id="list-add" value="+" onclick="">
+                </div>
+                <div class="db-output-window" id="search-output"></div>
+                <div id="search-list-opt">
+                    <input type="button" value="Import List">
+                    <input type="button" value="Export list">
+                </div>
+            
      </div>
 </div>
      </div>

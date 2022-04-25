@@ -48,6 +48,10 @@ function removeText(){//Remove text from field when clicked
         displayCalendarFor("Programme", formData);
       }
 
+    }else if(window.location.href.search("admin_requests.php") != -1){
+      if (type == "Requests"){
+        fillRequestForms(formData);
+      }
     }
 
   }
@@ -327,4 +331,28 @@ dbData[2].push(deadline);
 
 getModuleDeadlines(dbData[2]);
 hideDeadlineFields();
+}
+function fillRequestForms(id){
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function () {
+    
+    document.getElementById("search-output").innerHTML = this.responseText;//<<<<For debugging
+    dbData = JSON.parse(this.responseText);
+    const fId = document.getElementById('form-req-id');
+    const fUId = document.getElementById('form-req-uid');
+    const fuser = document.getElementById('form-req-username');
+    const fType = document.getElementById('form-req-type');
+    const fStat = document.getElementById('form-req-stat');
+    const fDesc = document.getElementById('form-req-desc');
+    fId.value = dbData.Id;
+    fUId.value = dbData.User_Id;
+    fuser.value = dbData.Username;
+    fType.value = dbData.Type;
+    fStat.value = dbData.Status;
+    fDesc.value = dbData.Description;
+  }
+  xmlhttp.open("GET", `php/getRequestById.php?q=${id}`);
+  xmlhttp.send();
+
+
 }

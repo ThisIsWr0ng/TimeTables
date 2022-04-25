@@ -23,6 +23,10 @@ switch ($searchType) {
         $columns = array("Id", "Module", "Room", "Type", "Date", "Time_From", "Time_To", "Description", "Group");
         $onClick = "form-evt-id";
         break;
+    case "Requests":
+        $columns = array("Id", "User_Id", "Type", "Description", "Status");
+        $onClick = "form-req-id";
+        break;
     default:
     $columns = array("Id");
 }
@@ -108,6 +112,14 @@ if ($result->num_rows > 0) {
                 "Time_To" => $row["Time_To"],
                 "Description" => $row["Description"],
                 "Group" => $row["Group"],
+            );
+        }elseif ($searchType == "Requests") {
+            $array[$i] = array(
+                "Id" => $row["Id"],
+                "User_Id" => $row["User_Id"],
+                "Type" => $row["Type"],
+                "Description" => $row["Description"],
+                "Status" => $row["Status"],
             );
         }
         $i += 1;
