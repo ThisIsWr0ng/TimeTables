@@ -82,7 +82,7 @@ $sqldelete = "DELETE FROM users WHERE Id='$formuid'";
 
 $conn->query($sqldelete);
 
-
+header("location: ../admin_users.php");
 
 
 }else if($requestType == "Update"){//<<<<<<<<<Update code here
