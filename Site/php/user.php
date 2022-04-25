@@ -101,6 +101,11 @@ header("location: ../admin_users.php");
 
 }else if($requestType == "Reset Password"){
 
+$sqlpass = "UPDATE logins SET Password='1234' WHERE Username='$formuid'";
+$conn->query($sqlpass);
+
+header("location: ../admin_users.php");
+
 }else if($requestType == "Default Settings"){
     
 }
