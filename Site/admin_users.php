@@ -97,7 +97,7 @@ $username = $_SESSION["username"];
             <fieldset>
               <legend>University Info</legend>
             <label>User ID</label><br>
-            <input type="text" id="form-user-id" name="userid" value="" disabled><br><br>
+            <input type="text" id="form-user-id" name="userid" value=""><br><br>
 
             <label>Role</label><br>
             <select id="form-user-role" name="role">
@@ -157,7 +157,7 @@ while ($row = mysqli_fetch_array($result)) {
            <option value="Events">Events</option>
          </select>
          <input type="text" id="search-searchbar"onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
-       </form>
+         </form>
        <div id="search-list-opt-top">
        <input type="button" name="list-remove" id="list-remove" value="-">
        <input type="button" name="list-add" id="list-add" value="+" onclick=""></div>

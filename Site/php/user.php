@@ -19,6 +19,8 @@ $postcode = mysqli_real_escape_string($conn, $_REQUEST['postcode']);
 $role = mysqli_real_escape_string($conn, $_REQUEST['role']);
 $progamme = mysqli_real_escape_string($conn, $_REQUEST['programme']);
 $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
+$uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
+$formuid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 $requestType = $_POST['btSubmit'];
 if ($requestType == "Add") {//<<<<<<<<< ADD Code Here
 
@@ -82,7 +84,6 @@ mysqli_query($conn, $sqlenrol);
 
 }else if($requestType == "Update"){//<<<<<<<<<Update code here
 
-$formuid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 
 $sqlprogramme = "SELECT Id FROM progammes WHERE Name='$progamme'";
 $programmeResult = $conn->query($sqlprogramme);
