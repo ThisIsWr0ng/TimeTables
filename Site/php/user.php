@@ -63,6 +63,17 @@ $uniemail = $user.$domain;
 $sqlusers = "INSERT INTO users (Id, First_Name, Surname, Title, Gender, Birth_Date, Priv_Email, Uni_Email, Telephone, Next_Of_Kin, Street_Number, Street_Name, Postcode) VALUES ('$user', '$firstname', '$surname', '$title', '$gender', '$dob', '$privatemeail', '$uniemail', '$tel', '$nextofkin', '$housenumber', '$street', '$postcode')";
 mysqli_query($conn, $sqlusers);
 
+$sqlsrole = "SELECT * FROM roles WHERE Name='$role'";
+$roleid = mysqli_query($conn, $sqlsrole);
+$rolerow = $roleid->fetch_assoc();
+$roleNumber = $row['Access_Level'];
+
+$sqlrole = "INSERT INTO Role_Assignment (Id, Role, User) VALUES (NULL,'$roleNumber','$user')";
+$conn->query($sqlrole);
+
+$sqllogin = "INSERT INTO logins (Id, Username, Password) VALUES (NULL, '$user', '1234'";
+$conn->query($conn, $sqllogin);
+
 $sqluserid = "SELECT * FROM users WHERE Id='$user'";
 $userid = mysqli_query($conn, $sqluserid);
 
