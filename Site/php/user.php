@@ -77,14 +77,16 @@ $conn->query($conn, $sqllogin);
 $sqluserid = "SELECT * FROM users WHERE Id='$user'";
 $userid = mysqli_query($conn, $sqluserid);
 
-$sqlprogrammeid = "SELECT * FROM programmes WHERE Name='$progamme'";
-$progammeid = mysqli_query($conn, $sqlprogrammeid);
-$row = $userid->fetch_assoc();
-$userid = $row['Id'];
-$row = $progammeid->fetch_assoc();
-$programmeid = $row['Id'];
-$sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$programmeid', NOW(), NULL)";
-mysqli_query($conn, $sqlenrol);
+if ($role == "Undergraduate Student") {
+    $sqlprogrammeid = "SELECT * FROM programmes WHERE Name='$progamme'";
+    $progammeid = mysqli_query($conn, $sqlprogrammeid);
+    $row = $userid->fetch_assoc();
+    $userid = $row['Id'];
+    $row = $progammeid->fetch_assoc();
+    $programmeid = $row['Id'];
+    $sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$programmeid', NOW(), NULL)";
+    mysqli_query($conn, $sqlenrol);
+}
 
 header("location: ../admin_users.php");
 }else if($requestType == "Delete"){//<<<<<<<<<Delete code here
