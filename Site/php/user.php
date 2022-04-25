@@ -75,7 +75,7 @@ $programmeid = $row['Id'];
 $sqlenrol = "INSERT INTO student_enrolment (Id, Student, Programme, Date_Enrolled, Date_Finished) VALUES (NULL, '$userid', '$programmeid', NOW(), NULL)";
 mysqli_query($conn, $sqlenrol);
 
-//header("location: ../admin_users.php");
+header("location: ../admin_users.php");
 }else if($requestType == "Delete"){//<<<<<<<<<Delete code here
 
 
@@ -94,7 +94,7 @@ $conn->query($sqluser);
 $sqlenrolment = "UPDATE student_enrolment SET Programme='$programmeResult', Date_Enrolled=NOW() WHERE Student='$formuid'";
 $conn->query($sqlenrolment);
 
-//header("location: ../admin_users.php");
+header("location: ../admin_users.php");
 
 }else if($requestType == "Reset Password"){
 
