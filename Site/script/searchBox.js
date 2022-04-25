@@ -336,7 +336,7 @@ function fillRequestForms(id){
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
     
-    document.getElementById("search-output").innerHTML = this.responseText;//<<<<For debugging
+    //document.getElementById("search-output").innerHTML = this.responseText;//<<<<For debugging
     dbData = JSON.parse(this.responseText);
     const fId = document.getElementById('form-req-id');
     const fUId = document.getElementById('form-req-uid');
