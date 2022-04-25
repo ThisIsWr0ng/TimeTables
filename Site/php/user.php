@@ -78,6 +78,9 @@ mysqli_query($conn, $sqlenrol);
 header("location: ../admin_users.php");
 }else if($requestType == "Delete"){//<<<<<<<<<Delete code here
 
+$sqldelete = "DELETE FROM users WHERE Id='$formuid'";
+
+$conn->query($sqldelete);
 
 
 
