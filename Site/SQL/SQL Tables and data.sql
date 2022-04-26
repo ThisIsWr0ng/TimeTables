@@ -546,13 +546,6 @@ VALUES (
 INSERT INTO roles
 VALUES (
     NULL,
-    "IT Technician",
-    2,
-    "Maintanance in networks and university computers"
-  );
-INSERT INTO roles
-VALUES (
-    NULL,
     "Lecturer",
     3,
     "User, requests allowed"
@@ -565,7 +558,7 @@ VALUES (
     "User, restricted access"
   );
 INSERT INTO role_assignment
-VALUES (NULL, 5, "S19005373");
+VALUES (NULL, 4, "S19005373");
 INSERT INTO role_assignment
 VALUES (NULL, 1, "root");
 INSERT INTO role_assignment

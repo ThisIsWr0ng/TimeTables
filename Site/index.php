@@ -69,7 +69,7 @@
                                 $_SESSION["username"] = $username;
                                 $_SESSION["lvl"] = $accesslvlresult;
                                 
-                                if($_SESSION["lvl"] >2)
+                                if($_SESSION["lvl"] >1)
                                 {
                                     header("location: personal_timetable.php");
                                 }
