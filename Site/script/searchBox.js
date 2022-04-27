@@ -363,15 +363,16 @@ function exportXML(){
   xmlhttp.onload = function () {
     //document.getElementById("search-output").innerHTML = this.responseText;//<<<<For debugging
     if(type.value == "Programmes"){
-      download("/XML/programmes.xml")
+      download("XML/programmes.xml", "Programmes")
     }
   }
   xmlhttp.open("GET", `php/exportXML.php?type=${type.value}`);
   xmlhttp.send();
 }
-function download(link) {
+function download(link, name) {
   var element = document.createElement('a');
   element.setAttribute('href', link);
+  element.setAttribute('download', name);
 
   element.style.display = 'none';
   document.body.appendChild(element);

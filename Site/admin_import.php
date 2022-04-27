@@ -16,6 +16,8 @@ $username = $_SESSION["username"];
     <meta name="description" content="Import Data"/>
     <link rel="stylesheet" href="Style/Basic.css"/>
     <link rel="stylesheet" href="Style/admin.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
 </head>
 
 <body>
@@ -38,21 +40,13 @@ $username = $_SESSION["username"];
         </nav>
         <div id="content-block">
         
-            <div id="form-section">
-            <h1>Import</h1>
-                <input type="button" value="Users">
-                <input type="button" value="Programmes and Modules">
-                <input type="button" value="Events">
-
-
-                
-            </div>
             <div id="search-section">
                
                 <h1>Data View</h1>
-                <div class="db-output-window" id="search-output">Please select a file to display data</div>
+                <form id="xmlForm" name="xmlForm"><input id="input" type="file"> <input type="submit"></form>
+                <textarea class="db-output-window" id="search-output" rows="20" cols="40" style="border:none;"></textarea>
                 <div id="search-list-opt">
-                <input type="button" value="Cancel">
+                <input type="button" value="Cancel" onclick="cancel()">
                     <input type="button" value="Confirm">
                     
                 </div>
@@ -60,7 +54,30 @@ $username = $_SESSION["username"];
         </div>
         </div>
         <script>
-           
+            var readXml=null;
+            var doc = null;
+       $('#xmlForm').submit(function(event) {
+           event.preventDefault();
+           var selectedFile = document.getElementById('input').files[0];
+           //console.log(selectedFile);
+           var reader = new FileReader();
+           reader.onload = function(e) {
+               readXml=e.target.result;
+               console.log(typeof readXml);
+               document.getElementById('search-output').innerHTML = readXml;
+               var parser = new DOMParser();
+               doc = parser.parseFromString(readXml, "application/xml");
+               
+               //console.log(doc);
+           }
+           reader.readAsText(selectedFile);
+
+       });
+           function cancel(){
+            document.getElementById('search-output').innerHTML = null;
+           }
+           doc = null;
+           readXml=null;
         </script>
     </main>
 </body>
