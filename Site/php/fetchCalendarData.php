@@ -46,8 +46,29 @@
                 'start_date' => $row["start_date"],
                 'end_date' => $row["end_date"],
             );
-            $i += 1;
+            $i++;
         }
+        $sql="SELECT * FROM user_events WHERE User = \"$student\"";
+        $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        
+        while ($row = $result->fetch_assoc()) { 
+            $array[$i] = array(
+                'type'=>'Personal',
+                'module'=>$row['Name'],
+                'date'=>$row['Date'],
+                'time_from'=>$row['Time_From'],
+                'time_to'=>$row['Time_To'],
+                'description'=>$row['Description'],
+                'room' => '',
+                'room_type' => '',
+                'module_name' => '',
+            );
+            $i++;
+        }
+    }
+
+
         echo json_encode($array);
 
     } else {

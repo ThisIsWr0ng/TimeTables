@@ -47,6 +47,7 @@ $username = $_SESSION["username"];
           <form id="cal-event" action="php/eventRequest.php" method="post">
             <div id="evt-head"></div>
             <input type="date" id="evt-date" name="date" />
+            <input type="hidden" name="user" value="<?php echo $username?>">
             <div id="evt-time"></div>
             <div id="evt-room"></div>
             <div id="request-fileds">
@@ -58,8 +59,6 @@ $username = $_SESSION["username"];
                 type="time"
                 id="tFrom"
                 name="timeFrom"
-                min="12:00"
-                max="00:00"
                 required
               />
               <label for="tTo">Time To:</label>
@@ -67,8 +66,7 @@ $username = $_SESSION["username"];
                 type="time"
                 id="tTo"
                 name="timeTo"
-                min="12:00"
-                max="00:00"
+                required
               /><br />
 
               <label for="evt-details">Event description:</label>
@@ -82,7 +80,43 @@ $username = $_SESSION["username"];
           </form>
         </div>
       </div>
+      <section id="lecturer-forms">
+      <fieldset>
+    <legend>Deadlines</legend>
+    <section class="db-output-window" id="form-mod-dead-output">No Deadlines Assigned</section>
+    <div id="deadlines-fields">
+    <label for="name">Name:</label><br>
+  <input type="text" id="form-mod-dead-name" name="name" value="" required><br>
 
+  <label for="weight">Weight (%):</label>
+  <input type="number" id="form-mod-dead-weight" name="weight" min="0" max="100" step="5">
+
+  <label for="datetime">Date:</label>
+  <input type="datetime-local" id="form-mod-dead-date" name="datetime">
+
+  <label for="ml">Moodle Link:</label><br>
+  <input type="text" id="form-mod-dead-moodle" name="ml" value=""><br>
+    
+</div>
+<input type="button" id="add-deadlines" value="Add"/> 
+  </fieldset>
+  <fieldset>
+    <legend>Request</legend>
+    <form action="">
+      <select name="req-type" id="req-type">
+        <option value="Room">Room Change</option>
+        <option value="Time">Time Change</option>
+        <option value="Day">Day Change</option>
+        <option value="Group">Create Student Groups</option>
+        <option value="Module">Module</option>
+        <option value="Generic">Other</option>
+      </select>
+      <input type="hidden" name="user" value="<?php echo $username?>">
+      <textarea name="description" id="req-desc" cols="80" rows="10"></textarea>
+      <input type="submit">
+    </form>
+  </fieldset>
+  </section>
       <script>
         var dbData = null;
         xmlhttp = new XMLHttpRequest();
@@ -95,9 +129,6 @@ $username = $_SESSION["username"];
   xmlhttp.open("GET", 'php/fetchCalendarData.php?user=<?php echo $username ?>');
   xmlhttp.send();
         
-            <?php /*var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );*/?>
-            //console.log("Data Received:", dbData);
-            //window.addEventListener("load", drawCalendar(dbData));
       </script>
     </main>
   </body>

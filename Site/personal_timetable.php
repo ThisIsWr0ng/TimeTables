@@ -47,6 +47,7 @@ $username = $_SESSION["username"];
           <form id="cal-event" action="php/eventRequest.php" method="post">
             <div id="evt-head"></div>
             <input type="date" id="evt-date" name="date" />
+            <input type="hidden" name="user" value="<?php echo $username?>">
             <div id="evt-time"></div>
             <div id="evt-room"></div>
             <div id="request-fileds">
@@ -58,8 +59,6 @@ $username = $_SESSION["username"];
                 type="time"
                 id="tFrom"
                 name="timeFrom"
-                min="12:00"
-                max="00:00"
                 required
               />
               <label for="tTo">Time To:</label>
@@ -67,8 +66,7 @@ $username = $_SESSION["username"];
                 type="time"
                 id="tTo"
                 name="timeTo"
-                min="12:00"
-                max="00:00"
+                required
               /><br />
 
               <label for="evt-details">Event description:</label>

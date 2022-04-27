@@ -103,7 +103,7 @@ var cal = {
         }
       }
       }
-      console.log("Prepared data:", cal.data);
+      //console.log("Prepared data:", cal.data);
 
       // (C3) DRAWING CALCULATIONS
       // Blank squares before start of month
@@ -164,7 +164,7 @@ var cal = {
         }
         }
       }
-      console.log("mod:", modules);
+      //console.log("mod:", modules);
       for (let i=0; i<total; i++) {
         let cCell = document.createElement("td");
         if (squares[i]=="b") { cCell.classList.add("blank"); }
@@ -261,7 +261,7 @@ var cal = {
   
     // (F) Request EVENT
     showRequest : () => {
-      console.log("ShowRequest Started!");
+      //console.log("ShowRequest Started!");
       cal.hfTxt.removeAttribute('readonly');
       cal.hfDate.removeAttribute('readonly');
       cal.show(currentCell, 0, true);
@@ -279,7 +279,7 @@ var cal = {
     next : () => {
       
       var numEvents = cal.data[currentCell.getElementsByClassName("dd")[0].innerHTML].length;
-      console.log("cell", numEvents - 1, currentEventIndex);
+      //console.log("cell", numEvents - 1, currentEventIndex);
       if(numEvents - 1 > currentEventIndex){
         cal.show(currentCell, ++currentEventIndex, false);
       }else{
