@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: index.php");
     exit;
 }
@@ -50,11 +50,11 @@ $username = $_SESSION["username"];
           <form action="php/event.php" method="post" novalidate>
           <label><input type="radio" id="ev-radio-session"name="sessionradio" value="Session" checked="checked" onchange="displayEventFields(this.value)"/>Session</label>
           <label><input type="radio" id="ev-radio-user"name="sessionradio" value="User Event" onchange="displayEventFields(this.value)"/>User Event</label>
-          
+
         </fieldset>
         <fieldset>
           <legend>Event</legend>
-        
+
         <label for="form-evt-id" id="form-evt-idlabel">Module:</label><br>
         <input type="text" id="form-evt-id" name="Id" value=""><br>
   <div id="form-name">
@@ -68,17 +68,17 @@ $username = $_SESSION["username"];
     <option value="Seminar">Seminar</option>
     <option value="Tutorials">Tutorials</option>
   </select><br><br></div>
-  
+
   <label for="form-evt-date">Date:</label><br>
   <input type="date" id="form-evt-date" name="Date" value="">
   <input type="button" value="Start of Semester" onclick="getModuleStartDate()"><br>
 
   <label for="form-evt-timefrom">Time from:</label><br>
   <input type="time" id="form-evt-timefrom" name="TimeF" value=""><br>
-  
+
   <label for="form-evt-timeto">Time to:</label><br>
   <input type="time" id="form-evt-timeto" name="TimeT" value=""><br>
-  
+
   <div id="form-rooms"><label for="form-evt-room">Rooms Available:</label><br>
   <select name="Rooms" id="form-evt-room" >
   <option value="None">Select Date and Time</option>
@@ -104,13 +104,13 @@ $username = $_SESSION["username"];
   <input type="submit" id="form-evt-save" name="sButton" value="Save">
   <input type="submit" id="form-evt-delete" name="sButton" value="Delete">
   </fieldset>
-</form> 
+</form>
 </fieldset>
 
 
      </div>
      <div id="search-section">
-     <div id="search-section">
+     <h1>SearchBox</h1>
                 <form class="admin-search">
                     <select name="search-type" id="search-type">
                         <option value="Users" >Users</option>
@@ -120,15 +120,15 @@ $username = $_SESSION["username"];
                     </select>
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
                 </form>
-              
-                <div class="db-output-window" id="search-output"></div>
+
+                <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
                 <div id="search-list-opt">
-                    
+
                     <input type="button" value="Export list">
                 </div>
             </div>
      </div>
-</div>
+
      </div>
      <script>
        displayEventFields("Session");

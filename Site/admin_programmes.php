@@ -154,6 +154,7 @@ while ($row = mysqli_fetch_array($result)) {
                 </form>
             </div>
             <div id="search-section">
+            <h1>SearchBox</h1>
                 <form class="admin-search">
                     <select name="search-type" id="search-type">
                         <option value="Users" >Users</option>
@@ -164,7 +165,7 @@ while ($row = mysqli_fetch_array($result)) {
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
                 </form>
                 
-                <div class="db-output-window" id="search-output"></div>
+                <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
                 <div id="search-list-opt">
                    
                     <input type="button" value="Export list">

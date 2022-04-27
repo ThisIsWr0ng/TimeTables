@@ -44,59 +44,11 @@ $username = $_SESSION["username"];
         <input type="button" value="Import Data" onclick="location.href='admin_import.php'"/>
         <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
       </nav>
-      <div id="cal-wrap">
-        <!-- (A) PERIOD SELECTOR -->
-        <div id="cal-date">
-          <select id="cal-mth"></select>
-          <select id="cal-yr"></select>
-        </div>
-
-        <!-- (B) CALENDAR -->
-        <div id="cal-container"></div>
-
-        <!-- (C) EVENT FORM -->
-        <?php /*<div id="overlay">
-          <form id="cal-event" action="php/eventRequest.php" method="post">
-            <div id="evt-head"></div>
-            <input type="date" id="evt-date" name="date" />
-            <div id="evt-time"></div>
-            <div id="evt-room"></div>
-            <div id="request-fileds">
-              <label for="eName">Event name:</label>
-              <input type="text" id="eName" name="eName" required /><br />
-
-              <label for="tFrom">Time From:</label>
-              <input
-                type="time"
-                id="tFrom"
-                name="timeFrom"
-                min="12:00"
-                max="00:00"
-                required
-              />
-              <label for="tTo">Time To:</label>
-              <input
-                type="time"
-                id="tTo"
-                name="timeTo"
-                min="12:00"
-                max="00:00"
-              /><br />
-
-              <label for="evt-details">Event description:</label>
-            </div>
-
-            <textarea id="evt-details" name="details" readonly></textarea>
-            <input id="evt-close" type="button" value="Close" />
-            <input id="evt-request" type="button" value="Add Event" />
-            <input id="evt-moodle-page" type="button" value="Moodle Page" />
-            <input id="evt-next" type="button" value="Next -->" />
-          </form>
-        </div>*/?>
-      </div>
+      
 
       
       <div id="search-section">
+      <h1>SearchBox</h1>
                 <form class="admin-search">
                     <select name="search-type" id="search-type">
                         <option value="Users" >Users</option>
@@ -107,7 +59,7 @@ $username = $_SESSION["username"];
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
                 </form>
                 
-                <div class="db-output-window" id="search-output"></div>
+                <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
                 <div id="search-list-opt">
                     
                     <input type="button" value="Export list">
