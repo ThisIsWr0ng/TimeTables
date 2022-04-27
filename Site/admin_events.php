@@ -111,7 +111,7 @@ $username = $_SESSION["username"];
      </div>
      <div id="search-section">
      <h1>SearchBox</h1>
-                <form class="admin-search">
+                <section class="admin-search">
                     <select name="search-type" id="search-type">
                         <option value="Users" >Users</option>
                         <option value="Programmes" >Programmes</option>
@@ -119,7 +119,7 @@ $username = $_SESSION["username"];
                         <option value="Events" selected>Events</option>
                     </select>
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
-                </form>
+                </Section>
 
                 <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
                 <div id="search-list-opt">
