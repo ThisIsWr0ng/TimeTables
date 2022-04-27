@@ -36,6 +36,7 @@ $username = $_SESSION["username"];
         <input type="button" value="Modules" onclick="location.href='admin_modules.php'"/>
         <input type="button" value="Events" onclick="location.href='admin_events.php'"/>
         <input type="button" value="Requests" onclick="location.href='admin_requests.php'"/>
+        <input type="button" value="Import Data" onclick="location.href='admin_import.php'"/>
         <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
       </nav>
       <div id="content-block">

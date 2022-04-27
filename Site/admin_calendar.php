@@ -41,6 +41,7 @@ $username = $_SESSION["username"];
         <input type="button" value="Modules" onclick="location.href='admin_modules.php'"/>
         <input type="button" value="Events" onclick="location.href='admin_events.php'"/>
         <input type="button" value="Requests" onclick="location.href='admin_requests.php'"/>
+        <input type="button" value="Import Data" onclick="location.href='admin_import.php'"/>
         <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
       </nav>
       <div id="cal-wrap">
@@ -105,13 +106,10 @@ $username = $_SESSION["username"];
                     </select>
                     <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
                 </form>
-                <div id="search-list-opt-top">
-                    <input type="button" name="list-remove" id="list-remove" value="-">
-                    <input type="button" name="list-add" id="list-add" value="+" onclick="">
-                </div>
+                
                 <div class="db-output-window" id="search-output"></div>
                 <div id="search-list-opt">
-                    <input type="button" value="Import List">
+                    
                     <input type="button" value="Export list">
                 </div>
             </div>
