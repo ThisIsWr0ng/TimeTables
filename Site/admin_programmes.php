@@ -168,7 +168,7 @@ while ($row = mysqli_fetch_array($result)) {
                 <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
                 <div id="search-list-opt">
                    
-                    <input type="button" value="Export list">
+                    <input type="button" value="Export list" onclick="exportXML()">
                 </div>
             </div>
         </div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Programmes>
+  <programme Id="1" Name="Computer Science" Degree="BSc (Hons)" Department="Computing" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time">
+    <Module Id="COM539" Name="Data Structures and Algorithms" Description="Maths module" Moodle_Link="https://moodle.glyndwr.ac.uk/course/view.php?id=35178"/>
+    <Module Id="COM540" Name="Databases and Web-based Information Systems" Description="" Moodle_Link="https://moodle.glyndwr.ac.uk/course/view.php?id=35179"/>
+    <Module Id="COM545" Name="Responsible Computing" Description="" Moodle_Link="https://moodle.glyndwr.ac.uk/course/view.php?id=35184"/>
+    <Module Id="COM553" Name="Group Project" Description="" Moodle_Link="https://moodle.glyndwr.ac.uk/course/view.php?id=39159"/>
+  </programme>
+  <programme Id="2" Name="Computing" Degree="BSc (Hons)" Department="Computing" Level="4" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="3" Name="Computer Game Development" Degree="BSc (Hons)" Department="Computing" Level="4" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="4" Name="Computer Network &amp; Security" Degree="BSc (Hons)" Department="Computing" Level="6" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Part Time"/>
+  <programme Id="5" Name="Construction Management" Degree="BSc (Hons)" Department="Computing" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="6" Name="Cyber Security" Degree="BSc (Hons)" Department="Computing" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="7" Name="Game Art" Degree="BSc (Hons)" Department="Computing" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="8" Name="Forensic Science" Degree="BSc (Hons)" Department="Science" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="9" Name="Biochemistry" Degree="BSc (Hons)" Department="Science" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="10" Name="Media Production" Degree="BSc (Hons)" Department="Media" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="11" Name="Television Production" Degree="BSc (Hons)" Department="Media" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="12" Name="Law and Business" Degree="BSc (Hons)" Department="Business" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="13" Name="Marketing and Business" Degree="BSc (Hons)" Department="Business" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="14" Name="Education" Degree="BSc (Hons)" Department="Education" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+  <programme Id="15" Name="Primary Education with QTS" Degree="BSc (Hons)" Department="Education" Level="5" Start_Date="2021-09-20" End_Date="2022-07-01" Description="" Type="Full Time"/>
+</Programmes>

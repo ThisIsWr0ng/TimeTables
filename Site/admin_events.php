@@ -124,7 +124,7 @@ $username = $_SESSION["username"];
                 <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
                 <div id="search-list-opt">
 
-                    <input type="button" value="Export list">
+                    <input type="button" value="Export list" onclick="exportXML()">
                 </div>
             </div>
      </div>

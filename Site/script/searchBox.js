@@ -356,3 +356,27 @@ function fillRequestForms(id){
 
 
 }
+function exportXML(){
+  const type = document.getElementById('search-type');
+
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function () {
+    //document.getElementById("search-output").innerHTML = this.responseText;//<<<<For debugging
+    if(type.value == "Programmes"){
+      download("/XML/programmes.xml")
+    }
+  }
+  xmlhttp.open("GET", `php/exportXML.php?type=${type.value}`);
+  xmlhttp.send();
+}
+function download(link) {
+  var element = document.createElement('a');
+  element.setAttribute('href', link);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
