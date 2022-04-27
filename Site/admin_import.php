@@ -43,11 +43,18 @@ $username = $_SESSION["username"];
             <div id="search-section">
                
                 <h1>Data View</h1>
-                <form id="xmlForm" name="xmlForm"><input id="input" type="file"> <input type="submit"></form>
-                <textarea class="db-output-window" id="search-output" rows="20" cols="40" style="border:none;"></textarea>
+                <form id="xmlForm" name="xmlForm">
+                <select name="search-type" id="search-type">
+                        <option value="Users" >Users</option>
+                        <option value="Programmes"selected>Programmes</option>
+                        <option value="Modules">Modules</option>
+                        <option value="Events">Events</option>
+                </select>    
+                <input id="input" type="file"> <input type="submit"></form>
+                <form action="php/importXML.php" method="post"><textarea name="xml" class="db-output-window" id="search-output" rows="20" cols="40" style="border:none;"></textarea>
                 <div id="search-list-opt">
                 <input type="button" value="Cancel" onclick="cancel()">
-                    <input type="button" value="Confirm">
+                    <input type="submit" value="Confirm" ></form>
                     
                 </div>
             </div>
@@ -63,7 +70,7 @@ $username = $_SESSION["username"];
            var reader = new FileReader();
            reader.onload = function(e) {
                readXml=e.target.result;
-               console.log(typeof readXml);
+               //console.log(readXml);
                document.getElementById('search-output').innerHTML = readXml;
                var parser = new DOMParser();
                doc = parser.parseFromString(readXml, "application/xml");
@@ -75,9 +82,23 @@ $username = $_SESSION["username"];
        });
            function cancel(){
             document.getElementById('search-output').innerHTML = null;
-           }
-           doc = null;
+            doc = null;
            readXml=null;
+           }
+
+           /*function confirm(){
+
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function () {
+            document.getElementById("search-output").value = null;
+            document.getElementById("search-output").value = this.responseText;//<<<<For debugging
+            console.log('this.responseText :>> ', this.responseText);
+            }
+            var data = document.getElementById("search-output").value
+            xmlhttp.open("Post", `php/importXML.php?xml=${data}`);
+            xmlhttp.send();
+           }*/
+           
         </script>
     </main>
 </body>

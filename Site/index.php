@@ -71,7 +71,12 @@
                                 
                                 if($_SESSION["lvl"] >1)
                                 {
-                                    header("location: personal_timetable.php");
+                                    if($_SESSION["lvl"] == 3){
+                                        header("location: lecturer_personal_timetable.php");
+                                    }else{
+                                        header("location: personal_timetable.php");
+                                    }
+                                    
                                 }
                                 else{
                                     header("location: admin_portal.php");

@@ -84,13 +84,20 @@ $username = $_SESSION["username"];
       </div>
 
       <script>
-        function loadContent(a, b){
-            document.getElementById(a).innerHTML= b;
+        var dbData = null;
+        xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function () {
+   //document.getElementById("evt-details").innerHTML = this.responseText;//<<<<For debugging
+    dbData = JSON.parse(this.responseText);
+    console.log("Data Received:", dbData);
+    window.addEventListener("load", drawCalendar(dbData));
+  }
+  xmlhttp.open("GET", 'php/fetchCalendarData.php?user=<?php echo $username ?>');
+  xmlhttp.send();
         
-        }
-            var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );
-            console.log("Data Received:", dbData);
-            window.addEventListener("load", drawCalendar(dbData));
+            <?php /*var dbData = JSON.parse( '<?php echo json_encode(fetchEvents($username)) ?>' );*/?>
+            //console.log("Data Received:", dbData);
+            //window.addEventListener("load", drawCalendar(dbData));
       </script>
     </main>
   </body>
