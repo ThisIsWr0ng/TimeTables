@@ -43,7 +43,7 @@ $username = $_SESSION["username"];
         <div id="cal-container"></div>
 
         <!-- (C) EVENT FORM -->
-        <div id="overlay">
+        <div id="overlay" class="hideOverlay">
           <form id="cal-event" action="php/eventRequest.php" method="post">
             <div id="evt-head"></div>
             <input type="date" id="evt-date" name="date" />

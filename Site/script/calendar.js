@@ -89,7 +89,8 @@ var cal = {
       }
       
       for(var i = 0; i < dbData.length; i++){
-        if(parseInt(dbData[i].date.substr(5, 6)) -1 == cal.sMth){
+        
+        if(parseInt(dbData[i].date.substr(5, 6)) -1 == cal.sMth && dbData[i].date.substr(0, 4) == cal.sYear){
         var day = parseInt(dbData[i].date.substr(8, 9))
         if(cal.data[day] != null){
           if(parseInt(cal.data[day][cal.data[day].length-1].time_from.substr(0,5)) > parseInt(dbData[i].time_from.substr(0,5))){//Earlier event is displayed on top
@@ -103,7 +104,7 @@ var cal = {
         }
       }
       }
-      //console.log("Prepared data:", cal.data);
+      //console.log("Prepared data:", cal.data);<<<<<<<<<<<<<<<FIN HERE display data by year, add removing user events
 
       // (C3) DRAWING CALCULATIONS
       // Blank squares before start of month
