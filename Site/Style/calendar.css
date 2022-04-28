@@ -178,9 +178,10 @@
   overflow-y: auto;
   text-align: center;
   line-height: 5px;
+  max-height:875px;
 }
-#event-list h3{
-
+#event-list::-webkit-scrollbar {
+  display: none;
 }
 #event-list .evt{
 border-bottom: 1px solid black;
