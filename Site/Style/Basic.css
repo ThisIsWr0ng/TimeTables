@@ -24,10 +24,13 @@ body {
 }
 
 .content {
-    background-color: rgba(226, 226, 219, 0.911);
-    width: 90vw;
+    position: relative;
+    min-height: 50vh;
+    height: fit-content;
+    width: 98vw;
     max-width: 2000px;
     min-width: 500px;
+
 }
 
 #resultstable {

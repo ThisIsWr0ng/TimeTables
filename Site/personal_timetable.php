@@ -32,7 +32,10 @@ $username = $_SESSION["username"];
     <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
     <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
     <main class="content">
-      <div id="cal-wrap">
+    <section id="event-list">
+        <h3>Upcoming</h3><h3>events</h3><hr>
+      </section>
+      <section id="cal-wrap">
         <!-- (A) PERIOD SELECTOR -->
         <div id="cal-date">
           <select id="cal-mth"></select>
@@ -79,13 +82,14 @@ $username = $_SESSION["username"];
             <input id="evt-next" type="button" value="Next -->" />
           </form>
         </div>
-      </div>
-
+        
+</section>
+     
       <script>
        var dbData = null;
         xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
-   //document.getElementById("evt-details").innerHTML = this.responseText;//<<<<For debugging
+   //document.getElementById("cal-wrap").innerHTML = this.responseText;//<<<<For debugging
     dbData = JSON.parse(this.responseText);
     console.log("Data Received:", dbData);
     window.addEventListener("load", drawCalendar(dbData));

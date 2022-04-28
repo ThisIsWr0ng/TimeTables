@@ -32,6 +32,9 @@ $username = $_SESSION["username"];
     <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
     <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
     <main class="content">
+    <section id="event-list">
+        <h3>Upcoming</h3><h3>events</h3><hr>
+      </section>
       <div id="cal-wrap">
         <!-- (A) PERIOD SELECTOR -->
         <div id="cal-date">

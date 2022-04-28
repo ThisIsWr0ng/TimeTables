@@ -104,7 +104,8 @@ var cal = {
         }
       }
       }
-      //console.log("Prepared data:", cal.data);<<<<<<<<<<<<<<<FIN HERE display data by year, add removing user events
+      displayUpcomingEvents(cal.data, nowDay);//display list of events next to calendar
+      //console.log("Prepared data:", cal.data);
 
       // (C3) DRAWING CALCULATIONS
       // Blank squares before start of month
@@ -154,9 +155,9 @@ var cal = {
       let total = squares.length;
       cRow = document.createElement("tr");
       cRow.classList.add("day");
-      var evColors = ["#556B2F", "#E9967A", "#8FBC8F", "#2F4F4F", "#DAA520"];//Event tiles colors
+      const evColors = ["#556B2F", "#E9967A", "#8FBC8F", "#2F4F4F", "#DAA520", "#957DAD", "#D291BC", "#97c79a"];//Event tiles colors
       var modules = [dbData[0].module];
-      for (let i = 0; i < dbData.length; i++) {//check how many modules are available
+      for (let i = 0; i < dbData.length; i++) {//check how many different modules are available
         for (let j = 0; j < modules.length; j++) {
           if(modules[j] == dbData[i].module){ 
            break;
@@ -177,7 +178,7 @@ var cal = {
               for (let index = 0; index < cal.data[squares[i]].length; index++) {
                 var data = cal.data[squares[i]][index];
                 var color = null;
-                for (let j = 0; j < modules.length; j++) {//Assign one cor for each module
+                for (let j = 0; j < modules.length; j++) {//Assign one color for each module
                   if(data.module == modules[j]){
                     color = evColors[j];
                   }
@@ -301,6 +302,46 @@ var cal = {
       
     }
   }
- 
+ function displayUpcomingEvents(data, now){//display list of upcoming events next to calendar
+   console.log('data :>> ', data);
+   console.log('now :>> ', now);
+  const list = document.getElementById('event-list');
+  const limit = 7; //Limit of events shown in event list
+  var count = 0;
+
+   for (let i = now; i < data.length ; i++) {
+     if(count == limit){
+       break;
+     }
+     if(data[i] == null){
+       continue;
+     }else{
+      var d = new Date(data[i][0].date);
+        var options = {day: 'numeric', month: 'long'};
+        d = d.toLocaleDateString("en-UK", options);
+       var box = document.createElement('div');
+       box.setAttribute("class", "evt");
+       var p = document.createElement("h4");
+       p.innerHTML = d;
+       box.appendChild(p);
+       for (let j = 0; j < data[i].length; j++) {
+     
+      p = document.createElement("p");
+      p.innerHTML = data[i][j].type;
+      box.appendChild(p);
+      p = document.createElement("p");
+      p.innerHTML = data[i][j].module;
+      box.appendChild(p);
+      p = document.createElement("p");
+      p.innerHTML = data[i][j].time_from.substr(0,5) + " - " + data[i][j].time_to.substr(0,5);
+      box.appendChild(p);
+      list.appendChild(box);
+        count++;
+       }
+
+     }
+     
+   }
+ }
 
   

@@ -3,7 +3,12 @@
 }
 
 #cal-wrap {
-  width: 100%;
+  position: absolute;
+  width: 87%;
+  background-color: rgba(226, 226, 219, 0.911);
+  margin-bottom: 20px;
+  left: 0;
+ 
 }
 
 #cal-date {
@@ -23,7 +28,7 @@
   color: rgb(150, 148, 142);
 }
 
-#calendar {
+#calendar {/*table element*/
   width: 100%;
   height: 60%;
   border-collapse: collapse;
@@ -32,11 +37,14 @@
 }
 #calendar tr {
   height: 6vh;
+
 }
 #calendar tr.head td {
   padding: 0px;
   text-align: center;
   height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 #calendar tr.day td {
@@ -48,7 +56,7 @@
   transition-duration: 0.5s;
 }
 #calendar td {
-  overflow: hidden;
+  overflow: auto;
   white-space: nowrap;
 }
 #calendar tr.day td:hover {
@@ -147,3 +155,24 @@
 #request-fileds input {
   margin-bottom: 10px;
 }
+/*---------------Event List---------------*/
+#event-list{
+  position: absolute;
+  right:0;
+  background-color: rgba(226, 226, 219, 0.911);
+  width: 12%;
+  height: 100%;
+  overflow-y: auto;
+  text-align: center;
+  line-height: 5px;
+}
+#event-list h3{
+
+}
+#event-list .evt{
+border-bottom: 1px solid black;
+}
+
+
+
+/*---------------Event List---------------*/
