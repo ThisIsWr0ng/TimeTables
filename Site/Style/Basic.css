@@ -3,11 +3,13 @@
 /* CSS Document */
 
 body {
-    background-image: url("../img/Background.jpg");
-    background-size: 150vw;
+    background: url("../img/Background.jpg") no-repeat;
+    background-size: cover;
+    
     background-attachment: fixed;
     background-repeat: repeat;
     background-position: center;
+    background-attachment: fixed;
 }
 
 #logo {
@@ -22,14 +24,30 @@ body {
     right: 0;
     margin-bottom: 20px;
 }
+.glass{
+    background-color: rgba(240, 228, 228, 0.56);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.333); 
+    border-radius: 8px;
+    z-index: 1;
+    padding: 5px;
+    backdrop-filter: blur(7px);
+}
+
 
 .content {
-    position: relative;
+    
     min-height: 50vh;
     height: fit-content;
     width: 98vw;
     max-width: 2000px;
     min-width: 500px;
+    display: grid;
+  grid-template-areas:
+    "cal cal cal cal event"
+    "cal cal cal cal event"
+    "cal cal cal cal event"
+    "cal cal cal cal event"
+    "form form form . . ";
 
 }
 

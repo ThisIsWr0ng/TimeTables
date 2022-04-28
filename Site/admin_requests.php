@@ -27,11 +27,10 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
-    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
-    <main class="admin-content">
-      <h1 id="admin-title">Manage Requests</h1>
-      <nav id="admin-nav">
+    <input type="button" id="logout" class="glass" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
+    <main class="admin-content" >
+      <h1 id="admin-title" class="glass">Manage Requests</h1>
+      <nav id="admin-nav" class="glass">
       <input type="button" value="Home" onclick="location.href='admin_portal.php'"/>
         <input type="button" value="Users" onclick="location.href='admin_users.php'"/>
         <input type="button" value="Programmes" onclick="location.href='admin_programmes.php'"/>
@@ -42,7 +41,7 @@ $username = $_SESSION["username"];
         <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
       </nav>
      
-      <div id="content-block">
+      <div id="content-block" class="glass">
       <div id="form-section">
       <section>
         <form id="request-form" action="php/request.php" method="POST">
@@ -53,7 +52,7 @@ $username = $_SESSION["username"];
               <label>Id</label><br>
               <input type="text" id="form-req-id" name="requestid">
 
-              <label>User Id</label>
+              <label>User_Id</label>
               <input type="text" id="form-req-uid" name="userid">
 
               <label>Username</label>
@@ -72,7 +71,7 @@ $username = $_SESSION["username"];
           <section>
             <fieldset>
               <legend>Comments/Messages</legend>
-              <input type="text" id="form-req-comm" name="comment">
+              <textarea id="form-req-comm" name="comment"></textarea>
             </fieldset>
           </section>
           <section>

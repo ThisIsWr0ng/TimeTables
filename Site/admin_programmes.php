@@ -23,13 +23,12 @@ $username = $_SESSION["username"];
 
 <body>
     <header>
-        <img id="logo" src="img/TimeTables-logos/TimeTables-logos_white_cropped.png" alt="TimeTables Logo"/>
+        <img id="logo"src="img/TimeTables-logos/TimeTables-logos_white_cropped.png" alt="TimeTables Logo"/>
     </header>
-    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
-    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
-    <main class="admin-content">
-        <h1 id="admin-title">Manage Programmes</h1>
-        <nav id="admin-nav">
+    <input type="button" class="glass" id="logout" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
+    <main class="admin-content" class="glass">
+        <h1 id="admin-title" class="glass">Manage Programmes</h1>
+        <nav id="admin-nav" class="glass">
             <input type="button" value="Home" onclick="location.href='admin_portal.php'"/>
             <input type="button" value="Users" onclick="location.href='admin_users.php'"/>
             <input type="button" value="Programmes" onclick="location.href='admin_programmes.php'"/>
@@ -39,7 +38,7 @@ $username = $_SESSION["username"];
             <input type="button" value="Import Data" onclick="location.href='admin_import.php'"/>
             <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
         </nav>
-        <div id="content-block">
+        <div id="content-block" class="glass"> 
             <div id="form-section">
                 <h1>Programmes</h1>
                 <section>

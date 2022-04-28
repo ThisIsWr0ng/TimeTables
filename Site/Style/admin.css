@@ -44,17 +44,23 @@
 }
 
 .admin-content {
-    background-color: rgba(226, 226, 219, 0.911);
     width: 90vw;
     max-width: 2000px;
     min-width: 500px;
     margin: auto;
     left: 0;
     right: 0;
+
 }
 
 #admin-title {
+    margin: auto;
+    left: 0;
+    right: 0;
     text-align: center;
+    width: fit-content;
+    margin-bottom: 20px;
+    padding: 10px 20px;
 }
 
 #logout {
@@ -62,7 +68,6 @@
     right: 20px;
     top: 20px;
     padding: 8px 14px;
-    background-color: rgba(120, 176, 241, 1);
     font-weight: bold;
 }
 
@@ -100,16 +105,7 @@
     margin-left: 40px;
 }
 
-#content-block input[type=button] {
-    width: fit-content;
-    font-weight: bold;
-    background-color: lightgrey;
-    border-bottom: 1px solid rgb(0, 0, 0);
-    padding: 8px 16px;
-    margin: 5px 2px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px;
-}
+
 
 #welcome {
     padding: 10px 10px;
@@ -125,7 +121,8 @@
     align-content: flex-start;
     flex-wrap: wrap;
     margin: auto;
-    background-color: rgba(120, 176, 241, 1);
+    background-color: rgba(120, 178, 241, 0.807);
+    border-radius: 5px;
     max-width: 600px;
     width: 45vw;
     min-width: 300px;
@@ -142,7 +139,10 @@
 }
 
 #form-section select,
-#form-section input {
+#form-section input[type = text],
+#form-section input[type = date],
+#form-section input[type = time],
+#form-section textarea {
     background-color: rgb(255, 255, 255);
     height: 100%;
     width: 90%;
@@ -155,7 +155,7 @@
     border-bottom: 2px solid rgb(18, 1, 179);
     border-radius: 6px;
     margin: 5px 5px;
-}
+}*/
 
 #form-section fieldset {
     max-width: 100%;
@@ -198,12 +198,13 @@
     margin: auto;
     padding: 20px 5px;
     right: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.582);
     max-width: 600px;
     width: 40vw;
     min-width: 300px;
     resize: both;
     overflow: auto;
+    border-radius: 5px;
 }
 .admin-search{
     display: grid;
@@ -274,13 +275,14 @@
 input[type=button],
 input[type=submit],
 input[type=reset] {
+    width: fit-content;
+    font-weight: bold;
     background-color: lightgrey;
-    border: none;
-    color: black;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 15px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    padding: 8px 16px;
+    margin: 5px 2px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px;
+    font-size: 1.03em;
+    transition-duration: 0.3s;
 }

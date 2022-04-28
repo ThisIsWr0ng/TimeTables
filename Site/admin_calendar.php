@@ -31,10 +31,9 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
-    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
+    <input type="button" id="logout" class="glass"value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
     <main class="admin-content">
-      <nav id="admin-nav">
+      <nav id="admin-nav" class="glass">
       <input type="button" value="Home" onclick="location.href='admin_portal.php'"/>
         <input type="button" value="Users" onclick="location.href='admin_users.php'"/>
         <input type="button" value="Programmes" onclick="location.href='admin_programmes.php'"/>
@@ -45,9 +44,9 @@ $username = $_SESSION["username"];
         <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
       </nav>
       
-
+      <div id="content-block" class="glass">
       
-      <div id="search-section">
+      <div class="glass"id="search-section">
       <h1>SearchBox</h1>
                 <section  class="admin-search">
                     <select name="search-type" id="search-type">

@@ -29,11 +29,11 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
-    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
+    <input type="button" class="glass"id="logout" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
+    
     <main class="admin-content">
-      <h1 id="admin-title">Manage Users</h1>
-      <nav id="admin-nav">
+      <h1 id="admin-title" class="glass">Manage Users</h1>
+      <nav id="admin-nav"class="glass">
       <input type="button" value="Home" onclick="location.href='admin_portal.php'"/>
         <input type="button" value="Users" onclick="location.href='admin_users.php'"/>
         <input type="button" value="Programmes" onclick="location.href='admin_programmes.php'"/>
@@ -43,7 +43,7 @@ $username = $_SESSION["username"];
         <input type="button" value="Import Data" onclick="location.href='admin_import.php'"/>
         <input type="button" value="View Calendar" onclick="location.href='admin_calendar.php'"/>
       </nav>
-      <div id="content-block">
+      <div id="content-block"class="glass">
       <div id="form-section">
       <section>
         <form id="users-form"action="php/user.php" method="POST">

@@ -28,14 +28,13 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" id="logout" value="Logout" onclick="location.href='php/logout.php'"/>
-    <?php echo "<h3 id='log'>Logged in: $username</h3>" ?>
+    <input type="button" id="logout" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
     <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
     <main class="content">
-    <section id="event-list">
+    <section id="event-list" class="glass">
         <h3>Upcoming</h3><h3>events</h3><hr>
       </section>
-      <div id="cal-wrap">
+      <div id="cal-wrap" class="glass">
         <!-- (A) PERIOD SELECTOR -->
         <div id="cal-date">
           <select id="cal-mth"></select>
@@ -83,7 +82,7 @@ $username = $_SESSION["username"];
           </form>
         </div>
       </div>
-      <section id="lecturer-forms">
+      <section id="lecturer-forms" class="glass">
       <fieldset>
     <legend>Deadlines</legend>
     <section class="db-output-window" id="form-mod-dead-output">No Deadlines Assigned</section>

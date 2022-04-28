@@ -108,14 +108,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<link href="sheet.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Style/Sheet.css" />
+<link rel="stylesheet" href="Style/Basic.css" />
 <title>University Timetable</title>
 
 </head>
 <body>
+<img
+        id="logo"
+        src="img/TimeTables-logos/TimeTables-logos_white_cropped.png"
+        alt="TimeTables Logo"
+      />
 <div class="center">
 
-<div id="panel">
+<div class="glass" id="panel">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <label for="username">User Name:</label>
         <input type="text" id="username" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" tabindex="1">
