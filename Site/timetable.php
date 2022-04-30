@@ -22,7 +22,7 @@
     <main class="content">
 
         <h2 id="demo">Demo</h2>
-      <div id="cal-wrap">
+      <div id="cal-wrap" class="glass">
         <!-- (A) PERIOD SELECTOR -->
         <div id="cal-date">
           <select id="cal-mth"></select>
