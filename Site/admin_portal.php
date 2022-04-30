@@ -44,6 +44,7 @@ $username = $_SESSION["username"];
       <?php
         echo "<h1 id='welcome'>Welcome $username!</h1>"
       ?>
+      <a href="User_Manual.pdf" target="_blank">User Manual</a>
       </section>
 </div>
     </main>
