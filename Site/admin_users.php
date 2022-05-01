@@ -109,6 +109,9 @@ $sql = "SELECT * FROM roles";
 $result = $conn->query($sql);
 while ($row = mysqli_fetch_array($result)) {
     $name = $row['Name'];
+    if($name == "Root"){
+      continue;
+    }
     echo "<option value='$name'>$name</option>";
 }
 ?>

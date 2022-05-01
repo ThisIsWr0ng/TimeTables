@@ -66,6 +66,7 @@ $username = $_SESSION["username"];
     <option value="Practical">Practical</option>
     <option value="Seminar">Seminar</option>
     <option value="Tutorials">Tutorials</option>
+    <option value="Self-Directed Study">Self-Directed Study</option>
   </select><br><br></div>
 
   <label for="form-evt-date">Date:</label><br>
@@ -81,7 +82,8 @@ $username = $_SESSION["username"];
   <div id="form-rooms"><label for="form-evt-room">Rooms Available:</label><br>
   <select name="Rooms" id="form-evt-room" >
   <option value="None">Select Date and Time</option>
-  </select><input type="button" value="Refresh" onclick="refreshRooms()"><br></div>
+  </select><input type="button" value="Refresh" onclick="refreshRooms(1)">
+  <input type="button" value="Show All" onclick="refreshRooms(0)"><br></div>
 
   <div id="form-group"><label for="form-evt-group">Group:</label><br>
   <select name="Group" id="form-evt-group">
@@ -96,8 +98,8 @@ $username = $_SESSION["username"];
   <fieldset>
   <label for="form-evt-recurring">Recurring:</label><br>
   <select name="Recurring" id="form-evt-recurring">
-    <option value="Once" selected>Once</option>
-    <option value="Weekly">Weekly</option>
+    <option value="Once" >Once</option>
+    <option value="Weekly"selected>Weekly</option>
   </select><br><br>
 
   <input type="submit" id="form-evt-save" name="sButton" value="Save">
