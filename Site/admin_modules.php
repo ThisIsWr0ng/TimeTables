@@ -125,6 +125,7 @@ $username = $_SESSION["username"];
 
      </div>
      <script> 
+      window.onload = searchBar(' ');
         hideDeadlineFields();
        let dbData = [0];//Storage for modules, deadlines and groups || [0] - Module Info [1] - Lecturers [2] - Deadlines [3] - Student Groups
      </script>

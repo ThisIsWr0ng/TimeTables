@@ -4,7 +4,7 @@ $date = mysqli_real_escape_string($conn, $_REQUEST['date']);
 $timeFrom = mysqli_real_escape_string($conn, $_REQUEST['timef']);
 $timeTo = mysqli_real_escape_string($conn, $_REQUEST['timet']);
 $module = mysqli_real_escape_string($conn, $_REQUEST['module']);
-if($module == 99){
+if($module == 99){//Display all Rooms
 $sql="SELECT * FROM Rooms";
 $result = $conn->query($sql);
 $rooms = [];
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
     }
 }
 echo json_encode($roomsAvailable);
-}else{
+}else{//Display available rooms
 $sql = "SET @timeFrom = DATE('$date $timeFrom:00');
 SET @timeTo = DATE('$date $timeTo:00');
 
@@ -88,7 +88,8 @@ for ($i=0; $i < count($rooms); $i++) {
 echo json_encode($roomsAvailable);
 /*(NOT Events.Date = \"$date\" AND ( events.Time_From <= \"$timeFrom\" AND events.Time_To >= \"$timeTo\")) OR Events.Room IS NULL
 
-           Solution that supposed to rork -> 
+           Solution that supposed to work -> 
+           
            SET @timeFrom = DATE('$date $timeFrom:00');
 SET @timeTo = DATE('$date $timeTo:00');
 

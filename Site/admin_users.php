@@ -199,7 +199,7 @@ function findUser(id){
     console.log('user :>> ', user);
     }
   }}
-
+  window.onload = searchBar(' ');
     </script>
   </body>
 

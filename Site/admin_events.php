@@ -119,7 +119,7 @@ $username = $_SESSION["username"];
                         <option value="Modules">Modules</option>
                         <option value="Events" selected>Events</option>
                     </select>
-                    <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" value="Search" onclick='removeText()' tabindex='1'/>
+                    <input type="text" id="search-searchbar" onkeyup="searchBar(this.value)" onload="searchBar(' ')" value="Search" onclick='removeText()' tabindex='1'/>
                 </Section>
 
                 <div class="db-output-window" id="search-output">Select search type and use search bar to display results</div>
@@ -132,6 +132,7 @@ $username = $_SESSION["username"];
 
      </div>
      <script>
+      window.onload = searchBar(' ');
        displayEventFields("Session");
 
      </script>

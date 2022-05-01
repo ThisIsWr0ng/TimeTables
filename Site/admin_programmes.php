@@ -256,7 +256,7 @@ function addToModulesList(id){
   refreshModules(pSem);
 }
 
-
+window.onload = searchBar(' ');
         </script>
     </main>
 </body>
