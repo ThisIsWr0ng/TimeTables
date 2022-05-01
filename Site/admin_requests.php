@@ -106,6 +106,9 @@ $username = $_SESSION["username"];
      </div>
 </div>
      </div>
+     <script>
+        window.onload = searchBar(' ');
+     </script>
     </main>
   </body>
 </html>

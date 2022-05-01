@@ -1,3 +1,5 @@
+
+
 function removeText(){//Remove text from field when clicked
     document.getElementById("search-searchbar").value= "";
   }
@@ -56,7 +58,8 @@ function removeText(){//Remove text from field when clicked
 
   }
   function searchBar(data){//Get search Type and ask for output
-    if(data != ""){
+    console.log('data :>> ', data, "!!!!");
+    if(data !== ""){
     var sType = document.getElementById("search-type");
     var sTypeTxt = sType.options[sType.selectedIndex].text;
     var sOutput = document.getElementById('search-output');
@@ -68,6 +71,7 @@ function removeText(){//Remove text from field when clicked
     xmlhttp.send();
     return;
     }
+    
   }
 function feedUserForm(user){
     //Locate elements
@@ -381,3 +385,4 @@ function download(link, name) {
 
   document.body.removeChild(element);
 }
+
