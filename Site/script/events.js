@@ -103,12 +103,15 @@ function removeAllChildNodes(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
-function refreshRooms(){
-    const fId = document.getElementById('form-evt-id');
-    const fDate = document.getElementById('form-evt-date');
-    const fTimef = document.getElementById('form-evt-timefrom');
-    const fTimet = document.getElementById('form-evt-timeto');
-    getAvailableRooms(fDate.value, fTimef.value, fTimet.value, fId.value);
+function refreshRooms(all){
+    var fId = document.getElementById('form-evt-id').value;
+    const fDate = document.getElementById('form-evt-date').value;
+    const fTimef = document.getElementById('form-evt-timefrom').value;
+    const fTimet = document.getElementById('form-evt-timeto').value;
+    if(all == 0){
+        fId = 99;
+    }
+    getAvailableRooms(fDate, fTimef, fTimet, fId);
 }
 function getModuleStartDate(){
     const fId = document.getElementById('form-evt-id');
