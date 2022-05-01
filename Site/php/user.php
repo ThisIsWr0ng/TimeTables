@@ -2,7 +2,7 @@
 
 require_once "conn.php";
 
-
+//Variables Fetched from Form
 $firstname = mysqli_real_escape_string($conn, $_REQUEST['firstname']);
 $surname = mysqli_real_escape_string($conn, $_REQUEST['surname']);
 $title = mysqli_real_escape_string($conn, $_REQUEST['title']);
@@ -22,8 +22,10 @@ $level = mysqli_real_escape_string($conn, $_REQUEST['level']);
 $uniemail = mysqli_real_escape_string($conn, $_REQUEST['uniemail']);
 $formuid = mysqli_real_escape_string($conn, $_REQUEST['userid']);
 $requestType = $_POST['btSubmit'];
-if ($requestType == "Add") {//<<<<<<<<< ADD Code Here
 
+//Adding a User to the database
+if ($requestType == "Add") {
+//Checking if user is undergraduate
 if ($role == "Undergraduate Student")
 {
     $userold = mysqli_query($conn, "SELECT * FROM users
