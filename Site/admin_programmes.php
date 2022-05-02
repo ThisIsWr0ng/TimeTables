@@ -46,7 +46,7 @@ $username = $_SESSION["username"];
                     <fieldset>
                         <legend>Details</legend>
                         <label for="id">id:</label><br>
-                        <input type="text" id="form-prog-id" name="id" value=""disabled><br>
+                        <input type="text" id="form-prog-id" name="id" value=""><br>
                         <label for="name">Name:</label><br>
                         <input type="text" id="form-prog-name" name="name" value="" ><br>
 
@@ -96,8 +96,8 @@ while ($row = mysqli_fetch_array($result)) {
                         </select>
                         <label>Type</label><br>
                         <select id="form-prog-type" name="type">
-                            <option value="Full-Time">Full-Time</option>
-                            <option value="Part-Time">Part-Time</option>
+                            <option value="Full Time">Full Time</option>
+                            <option value="Part Time">Part Time</option>
                         </select>
                         <fieldset>
                         <label for="year">Academic Year:</label><br>

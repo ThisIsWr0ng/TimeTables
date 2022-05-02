@@ -123,6 +123,7 @@ function feedUserForm(user){
     const pSdate = document.getElementById('form-prog-sdate');
     const pEdate = document.getElementById('form-prog-edate');
     const pDesc = document.getElementById('form-prog-desc');
+    const pType = document.getElementById('form-prog-type');
      //assign values to form Fields
      pId.value = prog.Id;
      pName.value = prog.Name;
@@ -133,6 +134,7 @@ function feedUserForm(user){
      pDeg.value = prog.Degree;
      pDept.val = prog.Department;
      pLvl.val = prog.Level;
+     pType.value = prog.Type;
      pYear.val = null;
      //Feed modules for selected Programme
      getModulesForProg(prog.Id);
