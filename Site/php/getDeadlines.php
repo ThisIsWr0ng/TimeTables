@@ -3,6 +3,7 @@ include 'conn.php';
 $moduleId = $_REQUEST['module'];
 
 $sql = "SELECT * FROM Deadlines WHERE Module_Id = \"$moduleId\"";
+//echo $sql;
 $result = $conn->query($sql);
 $i =0;
 $deadlines =null;
@@ -16,5 +17,5 @@ while ($row = mysqli_fetch_array($result)) {
         $i += 1;
 }}
 
-echo json_encode($modules);
+echo json_encode($deadlines);
 ?>

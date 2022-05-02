@@ -173,20 +173,7 @@
     width: 90%;
 }
 
-.db-output-window {
-    min-width: 93%;
-    min-height: 200px;
-    height: 80%;
-    background-color: white;
-    border: 1px solid black;
-    margin: auto;
-    left: 0;
-    right: 0;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    overflow: scroll;
-    text-align: left;
-}
+
 
 
 /*----------------Search Box----------------------*/
@@ -230,32 +217,11 @@
 #search-output {
     min-height: 40vh;
     height: 80%;
+    width: 100%;
+    overflow: auto;
 }
 
-.resultstable {
-    table-layout: auto;
-    min-width: fit-content;
-    width: 400px;
-}
 
-.resultstable td {
-    width: min-content;
-    white-space: nowrap;
-    padding-right: 5px;
-    padding-bottom: 1px;
-    border-bottom: 2px solid white;
-}
-
-.resultstable tr {
-    background-color: lightgrey;
-    transition-duration: 0.5s;
-    height: fit-content;
-}
-
-.resultstable tr:hover {
-    background-color: grey;
-    margin-bottom: 4px;
-}
 
 #search-list-opt {
     float: right;

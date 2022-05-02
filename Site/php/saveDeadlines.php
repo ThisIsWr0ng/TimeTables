@@ -12,9 +12,10 @@ $sql = "INSERT INTO Deadlines VALUES (
     '$name',
     '$date',
     '$weight',
-    '$moodle',
+    '$moodle'
 
 );";
+echo $sql;
 $result = $conn->query($sql);
 
 

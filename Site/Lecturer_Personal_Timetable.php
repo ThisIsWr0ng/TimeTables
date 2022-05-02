@@ -87,7 +87,7 @@ $username = $_SESSION["username"];
     <legend>Deadlines</legend>
     <section class="db-output-window" id="form-dead-output">No Deadlines Assigned</section>
     <div id="deadlines-fields">
-     <select name="module" id="form-dead-module">
+     <select name="module" id="form-dead-module" onchange="refreshDeadlines(this.value)">
        <?php 
        $sql="SELECT DISTINCT Lecturers_Assignment.Module, Modules.Name FROM Lecturers_Assignment
        LEFT JOIN Modules ON Modules.Id = Lecturers_Assignment.Module 
@@ -103,31 +103,31 @@ $username = $_SESSION["username"];
        ?>
      </select><br>
     <label for="name">Name:</label><br>
-  <input type="text" id="form-mod-dead-name" name="name" value="" required><br>
+  <input type="text" id="form-dead-name" name="name" value="" required><br>
 
   <label for="weight">Weight (%):</label><br>
   <input type="number" id="form-dead-weight" name="weight" min="0" max="100" step="5"><br>
 
-  <label for="datetime">Date:</label><br>
+  <label for="datetime">Deadline:</label><br>
   <input type="datetime-local" id="form-dead-date" name="datetime"><br>
 
   <label for="ml">Submission Link:</label><br>
   <input type="text" id="form-dead-moodle" name="ml" value=""><br>
-  <input type="button" id="add-deadlines" value="Add"/> 
+  <input type="button" id="add-deadlines" value="Add" onclick="addLecturerDeadline()"/> 
 </div>
 
   </fieldset>
   <fieldset>
     <legend>Request</legend>
-    <form action="">
-      <select name="req-type" id="req-type">
+    <form action="php/submitRequest.php" method="get">
+      <select name="type" id="req-type">
         <option value="Room">Room Change</option>
         <option value="Time">Time Change</option>
         <option value="Day">Day Change</option>
         <option value="Group">Create Student Groups</option>
         <option value="Module">Module</option>
         <option value="Generic">Other</option>
-      </select>
+      </select><br>
       <input type="hidden" name="user" value="<?php echo $username?>">
       <textarea name="description" id="req-desc" cols="80" rows="10"></textarea>
       <input type="submit" value="Submit">
@@ -157,7 +157,8 @@ $username = $_SESSION["username"];
           xmlhttp.onload = function () {
             const mod = document.getElementById('form-dead-module');
             refreshDeadlines(mod.value);
-
+            //const out = document.getElementById('form-dead-output');
+            //out.innerHTML = this.responseText;
           }
           xmlhttp.open("GET", `php/saveDeadlines.php?module=${fModule.value}&name=${fName.value}&weight=${fWeight.value}&date=${fDate.value}&moodle=${fLink.value}`);
           xmlhttp.send();
@@ -170,13 +171,15 @@ $username = $_SESSION["username"];
             const output = document.getElementById('form-dead-output');
             output.innerHTML = this.responseText;
             var data = JSON.parse(this.responseText);
-            if(data.length > 0){
-              var text = "<table><tr><th>Name</th><th>Date</th><th>Weight</th><th>Submission Link</th></tr>";
+            if(data == null){
+              output.innerHTML = "No Deadlines Assigned"
+            }else{
+              var text = "<table id=\"resultstable\"><tr><th>Name</th><th>Deadline</th><th>Weight</th><th>Submission Link</th></tr>";
               for (let i = 0; i < data.length; i++) {
-                
-                
+                text += `<tr><td>${data[i].Name}</td><td>${data[i].Date}</td><td>${data[i].Weight}</td><td>${data[i].Moodle_Link}</td></tr>`;
+               
               }
-
+              text += "</table";
               output.innerHTML = text;
             }
           }
@@ -184,7 +187,8 @@ $username = $_SESSION["username"];
           xmlhttp.send();
 
         }
-     
+        const fModule = document.getElementById('form-dead-module');
+        window.onload = refreshDeadlines(fModule.value);
       </script>
     </main>
   </body>
