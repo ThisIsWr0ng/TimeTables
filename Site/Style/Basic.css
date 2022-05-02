@@ -102,3 +102,22 @@ body {
     background-color: rgba(120, 176, 241, 1);
     font-weight: bold;
 }
+.db-output-window {
+    float: left;
+    width: 60%;
+    min-height: 200px;
+    height: 80%;
+    background-color: white;
+    border: 1px solid black;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    overflow: auto;
+    resize: both;
+    text-align: left;
+}
+#deadlines-fields{
+    float: right;
+}

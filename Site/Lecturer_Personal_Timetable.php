@@ -87,20 +87,35 @@ $username = $_SESSION["username"];
     <legend>Deadlines</legend>
     <section class="db-output-window" id="form-mod-dead-output">No Deadlines Assigned</section>
     <div id="deadlines-fields">
+     <select name="module" id="form-dead-module">
+       <?php 
+       $sql="SELECT DISTINCT Lecturers_Assignment.Module, Modules.Name FROM Lecturers_Assignment
+       LEFT JOIN Modules ON Modules.Id = Lecturers_Assignment.Module 
+       WHERE Lecturers_Assignment.Lecturer = '$username'";
+       $result = $conn->query($sql);
+       if($result->num_rows > 0){
+         while ($row = $result->fetch_assoc()) {
+           echo "<option value=\"{$row['Module']}\">{$row['Module']}: {$row['Name']}</option>";
+         }
+       }else{
+         echo "<option value=\"NULL\">No modules assigned! please contact admin</option>";
+       }
+       ?>
+     </select><br>
     <label for="name">Name:</label><br>
   <input type="text" id="form-mod-dead-name" name="name" value="" required><br>
 
-  <label for="weight">Weight (%):</label>
-  <input type="number" id="form-mod-dead-weight" name="weight" min="0" max="100" step="5">
+  <label for="weight">Weight (%):</label><br>
+  <input type="number" id="form-dead-weight" name="weight" min="0" max="100" step="5"><br>
 
-  <label for="datetime">Date:</label>
-  <input type="datetime-local" id="form-mod-dead-date" name="datetime">
+  <label for="datetime">Date:</label><br>
+  <input type="datetime-local" id="form-dead-date" name="datetime"><br>
 
   <label for="ml">Moodle Link:</label><br>
-  <input type="text" id="form-mod-dead-moodle" name="ml" value=""><br>
-    
+  <input type="text" id="form-dead-moodle" name="ml" value=""><br>
+  <input type="button" id="add-deadlines" value="Add"/> 
 </div>
-<input type="button" id="add-deadlines" value="Add"/> 
+
   </fieldset>
   <fieldset>
     <legend>Request</legend>
@@ -115,11 +130,12 @@ $username = $_SESSION["username"];
       </select>
       <input type="hidden" name="user" value="<?php echo $username?>">
       <textarea name="description" id="req-desc" cols="80" rows="10"></textarea>
-      <input type="submit">
+      <input type="submit" value="Submit">
     </form>
   </fieldset>
   </section>
       <script>
+        var Module = null;
         var dbData = null;
         xmlhttp = new XMLHttpRequest();
   xmlhttp.onload = function () {
@@ -130,7 +146,11 @@ $username = $_SESSION["username"];
   }
   xmlhttp.open("GET", 'php/fetchCalendarData.php?user=<?php echo $username ?>');
   xmlhttp.send();
-        
+        function addLecturerDeadline(){
+
+
+        }
+
       </script>
     </main>
   </body>
