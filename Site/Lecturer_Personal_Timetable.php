@@ -85,7 +85,7 @@ $username = $_SESSION["username"];
       <section id="lecturer-forms" class="glass">
       <fieldset>
     <legend>Deadlines</legend>
-    <section class="db-output-window" id="form-mod-dead-output">No Deadlines Assigned</section>
+    <section class="db-output-window" id="form-dead-output">No Deadlines Assigned</section>
     <div id="deadlines-fields">
      <select name="module" id="form-dead-module">
        <?php 
@@ -111,7 +111,7 @@ $username = $_SESSION["username"];
   <label for="datetime">Date:</label><br>
   <input type="datetime-local" id="form-dead-date" name="datetime"><br>
 
-  <label for="ml">Moodle Link:</label><br>
+  <label for="ml">Submission Link:</label><br>
   <input type="text" id="form-dead-moodle" name="ml" value=""><br>
   <input type="button" id="add-deadlines" value="Add"/> 
 </div>
@@ -146,11 +146,45 @@ $username = $_SESSION["username"];
   }
   xmlhttp.open("GET", 'php/fetchCalendarData.php?user=<?php echo $username ?>');
   xmlhttp.send();
+
         function addLecturerDeadline(){
+          const fModule = document.getElementById('form-dead-module');
+          const fName = document.getElementById('form-dead-name');
+          const fWeight = document.getElementById('form-dead-weight');
+          const fDate = document.getElementById('form-dead-date');
+          const fLink = document.getElementById('form-dead-moodle');
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onload = function () {
+            const mod = document.getElementById('form-dead-module');
+            refreshDeadlines(mod.value);
 
-
+          }
+          xmlhttp.open("GET", `php/saveDeadlines.php?module=${fModule.value}&name=${fName.value}&weight=${fWeight.value}&date=${fDate.value}&moodle=${fLink.value}`);
+          xmlhttp.send();
         }
 
+        function refreshDeadlines(moduleName){
+          
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onload = function () {
+            const output = document.getElementById('form-dead-output');
+            output.innerHTML = this.responseText;
+            var data = JSON.parse(this.responseText);
+            if(data.length > 0){
+              var text = "<table><tr><th>Name</th><th>Date</th><th>Weight</th><th>Submission Link</th></tr>";
+              for (let i = 0; i < data.length; i++) {
+                
+                
+              }
+
+              output.innerHTML = text;
+            }
+          }
+          xmlhttp.open("GET", `php/getDeadlines.php?module=${moduleName}`);
+          xmlhttp.send();
+
+        }
+     
       </script>
     </main>
   </body>

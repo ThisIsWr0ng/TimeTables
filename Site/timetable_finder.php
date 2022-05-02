@@ -34,9 +34,9 @@
       />
     </header>
     
-    <main class="content">
+    <main class="content" >
     
-      <div id="results"></div>
+      <div id="results"class="glass"></div>
       <script>
         function showHint(data) {
           if(data.length <= 0){
