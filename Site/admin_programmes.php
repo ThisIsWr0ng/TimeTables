@@ -42,7 +42,7 @@ $username = $_SESSION["username"];
             <div id="form-section">
                 <h1>Programmes</h1>
                 <section>
-                <form>
+                <form id="programmes-form"action="php/programme.php" method="POST">
                     <fieldset>
                         <legend>Details</legend>
                         <label for="id">id:</label><br>
@@ -94,6 +94,11 @@ while ($row = mysqli_fetch_array($result)) {
                             <option value="7">7</option>
                             <option value="8">8</option>
                         </select>
+                        <label>Type</label><br>
+                        <select id="form-prog-type" name="type">
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                        </select>
                         <fieldset>
                         <label for="year">Academic Year:</label><br>
                         <select id="form-prog-year" name="year">
@@ -111,19 +116,19 @@ while ($row = mysqli_fetch_array($result)) {
                         <input type="button" value="set dates">
                         </fieldset>
                         <label>Start Date</label><br>
-                        <input id="form-prog-sdate" type="date" name="dob"><br><br>
+                        <input id="form-prog-sdate" type="date" name="start"><br><br>
 
                         <label>End Date</label><br>
-                        <input id="form-prog-edate" type="date" name="dob"><br><br>
+                        <input id="form-prog-edate" type="date" name="end"><br><br>
 
                         <label for="desc">Description</label><br>
                         <textarea id="form-prog-desc" name="desc" rows="4" cols="50">
   </textarea> <br>
   <section class="form-buttons">
-            <input type="button" value="Add">
-            <input type="button" value="Delete">
-            <input type="button" value="Update">
-            <input type="button" value="View Students">
+            <input type="submit" name="btSubmit" value="Add">
+            <input type="submit" name="btSubmit" value="Delete">
+            <input type="submit" name="btSubmit" value="Update">
+            <input type="submit" name="btSubmit" value="View_Students">
           </section>
                     </fieldset>
                 </form>
