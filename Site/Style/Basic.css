@@ -121,3 +121,27 @@ body {
 #deadlines-fields{
     float: right;
 }
+.resultstable {
+    table-layout: auto;
+    min-width: fit-content;
+    width: 400px;
+}
+
+.resultstable td {
+    width: min-content;
+    white-space: nowrap;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    border-bottom: 2px solid white;
+}
+
+.resultstable tr {
+    background-color: lightgrey;
+    transition-duration: 0.5s;
+    height: fit-content;
+}
+
+.resultstable tr:hover {
+    background-color: grey;
+    margin-bottom: 4px;
+}
