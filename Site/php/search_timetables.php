@@ -8,15 +8,15 @@ $columns = array();
 switch ($searchType) {
     case "Programmes":
         $columns = array("Id", "Degree", "Name", "Level", "Type");
-       
+        $name = "Name";
         break;
     case "Modules":
         $columns = array("Id", "Id", "Name", "Description");
-       
+        $name = "Name";
         break;
     case "Rooms":
         $columns = array("Number","Number", "Building", "Type");
-      
+        $name = "Number";
         break;
     default:
     $columns = array("Id");
@@ -90,7 +90,7 @@ if ($result->num_rows > 0) {
         for ($i = 0; $i < count($array); $i++) {
         
             
-                echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}&type={$searchType}'\">";
+                echo "<tr class=\"clickable-row\" onclick=\"window.location='timetable.php?id={$array[$i][$columns[0]]}&type={$searchType}&name={$array[$i][$name]}'\">";
                 for ($j = 1; $j < count($columns); $j++) {
                     echo "<td>{$array[$i][$columns[$j]]}</td>";
                 }

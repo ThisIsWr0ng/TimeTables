@@ -10,7 +10,7 @@
   <body>
     <header>
     <nav id="searchbar">
-        <form onsubmit="showHint(this.value)">
+        
           <select
             id="search_type"
             name="search_type"
@@ -22,7 +22,7 @@
             
           </select>
           <input id="search_input" type="text" onkeyup="showHint(this.value)" />
-        </form>
+        
       </nav>
       <img
         id="logo"
@@ -42,14 +42,12 @@
             const xmlhttp = new XMLHttpRequest();
             xmlhttp.onload = function () {document.getElementById("results").innerHTML = this.responseText; };
             
-            var selOption = document.getElementById("search_type").options[document.getElementById("search_type").selectedIndex].text;
+            var selOption = document.getElementById("search_type").value;
             xmlhttp.open("GET",`php/search_timetables.php?q=${data}&type=${selOption}`);
             xmlhttp.send();
           
         }
-        function displayResults(array) {
-          console.log(array);
-        }
+
         showHint(" ");
 
         

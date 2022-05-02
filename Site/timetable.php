@@ -20,9 +20,12 @@
       />
     </header>
     <main class="content">
-
-        <h2 id="demo">Demo</h2>
+    <section id="event-list" class="glass">
+        <h3>Upcoming</h3><h3>events</h3><hr>
+      </section>
+        
       <div id="cal-wrap" class="glass">
+      <h2 id="demo">Demo</h2>
         <!-- (A) PERIOD SELECTOR -->
         <div id="cal-date">
           <select id="cal-mth"></select>
@@ -33,7 +36,7 @@
         <div id="cal-container"></div>
 
         <!-- (C) EVENT FORM -->
-        <div id="overlay">
+        <div id="overlay" class="hideOverlay">
           <form id="cal-event" action="php/eventRequest.php" method="post">
             <div id="evt-head"></div>
             <input type="date" id="evt-date" name="date" />
@@ -74,20 +77,22 @@
       </div>
 
       <script>
-console.log( "headers:",<?php echo json_encode($_REQUEST['type']); ?>, <?php echo json_encode($_REQUEST['id']); ?>);
-
-        
-            var dbData = JSON.parse( '<?php echo json_encode(fetchProgrammeEvents($_REQUEST['id']))?>' );//Request data
-            var name = "";
-            if(<?php echo json_encode($_REQUEST['type']); ?> == "Programme"){//timetable header
-                name = dbData[0].programme_name;
-            }
-            else if(<?php echo json_encode($_REQUEST['type']); ?> == "Module"){
-                name = dbData[0].module_name;
-            }
-            document.getElementById("demo").innerHTML = `<?php echo json_encode($_REQUEST['type']); ?>: ${name}`;
+        let dbData = null;
+         xmlhttp = new XMLHttpRequest();
+          xmlhttp.onload = function () {
+          //document.getElementById('cal-container').innerHTML = this.responseText;
+          dbData = JSON.parse(this.responseText);
+          document.getElementById("demo").innerHTML = `<?php echo $_REQUEST['type']; ?>: <?php echo $_REQUEST['name']; ?>`;
             console.log("Data Received:", dbData);
             window.addEventListener("load", drawCalendar(dbData));
+
+          }
+          xmlhttp.open("GET", `php/getTimetables.php?id=<?php echo $_REQUEST['id']?>&type=<?php echo $_REQUEST['type']?>`);
+          xmlhttp.send();
+           
+
+          
+            
       </script>
     </main>
   </body>
