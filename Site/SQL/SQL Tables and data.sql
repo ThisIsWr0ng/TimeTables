@@ -284,10 +284,6 @@ VALUES (NULL, 1, "root");
 INSERT INTO role_assignment
 VALUES (NULL, 2, "admin");
 
-INSERT INTO `lecturers_assignment` (`Id`, `Lecturer`, `Module`) VALUES
-(1, '2384923019287', 'COM539'),
-(2, '2384923019287', 'COM545'),
-(3, '2384923019287', 'COM553');
 
 INSERT INTO holidays
 VALUES (
@@ -338,12 +334,12 @@ INSERT INTO `modules` (`Id`, `Name`, `Description`, `Moodle_Link`) VALUES
 ('COM553', 'Group Project', '', 'https://moodle.glyndwr.ac.uk/course/view.php?id=39159'),
 ('COM556', 'User Experience Design', '  ', 'https://moodle.glyndwr.ac.uk/course/view.php?id=35195');
 
-  INSERT INTO Lecturers_Assignment
-  VALUES (
-NULL,
-"2384923019287",
-"COM539"
-  );
+INSERT INTO `lecturers_assignment` (`Id`, `Lecturer`, `Module`) VALUES
+(NULL, '2384923019287', 'COM539'),
+(NULL, '2384923019287', 'COM545'),
+(NULL, '2384923019287', 'COM553');
+
+ 
 INSERT INTO buildings
 VALUES (
     "Main Building",
