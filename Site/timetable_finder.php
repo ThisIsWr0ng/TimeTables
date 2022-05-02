@@ -16,13 +16,10 @@
             name="search_type"
             onchange="showHint('');"
           >
-            <option value="Programme" selected>Programme</option>
-            <option value="Module">Module</option>
-            <option value="Room">Room</option>
-            <option value="Degree">Degree</option>
-            <option value="Year">Year</option>
-            <option value="Type">Type</option>
-            <option value="Name">Name</option>
+            <option value="Programmes" selected>Programmes</option>
+            <option value="Modules">Modules</option>
+            <option value="Rooms">Rooms</option>
+            
           </select>
           <input id="search_input" type="text" onkeyup="showHint(this.value)" />
         </form>
