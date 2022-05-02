@@ -45,8 +45,8 @@ $username = $_SESSION["username"];
                 <form id="programmes-form"action="php/programme.php" method="POST">
                     <fieldset>
                         <legend>Details</legend>
-                        <label for="id">id:</label><br>
-                        <input type="text" id="form-prog-id" name="id" value=""><br>
+                        
+                        <input type="hidden" id="form-prog-id" name="id" value=""><br>
                         <label for="name">Name:</label><br>
                         <input type="text" id="form-prog-name" name="name" value="" ><br>
 
