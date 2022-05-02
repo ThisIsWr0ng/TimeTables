@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 ?>
                         </select>
-                        <input type="button" value="set dates">
+                        <input type="button" value="set dates" onclick="setProgrammeDates()">
                         </fieldset>
                         <label>Start Date</label><br>
                         <input id="form-prog-sdate" type="date" name="start"><br><br>
@@ -260,6 +260,22 @@ function addToModulesList(id){
   modules.push(modul);
   refreshModules(pSem);
 }
+
+function setProgrammeDates(){
+    var year = document.getElementById('form-prog-year');
+    xmlhttp = new XMLHttpRequest();
+          xmlhttp.onload = function () {
+             // document.getElementById('search-output').innerHTML = this.responseText;
+            var dates = JSON.parse(this.responseText);
+            const sDate = document.getElementById('form-prog-sdate');
+            const eDate = document.getElementById('form-prog-edate');
+            sDate.value = dates[0];
+            eDate.value = dates[1];
+          }
+          xmlhttp.open("GET", `php/setDates.php?year=${year.value}`);
+          xmlhttp.send();
+}
+
 
 window.onload = searchBar(' ');
         </script>
