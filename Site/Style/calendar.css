@@ -164,9 +164,9 @@
   margin-bottom: 10px;
 }
 #demo{
+  float: left;
   width: fit-content;
   padding: 2px 20px;
-  background-color: rgba(226, 226, 219, 0.911);
   border-radius: 4px;
 
 }

@@ -82,7 +82,7 @@
           xmlhttp.onload = function () {
           //document.getElementById('cal-container').innerHTML = this.responseText;
           dbData = JSON.parse(this.responseText);
-          document.getElementById("demo").innerHTML = `<?php echo $_REQUEST['type']; ?>: <?php echo $_REQUEST['name']; ?>`;
+          document.getElementById("demo").innerHTML = `Events for <?php echo $_REQUEST['name']; ?>`;
             console.log("Data Received:", dbData);
             window.addEventListener("load", drawCalendar(dbData));
 
