@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Timetable Finder</title>
-    <meta name="description" content="Personal Timetable" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Timetable Finder" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <script src="script/sortTable.js"></script>
   </head>
