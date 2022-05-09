@@ -203,6 +203,9 @@ border-bottom: 1px solid black;
   #cal-wrap{
       width: 100%;
   }
+  #lecturer-forms{
+    width: 100vw;
+  }
   }
 
   @media only screen and (max-width: 500px) {

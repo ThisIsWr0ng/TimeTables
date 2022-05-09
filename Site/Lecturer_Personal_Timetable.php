@@ -13,6 +13,7 @@ $username = $_SESSION["username"];
   <head>
     <meta charset="utf-8" />
     <title>Personal Timetable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link href="style/calendar.css" rel="stylesheet" type="text/css" />
@@ -28,8 +29,11 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" id="logout" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
-    <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
+    <nav class="navbuttons">
+      <input class="glass" type="button" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
+      <input class="glass" type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
+      <input class="glass" type="button" value="Academic Calendar" onclick="location.href='Academic-Calendar-2021-22.pdf'" target="_blank">
+    </nav>
     <main class="content">
     <section id="event-list" class="glass">
         <h3>Upcoming</h3><h3>events</h3><hr>
@@ -43,9 +47,9 @@ $username = $_SESSION["username"];
 
         <!-- (B) CALENDAR -->
         <div id="cal-container"></div>
-
-        <!-- (C) EVENT FORM -->
-        <div id="overlay" class="hideOverlay">
+      </div>
+      <!-- (C) EVENT FORM -->
+      <div id="overlay" class="hideOverlay">
           <form id="cal-event" action="php/eventRequest.php" method="post">
             <div id="evt-head"></div>
             <input type="date" id="evt-date" name="date" />
@@ -81,7 +85,6 @@ $username = $_SESSION["username"];
             <input id="evt-next" type="button" value="Next -->" />
           </form>
         </div>
-      </div>
       <section id="lecturer-forms" class="glass">
       <fieldset>
     <legend>Deadlines</legend>

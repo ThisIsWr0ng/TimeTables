@@ -154,25 +154,5 @@ body {
     top: 20px;
     right: 20px;
     max-width: 45%;
+    font-size: 1.2em;
 }
-@media only screen and (max-width: 750px) {
-  #event-list{
-      display: none;
-  }
-  #cal-wrap{
-      width: 100%;
-  }
-  }
-
-  @media only screen and (max-width: 500px) {
-    #event-list{
-        display: block;
-        margin: auto;
-        left: 0;
-        right: 0;
-    }
-    #cal-wrap{
-        display: none;
-        width: 0%;
-    }
-  }
