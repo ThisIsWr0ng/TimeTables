@@ -145,3 +145,13 @@ body {
     background-color: grey;
     margin-bottom: 4px;
 }
+.navbuttons{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    max-width: 45%;
+}

@@ -159,6 +159,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   cursor: pointer;
+  backdrop-filter: blur(3px);
+  transition-duration: 2s;
 }
 #request-fileds input {
   margin-bottom: 10px;
