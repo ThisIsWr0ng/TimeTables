@@ -31,7 +31,7 @@ $sqldel = "DELETE FROM programmes WHERE Id='$id'";
 echo $sqldel;
 mysqli_query($conn, $sqldel);
 
-//header("location: ../admin_programmes.php");
+header("location: ../admin_programmes.php");
 }
 else if ($requestType == "Update") {
 

@@ -75,10 +75,10 @@ $username = $_SESSION["username"];
             </fieldset>
           </section>
           <section>
-            <input type="submit" value="Mark as Completed">
-            <input type="submit" value="Mark as Denied">
-            <input type="submit" value="Delete">
-            <input type="submit" value="Message User">
+            <input type="submit" name="btSubmit" value="Mark as Completed">
+            <input type="submit" name="btSubmit" value="Mark as Denied">
+            <input type="submit" name="btSubmit" value="Delete">
+            <input type="submit" name="btSubmit" value="Message User">
           </section>
 
         </form>
