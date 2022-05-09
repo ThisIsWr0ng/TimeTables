@@ -156,3 +156,12 @@ body {
     max-width: 45%;
     font-size: 1.2em;
 }
+.clickable-row{
+    text-align: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+.clickable-row:hover{
+    background-color: grey;;
+}

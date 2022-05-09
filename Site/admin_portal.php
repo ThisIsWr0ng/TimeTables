@@ -13,6 +13,7 @@ $username = $_SESSION["username"];
   <head>
     <meta charset="utf-8" />
     <title>Admin Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />
@@ -44,7 +45,22 @@ $username = $_SESSION["username"];
       <?php
         echo "<h1 id='welcome'>Welcome $username!</h1>"
       ?>
-      <a href="User_Manual.pdf" target="_blank">User Manual</a>
+      
+      <?php
+      include 'php/conn.php';
+      $sql="SELECT * FROM requests WHERE status = 0";
+      $result = $conn->query($sql);
+      $count = 0;
+      
+        while (mysqli_fetch_array($result)) {
+          $count++;
+        }
+       
+        echo "<a href='admin_requests.php'><h2>You have $count active requests!</h2></a>";
+      
+      
+      ?>
+      <a href="User_Manual.pdf" target="_blank"><h2>User Manual<h2></a>
       </section>
 </div>
     </main>

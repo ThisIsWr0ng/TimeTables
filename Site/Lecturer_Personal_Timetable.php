@@ -52,7 +52,7 @@ $username = $_SESSION["username"];
       <div id="overlay" class="hideOverlay">
           <form id="cal-event" action="php/eventRequest.php" method="post">
             <div id="evt-head"></div>
-            <input type="date" id="evt-date" name="date" />
+            <input type="date" id="evt-date" name="date" /><br>
             <input type="hidden" name="user" value="<?php echo $username?>">
             <div id="evt-time"></div>
             <div id="evt-room"></div>

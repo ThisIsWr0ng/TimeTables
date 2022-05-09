@@ -13,6 +13,7 @@ $username = $_SESSION["username"];
   <head>
     <meta charset="utf-8" />
     <title>Admin Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link rel="stylesheet" href="Style/admin.css" />

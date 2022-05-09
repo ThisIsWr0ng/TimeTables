@@ -13,6 +13,7 @@ $username = $_SESSION["username"];
 <head>
     <meta charset="utf-8"/>
     <title>Manage Programmes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Timetable"/>
     <link rel="stylesheet" href="Style/Basic.css"/>
     <link rel="stylesheet" href="Style/admin.css"/>
@@ -160,7 +161,7 @@ while ($row = mysqli_fetch_array($result)) {
             <div id="search-section">
             <h1>SearchBox</h1>
                 <section  class="admin-search">
-                    <select name="search-type" id="search-type">
+                    <select name="search-type" id="search-type" onchange="searchBar(' ')">
                         <option value="Users" >Users</option>
                         <option value="Programmes" selected>Programmes</option>
                         <option value="Modules">Modules</option>

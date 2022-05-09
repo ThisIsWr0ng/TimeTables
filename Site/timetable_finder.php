@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: index.php");
+    exit;
+}
+
+$username = $_SESSION["username"];
+?>
   <head>
     <meta charset="utf-8" />
     <title>Timetable Finder</title>

@@ -218,8 +218,14 @@ var cal = {
       if(request){
         hasEvents = false
       }
-  
+      
       // (D2) UPDATE EVENT FORM
+      
+      if(cal.hfTxt.value == ""){
+        
+        cal.hfTxt.setAttribute("style", "display:none");
+        
+      }
       cal.hfTime.classList.add("hideOverlay");
       cal.hrFields.classList.add("hideOverlay");
       cal.hNxt.classList.add("hideOverlay");
@@ -248,7 +254,7 @@ var cal = {
     }else{ //if there's no event during this day
       cal.hfDate.setAttribute('value', `${cal.sYear}-${("0" +(cal.sMth + 1)).slice(-2)}-${("0" + cal.sDay).slice(-2)}`);//date
       cal.hfTxt.value = "";
-      cal.hfHead.innerHTML = "<h1>Add Event</h1>";
+       cal.hfHead.innerHTML = "<h1>Add Event</h1>";
       
     }
 
@@ -264,6 +270,7 @@ var cal = {
     // (F) Request EVENT
     showRequest : () => {
       //console.log("ShowRequest Started!");
+      cal.hfTxt.removeAttribute("style");
       cal.hfTxt.removeAttribute('readonly');
       cal.hfDate.removeAttribute('readonly');
       cal.show(currentCell, 0, true);

@@ -13,6 +13,7 @@ $username = $_SESSION["username"];
 <head>
     <meta charset="utf-8"/>
     <title>Import Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Import Data"/>
     <link rel="stylesheet" href="Style/Basic.css"/>
     <link rel="stylesheet" href="Style/admin.css"/>
@@ -43,7 +44,7 @@ $username = $_SESSION["username"];
                
                 <h1>Data View</h1>
                 <form id="xmlForm" name="xmlForm">
-                <select name="search-type" id="search-type">
+                <select name="search-type" id="search-type" onchange="searchBar(' ')">
                         <option value="Users" >Users</option>
                         <option value="Programmes"selected>Programmes</option>
                         <option value="Modules">Modules</option>
