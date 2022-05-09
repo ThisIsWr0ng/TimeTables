@@ -28,8 +28,11 @@ $username = $_SESSION["username"];
         alt="TimeTables Logo"
       />
     </header>
-    <input type="button" id="logout" class="glass" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
-    <input type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
+    <nav class="navbuttons">
+      <input class="glass" type="button" value="<?php echo $username?> | Logout" onclick="location.href='php/logout.php'"/>
+      <input class="glass" type="button" value="Timetable Finder" onclick="location.href='timetable_finder.php'"/>
+      <input class="glass" type="button" value="Academic Calendar" onclick="location.href='Academic-Calendar-2021-22.pdf'" target="_blank">
+    </nav>
     <main class="content">
     <section id="event-list" class="glass">
         <h3>Upcoming</h3><h3>events</h3><hr>
@@ -43,7 +46,7 @@ $username = $_SESSION["username"];
 
         <!-- (B) CALENDAR -->
         <div id="cal-container"></div>
-
+        </section>
         <!-- (C) EVENT FORM -->
         <div id="overlay" class="hideOverlay">
           <form id="cal-event" action="php/eventRequest.php" method="post">
@@ -82,7 +85,7 @@ $username = $_SESSION["username"];
           </form>
         </div>
         
-</section>
+
      
       <script>
        var dbData = null;

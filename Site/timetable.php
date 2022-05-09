@@ -4,7 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <title id="page-title">Timetable</title>
-    <meta name="description" content="Personal Timetable" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
     <link href="style/calendar.css" rel="stylesheet" type="text/css" />
     <script src="script/calendar.js"></script>
