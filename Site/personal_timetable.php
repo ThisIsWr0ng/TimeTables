@@ -16,7 +16,7 @@ $username = $_SESSION["username"];
     <title>Personal Timetable</title>
     <meta name="description" content="Personal Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
-    <link href="style/calendar.css" rel="stylesheet" type="text/css" />
+    <link href="Style/calendar.css" rel="stylesheet" type="text/css" />
     <script src="script/calendar.js"></script>
     <?php  include 'php/conn.php'; ?>
     <?php  include 'php/fetch_data.php'; ?>

@@ -17,7 +17,7 @@ $username = $_SESSION["username"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Timetable" />
     <link rel="stylesheet" href="Style/Basic.css" />
-    <link href="style/calendar.css" rel="stylesheet" type="text/css" />
+    <link href="Style/calendar.css" rel="stylesheet" type="text/css" />
     <script src="script/calendar.js"></script>
     <?php  include 'php/conn.php'; ?>
     <?php  include 'php/fetch_data.php'; ?>

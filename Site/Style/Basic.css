@@ -3,7 +3,7 @@
 /* CSS Document */
 
 body {
-    background: url("../img/Background.jpg") no-repeat;
+    background: url("../img/background.jpg") no-repeat;
     background-size: cover;
     
     background-attachment: fixed;

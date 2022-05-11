@@ -108,7 +108,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<link rel="stylesheet" href="Style/Sheet.css" />
+<link rel="stylesheet" href="Style/sheet.css" />
 <link rel="stylesheet" href="Style/Basic.css" />
 <title>University Timetable</title>
 
